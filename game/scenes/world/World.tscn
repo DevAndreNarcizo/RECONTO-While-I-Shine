@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="Script" path="res://scripts/world/world.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/world/ground_grid.gd" id="2"]
 [ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="3"]
 [ext_resource type="Script" path="res://scripts/ui/debug_hud.gd" id="4"]
+[ext_resource type="Script" path="res://scripts/pickups/pickup_pool.gd" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/ui/LevelUpScreen.tscn" id="6"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1")
@@ -15,7 +17,12 @@ target = NodePath("../Player")
 
 [node name="Enemies" type="Node2D" parent="."]
 
+[node name="Pickups" type="Node2D" parent="."]
+script = ExtResource("5")
+
 [node name="Player" parent="." instance=ExtResource("3")]
+
+[node name="LevelUpScreen" parent="." instance=ExtResource("6")]
 
 [node name="DebugHud" type="CanvasLayer" parent="."]
 script = ExtResource("4")

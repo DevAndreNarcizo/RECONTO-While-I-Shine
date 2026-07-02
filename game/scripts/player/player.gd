@@ -10,6 +10,7 @@ extends CharacterBody2D
 @export var decel: float = 1200.0
 @export var max_hp: float = 100.0
 @export var contact_iframes: float = 0.5  # invencibilidade após levar dano de contato
+@export var magnetism: float = 50.0  # raio de coleta de Sementes de Luz (GDD §5)
 
 var hp: float
 var facing: Vector2 = Vector2.RIGHT  # última direção de movimento (armas frontais usam)
@@ -17,9 +18,17 @@ var facing: Vector2 = Vector2.RIGHT  # última direção de movimento (armas fro
 var _invuln := 0.0
 
 @onready var _hurtbox: Area2D = $Hurtbox
+@onready var _magnet: Area2D = $MagnetArea
 
 func _ready() -> void:
 	hp = max_hp
+	($MagnetArea/CollisionShape2D.shape as CircleShape2D).radius = magnetism
+	_magnet.area_entered.connect(_on_magnet_area_entered)
+
+func _on_magnet_area_entered(area: Area2D) -> void:
+	var seed_node := area as LightSeed
+	if seed_node:
+		seed_node.magnetize(self)
 
 func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")

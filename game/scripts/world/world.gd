@@ -4,8 +4,10 @@ extends Node2D
 @onready var player: Player = $Player
 
 func _ready() -> void:
+	GameState.reset_run()
 	EnemySpawner.start(player, $Enemies)
 	$DebugHud.player = player
+	$LevelUpScreen.player = player
 	EventBus.player_died.connect(_on_player_died)
 
 func _on_player_died() -> void:
