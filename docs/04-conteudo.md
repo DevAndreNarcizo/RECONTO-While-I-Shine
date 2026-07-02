@@ -13,16 +13,18 @@ Cada lenda = arma inicial única + stats próprios + (opcional) 1 habilidade ati
 |---|---|---|---|---|---|
 | 1 | **Curupira** 🦶 | Cipó Chicoteante | +regen na vegetação; protetor da mata | "Pés Invertidos": confunde inimigos por 3s | Inicial |
 | 2 | **Saci** 🌀 | Pedra Saltitante | +velocidade; redemoinho | "Dash de Vento" | 1.000 Luar |
-| 3 | **Iara** 🌊 | Canto (conversão) | mestra do Encantar; +duração de encantados | "Canto Hipnótico" (encanta em área) | Vencer Fundo do Rio |
+| 3 | **Iara** 🌊 | Canto (conversão) | mestra do Encantar; +duração de encantados | "Canto Hipnótico" (encanta em área) | Resgatada ao vencer o Fundo do Rio |
 | 4 | **Boitatá** 🔥 | Roda de Fogo | imune a fogo; deixa rastro | "Explosão Ígnea" | Vencer Cerrado |
 | 5 | **Boto** 🐬 | Dança Encantadora | +encantados fracos; carisma | "Sedução" | 5.000 Luar |
-| 6 | **Lobisomem** 🐺 | Garras | +50% poder na Lua Cheia, -na Alvorada | "Fúria Lunar" | Vencer Cerrado |
+| 6 | **Lobisomem** 🐺 | Garras | +50% poder na Lua Cheia, -na Alvorada | "Fúria Lunar" | Vencer Cerrado (redimido) |
 | 7 | **Negrinho do Pastoreio** 🕯️ | Vela (invoca aliado) | invocador; +aliados | "Chamado" (invoca 3) | Conquista |
-| 8 | **Mula-sem-Cabeça** 🐴🔥 | Coice Flamejante | tanque; alta vida, lenta | "Galope" (atravessa tudo) | Vencer Caatinga |
-| 9 | **Cuca** 🐊 | Maldição (área) | dano por tempo; debuffs | "Feitiço do Sono" | Vencer Fundo do Rio |
+| 8 | **Mula-sem-Cabeça** 🐴🔥 | Coice Flamejante | tanque; alta vida, lenta | "Galope" (atravessa tudo) | Vencer Caatinga (redimida) |
+| 9 | **Cuca** 🐊 | Maldição (área) | dano por tempo; debuffs | "Feitiço do Sono" | Vencer Fundo do Rio (redimida) |
 | 10 | **Caipora** 🐗 | Chamado da Caça (matilha) | comanda animais da mata | "Estouro da Boiada" | Conquista |
 
 > Para o protótipo, só o **Curupira** é necessário. Os outros entram no roadmap.
+> "(redimido/a)" = lenda-chefe purificada ao vencer o bioma — ver sistema de Lendas Redimidas em
+> `06-expansao-conteudo.md` §1.3. Fichas completas de todas as lendas: doc 06 §2.
 
 ---
 

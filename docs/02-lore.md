@@ -70,15 +70,19 @@ Cada **run de 30 minutos** é uma **noite de resistência**: você segura o avan
 
 A Corrupção nasceu fundo na floresta e se espalha. Você a empurra de volta, bioma a bioma:
 
-1. **Mata Atlântica** (tutorial/ato 1) — onde tudo começou. O lar do Curupira.
+1. **Mata Atlântica** (tutorial/ato 1) — onde tudo começou. O lar do Curupira. Boss: **Onça Corrompida**.
 2. **Amazônia** — o coração verde. Boss: **Mapinguari** corrompido.
-3. **Pantanal** — águas e bichos. O rio transborda. Boss: a **Cobra-Grande / Boitatá das águas**.
+3. **Pantanal** — águas e bichos. O rio transborda. Boss: a **Cobra-Grande**.
 4. **Caatinga** — o sertão rachado e seco. Fendas e fogo. Boss: a **Mula-sem-Cabeça**.
 5. **Cerrado** — savana de fogo. Boss: o **Lobisomem** sob a Lua Cheia eterna.
-6. **Fundo do Rio** — o reino submerso da Iara, agora envenenado. Boss: a **Cuca** (a feiticeira anciã).
+6. **Fundo do Rio** — o reino submerso da Iara, invadido e envenenado pela **Cuca** corrompida, que
+   aprisionou a dona das águas. Boss: a **Cuca**. Vencer = redimir a Cuca E libertar a Iara.
 7. **Cidade Assombrada** (ato final) — onde a ganância humana mora. A Corrupção em sua origem. Boss final:
-   **o Saci-Sombra / o Coração da Corrupção** (a revelação: a praga é o esquecimento — quando o povo para de
-   contar as histórias, os Encantados somem).
+   **o Coração da Corrupção** — um espelho sem forma própria que assume Sombras das lendas que você jogou
+   (a revelação: a praga é o esquecimento — quando o povo para de contar as histórias, os Encantados somem).
+
+> **Lendas Redimidas:** todo chefe-lenda (Mula, Lobisomem, Cuca) é um Encantado que foi esquecido primeiro.
+> Vencê-lo não o destrói — **purifica**. É por isso que essas lendas viram jogáveis. Ver `06-expansao-conteudo.md` §1.3.
 
 ## 7. O tema central (o "porquê" do jogo)
 

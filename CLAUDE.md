@@ -28,6 +28,8 @@ Os documentos de design estão em `docs/` (ou na pasta `/var/www/Jogo-2D/docs/`)
 - `03-mecanicas-detalhadas.md` — as 4 inovações, encantos, evolução.
 - `04-conteudo.md` — lendas, biomas, bosses, inimigos.
 - `05-roadmap.md` — ORDEM de construção.
+- `06-expansao-conteudo.md` — catálogo expandido APROVADO: história em 3 atos, Lendas Redimidas,
+  fichas das 10 lendas, 20 encantos com evoluções, 18 amuletos, bestiário e chefes dos 7 biomas.
 
 **Sempre que eu pedir uma feature, consulte o doc relevante para nomes e regras corretas.**
 

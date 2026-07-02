@@ -101,7 +101,7 @@ seca" que pega fogo via propagação de células vizinhas, etc.). Comece simples
   | Orbital | Vaga-lumes Guardiões | giram ao redor, dão dano por contato |
   | Área no player | Roda do Boitatá | aura de fogo contínua |
   | Projétil saltitante | Pedra do Saci | quica entre inimigos |
-  | Raio do céu | Relâmpago de Tupã | cai aleatório / no mais forte |
+  | Raio do céu | Relâmpago do Trovão | cai aleatório / no mais forte |
   | Conversão | Canto da Iara | encanta (inovação #2) |
   | Invocação | Chamado do Negrinho | invoca aliado que luta |
 
@@ -114,13 +114,14 @@ Bônus de stat global + chave de evolução. Exemplos:
 | Fita do Bonfim | +Duração, regen leve | Cipó → Cipó Sagrado |
 | Galho de Arruda | +Dano | Roda do Boitatá → Fogaréu |
 | Sal Grosso | +Armadura, reflete dano | Vaga-lumes → Muralha de Luz |
-| Pó de Pemba (renomear se quiser) | +Velocidade de Ataque | Relâmpago → Tempestade |
+| Pó de Estrela | +Velocidade de Ataque | Relâmpago → Tempestade |
 | Pena de Tucano | +Velocidade Mov., +Magnetismo | Peixeira → Revoada |
 | Chocalho | +Quantidade de projéteis | vários |
 | Lua Minguante | +Ganho de XP | — |
 
-> **Nota cultural:** "Pó de Pemba" tem origem religiosa; se preferir, renomeie para algo neutro como
-> "Pó de Estrela". A decisão é sua — anotei a opção mais segura.
+> **Nota cultural (decidido):** "Pó de Pemba" tinha origem religiosa — renomeado para **"Pó de Estrela"**.
+> Pelo mesmo critério, "Relâmpago de Tupã" virou **"Relâmpago do Trovão"** (Tupã é entidade religiosa Guarani).
+> Catálogo completo de encantos/amuletos: `06-expansao-conteudo.md` §3–4.
 
 ## 4. Tabela de progressão de dificuldade (curva de spawn)
 

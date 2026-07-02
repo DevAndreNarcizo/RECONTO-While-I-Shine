@@ -114,7 +114,9 @@ Morrer/Vencer → ganhar Cristais de Luar (moeda permanente, baseada em desempen
 | Mover | WASD / Setas | Analógico esquerdo |
 | Pausar | ESC | Start |
 | Confirmar (level up) | Enter / Clique | A |
-| (Opcional) Habilidade ativa da lenda | Espaço | A / RT |
+| (Opcional) Habilidade ativa da lenda | Espaço | RT / R2 |
+
+> Habilidade ativa fica no **RT/R2** (não no A) para não conflitar com "Confirmar" na tela de level up.
 
 > **Nota:** o VS clássico é 100% movimento. Vamos permitir **1 habilidade ativa por lenda** (cooldown),
 > que dá identidade sem quebrar a simplicidade. (Ex: dash do Saci.) Opcional — pode ficar pra v2.
