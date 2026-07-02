@@ -27,6 +27,16 @@ func stop() -> void:
 	for e in _active.duplicate():
 		despawn(e)
 
+## Esquece pool e referências SEM liberar nós — usar antes de recarregar a cena
+## (os inimigos vivem dentro dela e são liberados junto).
+func reset() -> void:
+	_running = false
+	_active.clear()
+	_pool.clear()
+	_player = null
+	_container = null
+	_accum = 0.0
+
 func active_count() -> int:
 	return _active.size()
 

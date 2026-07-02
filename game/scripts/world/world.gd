@@ -1,16 +1,11 @@
 extends Node2D
-## World — orquestra a run: inicia o spawner e reage à morte do player.
+## World — orquestra a run: reseta estado, inicia o spawner e liga a UI.
+## Fim de run (morte/tempo) é tratado por GameState + EndScreen via EventBus.
 
 @onready var player: Player = $Player
 
 func _ready() -> void:
 	GameState.reset_run()
 	EnemySpawner.start(player, $Enemies)
-	$DebugHud.player = player
+	$HUD.player = player
 	$LevelUpScreen.player = player
-	EventBus.player_died.connect(_on_player_died)
-
-func _on_player_died() -> void:
-	# TODO(fase 1e): substituir por tela de fim de run
-	print("GAME OVER")
-	get_tree().paused = true

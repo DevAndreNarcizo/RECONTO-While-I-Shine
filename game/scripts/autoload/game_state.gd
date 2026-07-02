@@ -1,5 +1,5 @@
 extends Node
-## GameState — estado da run atual (nível, XP, kills, tempo).
+## GameState — estado da run atual (nível, XP, kills, tempo, fim de run).
 
 var level := 1
 var xp := 0.0
@@ -10,6 +10,15 @@ var run_active := false
 
 func _ready() -> void:
 	EventBus.enemy_killed.connect(_on_enemy_killed)
+	EventBus.player_died.connect(_on_player_died)
+
+func _process(delta: float) -> void:
+	# Pausa do jogo congela este _process — o timer para junto, como deve.
+	if not run_active:
+		return
+	run_time += delta
+	if run_time >= Balance.run_duration():
+		end_run(true)  # sobreviveu à noite: Alvorada (boss vem na fase 3)
 
 func reset_run() -> void:
 	level = 1
@@ -19,6 +28,12 @@ func reset_run() -> void:
 	run_time = 0.0
 	run_active = true
 	EventBus.xp_changed.emit(xp, xp_to_next, level)
+
+func end_run(victory: bool) -> void:
+	if not run_active:
+		return
+	run_active = false
+	EventBus.run_ended.emit(victory)
 
 func add_xp(amount: float) -> void:
 	xp += amount
@@ -33,5 +48,8 @@ func add_xp(amount: float) -> void:
 
 func _on_enemy_killed(_enemy: Node2D) -> void:
 	kills += 1
+
+func _on_player_died() -> void:
+	end_run(false)
 
 # TODO(fase 2): Cristais de Luar e meta-progressão (Árvore Sagrada).
