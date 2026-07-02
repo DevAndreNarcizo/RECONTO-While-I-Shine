@@ -1,0 +1,15 @@
+# Godot 4 — cache e arquivos gerados
+.godot/
+*.tmp
+
+# Exports
+export.cfg
+export_credentials.cfg
+build/
+*.pck
+*.exe
+*.x86_64
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
