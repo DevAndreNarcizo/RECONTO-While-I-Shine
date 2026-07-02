@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemy_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "Vaga-lume Sombrio"
+max_hp = 1.0
+contact_damage = 5.0
+move_speed = 45.0
+radius = 8.0
+color = Color(0.62, 0.31, 0.85, 1)
+xp_value = 1
