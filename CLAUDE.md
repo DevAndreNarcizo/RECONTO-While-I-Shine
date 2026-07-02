@@ -30,6 +30,9 @@ Os documentos de design estão em `docs/` (ou na pasta `/var/www/Jogo-2D/docs/`)
 - `05-roadmap.md` — ORDEM de construção.
 - `06-expansao-conteudo.md` — catálogo expandido APROVADO: história em 3 atos, Lendas Redimidas,
   fichas das 10 lendas, 20 encantos com evoluções, 18 amuletos, bestiário e chefes dos 7 biomas.
+- `07-lore-encantados.md` — lore da tradição → versão exclusiva do jogo por lenda; sistemas
+  Livro de Recontos, Oferendas e armadilhas da Corrupção; novos inimigos (Pisadeira, Corpo-Seco,
+  Bicho-Papão, Tutu Marambá, Matinta) e amuletos folclóricos.
 
 **Sempre que eu pedir uma feature, consulte o doc relevante para nomes e regras corretas.**
 
