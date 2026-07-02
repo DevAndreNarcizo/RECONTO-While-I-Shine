@@ -6,7 +6,7 @@ config_version=5
 
 config/name="RECONTO"
 config/description="RECONTO: Enquanto Eu Brilhar — bullet heaven de folclore brasileiro. Você é uma lenda defendendo a mata da Corrupção."
-run/main_scene="res://scenes/Main.tscn"
+run/main_scene="res://scenes/world/World.tscn"
 config/features=PackedStringArray("4.3")
 config/icon="res://icon.svg"
 
