@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AmuletoData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/amulets/amuleto_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"pena_de_tucano"
+display_name = "Pena de Tucano"
+description = "Leveza da mata. +Velocidade de Movimento, +Magnetismo."
+move_speed_per_level = 4.5
+magnetism_per_level = 15.0

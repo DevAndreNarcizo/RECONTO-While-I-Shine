@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AmuletoData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/amulets/amuleto_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"figa"
+display_name = "Figa"
+description = "Proteção popular esculpida em madeira. +Área, +Sorte."
+area_pct_per_level = 8.0
+luck_pct_per_level = 5.0

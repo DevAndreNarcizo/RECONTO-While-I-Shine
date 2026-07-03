@@ -14,18 +14,23 @@ func setup(p_data: EncantoData, p_player: Player) -> void:
 	player = p_player
 	_on_setup()
 
-## Stats efetivos (fase 2.2 multiplica pelos stats globais do player).
+## Stats efetivos = tabela do nível × stats globais do player (amuletos etc.).
 func damage() -> float:
-	return data.damage(level)
+	return data.damage(level) * player.stats.damage_mult
 
 func cooldown() -> float:
-	return data.cooldown(level)
+	return data.cooldown(level) / maxf(0.1, player.stats.attack_speed_mult)
 
 func area() -> float:
-	return data.area(level)
+	return data.area(level) * player.stats.area_mult
 
 func amount() -> int:
-	return data.amount(level)
+	var bonus := player.stats.amount_bonus if _uses_amount_bonus() else 0
+	return data.amount(level) + bonus
+
+## Virtual: encantos sem projéteis/instâncias (ex: melee) ignoram +Quantidade.
+func _uses_amount_bonus() -> bool:
+	return true
 
 func is_max_level() -> bool:
 	return level >= EncantoData.MAX_LEVEL

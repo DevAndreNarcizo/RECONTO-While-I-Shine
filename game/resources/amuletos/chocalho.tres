@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AmuletoData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/amulets/amuleto_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"chocalho"
+display_name = "Chocalho"
+description = "Cada guizo, um eco a mais. +Vel. de Projétil; +1 Quantidade nos níveis 3 e 5."
+projectile_speed_pct_per_level = 5.0
+amount_at_levels = Array[int]([3, 5])

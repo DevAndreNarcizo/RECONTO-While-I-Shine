@@ -19,6 +19,9 @@ func _on_setup() -> void:
 	_query.collide_with_areas = true
 	_query.collide_with_bodies = false
 
+func _uses_amount_bonus() -> bool:
+	return false  # golpe único; +Quantidade não se aplica
+
 func _attack() -> void:
 	_hit_dir = player.facing
 	_visual_t = VISUAL_TIME

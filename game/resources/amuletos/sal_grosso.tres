@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AmuletoData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/amulets/amuleto_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"sal_grosso"
+display_name = "Sal Grosso"
+description = "Corta energia ruim. +Armadura."
+armor_per_level = 1.0

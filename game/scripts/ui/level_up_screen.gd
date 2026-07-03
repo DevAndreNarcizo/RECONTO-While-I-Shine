@@ -39,7 +39,7 @@ func _choose(index: int) -> void:
 				if not manager.has_encanto(data.id) and manager.add_encanto(data):
 					break
 		1:  # +Velocidade
-			player.move_speed += 10.0
+			player.add_move_speed_bonus(10.0)
 		2:  # +Cipó nível
 			manager.upgrade(&"cipo_chicoteante")
 

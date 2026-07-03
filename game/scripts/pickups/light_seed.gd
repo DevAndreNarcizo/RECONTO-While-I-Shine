@@ -30,7 +30,9 @@ func magnetize(target: Node2D) -> void:
 func _physics_process(delta: float) -> void:
 	global_position = global_position.move_toward(_target.global_position, FLY_SPEED * delta)
 	if global_position.distance_squared_to(_target.global_position) < COLLECT_DISTANCE * COLLECT_DISTANCE:
-		GameState.add_xp(xp_value)
+		var pl := _target as Player
+		var mult := pl.stats.xp_mult if pl else 1.0
+		GameState.add_xp(xp_value * mult)
 		_pool.collect(self)
 
 func _draw() -> void:

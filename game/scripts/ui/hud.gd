@@ -26,5 +26,5 @@ func _process(_delta: float) -> void:
 		EnemySpawner.active_count(), Engine.get_frames_per_second()
 	]
 	if player:
-		hp_bar.max_value = player.max_hp
+		hp_bar.max_value = player.stats.max_hp
 		hp_bar.value = player.hp
