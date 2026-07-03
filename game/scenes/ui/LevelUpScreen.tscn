@@ -41,19 +41,30 @@ layout_mode = 2
 theme_override_constants/separation = 24
 
 [node name="Card1" type="Button" parent="Dim/Center/Panel/VBox/Cards"]
-custom_minimum_size = Vector2(240, 140)
+custom_minimum_size = Vector2(280, 200)
 layout_mode = 2
-theme_override_font_sizes/font_size = 28
-text = "+Dano"
+theme_override_font_sizes/font_size = 22
+autowrap_mode = 3
+text = "..."
 
 [node name="Card2" type="Button" parent="Dim/Center/Panel/VBox/Cards"]
-custom_minimum_size = Vector2(240, 140)
+custom_minimum_size = Vector2(280, 200)
 layout_mode = 2
-theme_override_font_sizes/font_size = 28
-text = "+Velocidade"
+theme_override_font_sizes/font_size = 22
+autowrap_mode = 3
+text = "..."
 
 [node name="Card3" type="Button" parent="Dim/Center/Panel/VBox/Cards"]
-custom_minimum_size = Vector2(240, 140)
+custom_minimum_size = Vector2(280, 200)
 layout_mode = 2
-theme_override_font_sizes/font_size = 28
-text = "+Cipó nível"
+theme_override_font_sizes/font_size = 22
+autowrap_mode = 3
+text = "..."
+
+[node name="Card4" type="Button" parent="Dim/Center/Panel/VBox/Cards"]
+custom_minimum_size = Vector2(280, 200)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+autowrap_mode = 3
+text = "..."
+visible = false
