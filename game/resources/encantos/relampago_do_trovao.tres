@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EncantoData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/weapons/encanto_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"relampago_do_trovao"
+display_name = "Relâmpago do Trovão"
+description = "O céu luta junto: raios caem sobre a Corrupção."
+behavior = 5
+damage_by_level = Array[float]([20.0, 25.0, 30.0, 36.0, 42.0, 50.0, 58.0, 68.0])
+cooldown_by_level = Array[float]([2.2, 2.1, 2.0, 1.9, 1.8, 1.6, 1.5, 1.4])
+area_by_level = Array[float]([1.0, 1.0, 1.1, 1.1, 1.2, 1.2, 1.3, 1.4])
+amount_by_level = Array[int]([1, 1, 1, 2, 2, 2, 3, 3])

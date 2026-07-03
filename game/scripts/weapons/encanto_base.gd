@@ -1,37 +1,73 @@
 class_name EncantoBase
 extends Node2D
-## Base de todo Encanto (arma). Ataque AUTOMÁTICO por cooldown — o jogador não aperta botão.
-## Teremos ~20 encantos (melee, projétil, orbital, área, conversão, invocação):
-## subclasses implementam _attack() e _on_level_up().
+## Base de todo Encanto (arma). Ataque AUTOMÁTICO por cooldown — sem botão.
+## Os números vêm do EncantoData por nível; a lógica, das subclasses de behavior.
 
-@export var display_name := "Encanto"
-@export var damage := 10.0
-@export var cooldown := 1.2
-@export var area_scale := 1.0
-@export var amount := 1  # projéteis/instâncias extras (stat Quantidade)
-
+var data: EncantoData
 var level := 1
 var player: Player
 
 var _cd := 0.0
 
-func _ready() -> void:
-	player = owner as Player
+func setup(p_data: EncantoData, p_player: Player) -> void:
+	data = p_data
+	player = p_player
+	_on_setup()
 
-func _physics_process(delta: float) -> void:
-	_cd -= delta
-	if _cd <= 0.0:
-		_cd = cooldown
-		_attack()
+## Stats efetivos (fase 2.2 multiplica pelos stats globais do player).
+func damage() -> float:
+	return data.damage(level)
+
+func cooldown() -> float:
+	return data.cooldown(level)
+
+func area() -> float:
+	return data.area(level)
+
+func amount() -> int:
+	return data.amount(level)
+
+func is_max_level() -> bool:
+	return level >= EncantoData.MAX_LEVEL
 
 func level_up() -> void:
+	if is_max_level():
+		return
 	level += 1
 	_on_level_up()
+
+func _physics_process(delta: float) -> void:
+	if player == null or data == null:
+		return
+	_cd -= delta
+	if _cd <= 0.0:
+		_cd = cooldown()
+		_attack()
 
 ## Virtual: executa um ataque.
 func _attack() -> void:
 	pass
 
-## Virtual: melhoria por nível (dano, área, cooldown...).
+## Virtual: chamado uma vez após setup().
+func _on_setup() -> void:
+	pass
+
+## Virtual: reagir a subida de nível (reconstruir orbes etc.).
 func _on_level_up() -> void:
 	pass
+
+## Helper compartilhado: dano em área circular na layer de inimigos.
+func damage_circle(center: Vector2, radius: float, dmg: float) -> void:
+	var shape := CircleShape2D.new()
+	shape.radius = radius
+	var query := PhysicsShapeQueryParameters2D.new()
+	query.shape = shape
+	query.transform = Transform2D(0.0, center)
+	query.collision_mask = 2  # physics layer "enemies"
+	query.collide_with_areas = true
+	query.collide_with_bodies = false
+	var space := get_world_2d().direct_space_state
+	for result in space.intersect_shape(query, 128):
+		var enemy := result.collider as Enemy
+		if enemy:
+			enemy.take_damage(dmg)

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EncantoData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/weapons/encanto_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"vagalumes_guardioes"
+display_name = "Vaga-lumes Guardiões"
+description = "Vaga-lumes de Luz orbitam você, queimando a Corrupção por contato."
+behavior = 2
+damage_by_level = Array[float]([6.0, 7.0, 8.0, 10.0, 12.0, 14.0, 17.0, 20.0])
+cooldown_by_level = Array[float]([0.5, 0.5, 0.45, 0.45, 0.4, 0.4, 0.35, 0.3])
+area_by_level = Array[float]([1.0, 1.0, 1.1, 1.1, 1.2, 1.2, 1.3, 1.4])
+amount_by_level = Array[int]([2, 3, 3, 4, 4, 5, 5, 6])

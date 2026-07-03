@@ -24,16 +24,24 @@ func _on_level_up_ready(_level: int) -> void:
 		get_tree().paused = true
 		visible = true
 
+# Placeholder até a fase 2.3 (cartas dinâmicas com sorteio de pool).
+const NEW_ENCANTOS := [
+	preload("res://resources/encantos/vagalumes_guardioes.tres"),
+	preload("res://resources/encantos/pedra_do_saci.tres"),
+	preload("res://resources/encantos/relampago_do_trovao.tres"),
+]
+
 func _choose(index: int) -> void:
-	var weapons := player.get_node("Weapons")
+	var manager: EncantoManager = player.get_node("EncantoManager")
 	match index:
-		0:  # +Dano (global, placeholder)
-			for w in weapons.get_children():
-				w.damage *= 1.15
+		0:  # Novo Encanto (o primeiro do pool que ainda não tem)
+			for data in NEW_ENCANTOS:
+				if not manager.has_encanto(data.id) and manager.add_encanto(data):
+					break
 		1:  # +Velocidade
 			player.move_speed += 10.0
 		2:  # +Cipó nível
-			(weapons.get_node("CipoChicoteante") as EncantoBase).level_up()
+			manager.upgrade(&"cipo_chicoteante")
 
 	_pending -= 1
 	if _pending > 0:
