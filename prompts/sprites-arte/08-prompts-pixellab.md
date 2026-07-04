@@ -4,6 +4,39 @@
 > escolher → refinar no Aseprite. Rotação em 4 direções e animação (walk/attack)
 > são CONFIGURAÇÃO da ferramenta, não parte do prompt.
 > Salve os PNGs em `game/assets/sprites/` — o Claude Code integra no Godot.
+> Checklist do que falta: `09-checklist-sprites.md`.
+
+## 0. RECEITA do prompt que sai certo de primeira 🎯
+
+Os prompts curtos exigem muitas tentativas. Estruture SEMPRE nesta ordem
+(o PixelLab pesa mais o começo da frase):
+
+```
+[1 CRIATURA + material]  [2 SILHUETA/proporção]  [3 CORES exatas]
+[4 DETALHE ÚNICO que identifica]  [5 POSE]  [6 bloco de estilo]
+```
+
+Regras que economizam gerações:
+1. **Proporção explícita**: "chibi proportions, big head" (lendas) ou "low wide
+   body, short legs" (bichos) — sem isso ele varia o corpo a cada tentativa.
+2. **Cores nomeadas + onde**: "dark emerald green scales, BELLY pale cream,
+   eyes glowing violet" — cor sem lugar = cor no lugar errado.
+3. **UM detalhe único por criatura** (o que a torna reconhecível a 20px):
+   mandíbulas do formigão, olho único do Mapinguari. Mais de dois detalhes = bagunça.
+4. **Negativas no fim**: "no background, no shadow, no border, single character".
+5. **Consistência**: gere na MESMA sessão e reutilize o personagem aprovado como
+   referência (feature de character reference do PixelLab) para variações.
+6. Se sair "fofo demais": adicione "menacing, feral"; se sair "realista demais":
+   adicione "simple readable game sprite, low detail".
+
+**Exemplo aplicando a receita (Jacaré-Açu):**
+```
+corrupted black caiman, low wide body with short legs and long powerful tail,
+dark emerald green cracked scales with pale cream belly, glowing violet eyes
+and purple corruption veins along the spine, low predator crawl pose,
+high top-down game sprite, Brazilian rainforest dark fantasy, Resurrect-64
+palette, transparent background, no shadow, single character
+```
 
 ## Configuração no PixelLab
 
@@ -98,16 +131,66 @@ but colorful, clean readable silhouette, Resurrect-64 palette, transparent backg
 | Cuca | Feitiço do Sono | `expanding circle of drowsy magic, floating purple Z symbols and sparkling dust` | 96x96 · 6 |
 | Caipora | Matilha | `charging wild peccary boar with dust cloud trail, determined eyes, motion lines` | 32x24 · 4 loop |
 
-## Inimigos — Amazônia (mesmo formato dos da Mata: 8 rotações)
+## Inimigos — Amazônia (8 rotações; prompts DETALHADOS no formato da Receita §0)
 
-| Inimigo (tamanho) | Prompt |
-|---|---|
-| Formigão de Correição (16) | `giant corrupted army ant, dark red-brown carapace, oversized mandibles, marching pose, purple glowing joints` |
-| Mosquito da Praga (16) | `corrupted swamp mosquito, translucent tattered wings, long crooked proboscis, sickly gray-purple body` |
-| Jacaré-Açu Oco (32) | `hollow corrupted black caiman, dark green cracked scales, glowing purple eyes, low predator crawl` |
-| Tatu-Canastra Blindado (32) | `giant armadillo with thick segmented armor plates, stone-like shell, purple corruption veins in the cracks` |
-| Sucuri de Lama (mini-boss, 64) | `massive anaconda covered in dripping mud, muddy brown coils, glowing violet eyes, striking pose` |
-| **Mapinguari (boss, 96)** | `towering one-eyed sloth-beast of Brazilian legend, shaggy dark fur, gaping fanged mouth on its belly, huge claws, single glowing red eye, moss and vines on shoulders` |
+**Formigão de Correição (16px):**
+```
+giant corrupted army ant, low segmented insect body with six legs, dark
+red-brown chitin carapace, oversized black serrated mandibles as the main
+feature, tiny purple glow between body segments, aggressive marching pose,
+high top-down game sprite, Brazilian rainforest dark fantasy, Resurrect-64
+palette, transparent background, no shadow, single character
+```
+
+**Mosquito da Praga (16px):**
+```
+corrupted swamp mosquito, small round body with long thin crooked legs
+hanging down, translucent tattered gray wings, one long needle proboscis as
+the main feature, sickly gray-purple body with faint violet glow, hovering
+flight pose, high top-down game sprite, Brazilian rainforest dark fantasy,
+Resurrect-64 palette, transparent background, no shadow, single character
+```
+
+**Jacaré-Açu Oco (32px):**
+```
+corrupted black caiman, low wide body with short legs and long powerful tail,
+dark emerald green cracked scales with pale cream belly, glowing violet eyes
+and purple corruption veins along the spine ridge, low predator crawl pose,
+high top-down game sprite, Brazilian rainforest dark fantasy, Resurrect-64
+palette, transparent background, no shadow, single character
+```
+
+**Tatu-Canastra Blindado (32px):**
+```
+giant armadillo tank creature, round compact body dominated by thick
+segmented armor plates like overlapping stone shields, earthy gray-brown
+shell with purple corruption glow seeping between the plate cracks, small
+head low to the ground, slow heavy walking pose, high top-down game sprite,
+Brazilian rainforest dark fantasy, Resurrect-64 palette, transparent
+background, no shadow, single character
+```
+
+**Sucuri de Lama (mini-boss, 64px):**
+```
+massive anaconda snake coiled in a spiral, thick muscular body covered in
+dripping wet mud, muddy brown scales with darker diamond patterns, glowing
+violet eyes and mud constantly sliding off the coils as the main feature,
+head raised in striking pose above the coil, high top-down game sprite,
+Brazilian rainforest dark fantasy, Resurrect-64 palette, transparent
+background, no shadow, single character
+```
+
+**Mapinguari (boss, 96px):**
+```
+towering mythical sloth-beast from Brazilian Amazon legend, hulking
+bipedal body wider than tall with long arms and huge curved claws, shaggy
+matted dark brown fur with moss and vines growing on the shoulders, ONE
+single giant glowing red eye in the center of the face, a second gaping
+fanged mouth opening vertically on its belly as the main feature, heavy
+menacing stance with arms open, high top-down game sprite, Brazilian
+rainforest dark fantasy, Resurrect-64 palette, transparent background,
+no shadow, single character
+```
 
 ## Ícones de encantos e amuletos (cartas + HUD)
 
