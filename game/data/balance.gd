@@ -25,6 +25,8 @@ const EVOLUTIONS := [
 		"result": "res://resources/encantos/revoada_de_peixeiras.tres"},
 	{"base": &"roda_do_boitata", "amulet": &"galho_de_arruda", "condition": &"",
 		"result": "res://resources/encantos/fogareu.tres"},
+	{"base": &"relampago_do_trovao", "amulet": &"po_de_estrela", "condition": &"",
+		"result": "res://resources/encantos/tempestade.tres"},
 ]
 
 # --- Curva de spawn da Mata Atlântica (docs/03 §4) ---

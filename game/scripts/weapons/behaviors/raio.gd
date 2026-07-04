@@ -23,7 +23,27 @@ func _attack() -> void:
 		damage_circle(pos, STRIKE_RADIUS * area(), damage())
 		EventBus.fire_started.emit(pos)  # raio incendeia a vegetação (bioma reativo)
 		_strikes.push_back({"pos": pos, "t": VISUAL_TIME})
+		_chain_from(pos, hostiles, target)
 	queue_redraw()
+
+## Tempestade (forma ancestral): o raio salta para vizinhos com 60% do dano.
+func _chain_from(origin: Vector2, hostiles: Array[Enemy], first: Enemy) -> void:
+	if data.chain <= 0:
+		return
+	const CHAIN_RANGE := 220.0
+	var jumped := 0
+	var last := origin
+	for e in hostiles:
+		if jumped >= data.chain:
+			break
+		if e == first or not is_instance_valid(e) or e.hp <= 0.0:
+			continue
+		if last.distance_squared_to(e.global_position) > CHAIN_RANGE * CHAIN_RANGE:
+			continue
+		damage_circle(e.global_position, STRIKE_RADIUS * 0.7, damage() * 0.6)
+		_strikes.push_back({"pos": e.global_position, "t": VISUAL_TIME * 0.8, "link": last})
+		last = e.global_position
+		jumped += 1
 
 func _process(delta: float) -> void:
 	if _strikes.is_empty():
@@ -41,6 +61,9 @@ func _draw() -> void:
 		var base := to_local(s["pos"])
 		var alpha: float = clampf(float(s["t"]) / VISUAL_TIME, 0.0, 1.0)
 		var bolt := Color(0.85, 0.92, 1.0, alpha)
+		if s.has("link"):
+			# arco em cadeia ligando ao alvo anterior (Tempestade)
+			draw_line(to_local(s["link"]), base, bolt, 2.5)
 		# raio serrilhado descendo do "céu"
 		var points := PackedVector2Array([
 			base + Vector2(6, -180), base + Vector2(-8, -120),

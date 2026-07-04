@@ -19,6 +19,11 @@ const AMULETOS: Array = [
 	preload("res://resources/amuletos/sal_grosso.tres"),
 	preload("res://resources/amuletos/chocalho.tres"),
 	preload("res://resources/amuletos/fita_do_bonfim.tres"),
+	preload("res://resources/amuletos/po_de_estrela.tres"),
+	preload("res://resources/amuletos/espelho_dagua.tres"),
+	preload("res://resources/amuletos/olho_de_boi.tres"),
+	preload("res://resources/amuletos/couro_de_anta.tres"),
+	preload("res://resources/amuletos/mel_de_jatai.tres"),
 ]
 
 # Pesos do sorteio (balancear aqui)

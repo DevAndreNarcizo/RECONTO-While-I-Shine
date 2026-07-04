@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AmuletoData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/amulets/amuleto_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"couro_de_anta"
+display_name = "Couro de Anta"
+description = "Grosso como quem aguenta. +Armadura."
+armor_per_level = 2.0

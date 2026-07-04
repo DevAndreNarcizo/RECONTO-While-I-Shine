@@ -27,6 +27,7 @@ const MAX_LEVEL := 8
 ## Extras de comportamento (usados por behaviors específicos)
 @export var pierce := 1        # PROJETIL_MIRA: inimigos atravessados por projétil
 @export var ignites := false   # AREA_PLAYER: incendeia o chão (Fogaréu)
+@export var chain := 0         # RAIO: saltos em cadeia para vizinhos (Tempestade)
 
 ## Tabelas por nível — índice 0 = nível 1. Preencher as 8 posições no .tres.
 @export var damage_by_level: Array[float] = []

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EncantoData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/weapons/encanto_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"tempestade"
+display_name = "Tempestade"
+description = "Forma ancestral: o raio não cai — ele CAÇA, saltando de inimigo em inimigo."
+behavior = 5
+chain = 3
+damage_by_level = Array[float]([45.0, 45.0, 45.0, 45.0, 45.0, 45.0, 45.0, 45.0])
+cooldown_by_level = Array[float]([1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2])
+area_by_level = Array[float]([1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2])
+amount_by_level = Array[int]([2, 2, 2, 2, 2, 2, 2, 2])

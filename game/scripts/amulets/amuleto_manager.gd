@@ -52,6 +52,7 @@ func apply_to(stats: PlayerStats) -> void:
 		stats.luck += d.luck_pct_per_level * lv / 100.0
 		stats.magnetism += d.magnetism_per_level * lv
 		stats.xp_mult += d.xp_pct_per_level * lv / 100.0
+		stats.luar_mult += d.luar_pct_per_level * lv / 100.0
 		for threshold in d.amount_at_levels:
 			if lv >= threshold:
 				stats.amount_bonus += 1

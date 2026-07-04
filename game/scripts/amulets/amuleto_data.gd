@@ -22,6 +22,7 @@ const MAX_LEVEL := 5
 @export var luck_pct_per_level := 0.0
 @export var magnetism_per_level := 0.0       # px
 @export var xp_pct_per_level := 0.0
+@export var luar_pct_per_level := 0.0
 ## Níveis do amuleto que concedem +1 Quantidade (ex: [3, 5]).
 @export var amount_at_levels: Array[int] = []
 

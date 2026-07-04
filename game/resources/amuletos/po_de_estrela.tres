@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AmuletoData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/amulets/amuleto_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"po_de_estrela"
+display_name = "Pó de Estrela"
+description = "Brilho moído de estrela cadente. +Velocidade de Ataque."
+attack_speed_pct_per_level = 6.0

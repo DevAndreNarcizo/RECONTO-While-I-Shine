@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AmuletoData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/amulets/amuleto_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"espelho_dagua"
+display_name = "Espelho d'Água"
+description = "Reflexo parado do rio. +Velocidade de Projétil."
+projectile_speed_pct_per_level = 10.0
