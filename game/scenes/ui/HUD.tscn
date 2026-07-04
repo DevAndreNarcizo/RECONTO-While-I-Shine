@@ -108,6 +108,34 @@ theme_override_styles/fill = SubResource("4")
 value = 100.0
 show_percentage = false
 
+[node name="BossName" type="Label" parent="."]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 96.0
+offset_right = 300.0
+offset_bottom = 126.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.5, 0.4, 1)
+theme_override_font_sizes/font_size = 26
+horizontal_alignment = 1
+
+[node name="BossBar" type="ProgressBar" parent="."]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 130.0
+offset_right = 300.0
+offset_bottom = 150.0
+grow_horizontal = 2
+theme_override_styles/background = SubResource("3")
+theme_override_styles/fill = SubResource("4")
+show_percentage = false
+
 [node name="AbilityLabel" type="Label" parent="."]
 anchors_preset = 7
 anchor_left = 0.5

@@ -18,6 +18,12 @@ signal player_died
 signal xp_changed(xp: float, xp_to_next: float, level: int)
 signal level_up_ready(level: int)
 
+# --- Bosses ---
+signal miniboss_time
+signal boss_time
+signal boss_spawned(boss: Node2D)
+signal boss_defeated
+
 # --- Run ---
 signal run_ended(victory: bool)
 

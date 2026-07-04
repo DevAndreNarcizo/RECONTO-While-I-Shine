@@ -8,6 +8,7 @@ const SCHEMA_VERSION := 1
 
 var luar := 0
 var tree_levels: Dictionary = {}  # String (id do upgrade) → int (nível)
+var biomes_cleared: Array = []    # Strings (ids de bioma vencidos)
 
 func _ready() -> void:
 	load_game()
@@ -17,6 +18,16 @@ func _ready() -> void:
 func add_luar(amount: int) -> void:
 	luar += amount
 	save_game()
+
+# --- Progressão de mundo ---
+
+func mark_biome_cleared(id: StringName) -> void:
+	if not biomes_cleared.has(String(id)):
+		biomes_cleared.push_back(String(id))
+	save_game()
+
+func is_biome_cleared(id: StringName) -> bool:
+	return biomes_cleared.has(String(id))
 
 # --- Árvore Sagrada ---
 
@@ -56,6 +67,7 @@ func save_game() -> void:
 		"version": SCHEMA_VERSION,
 		"luar": luar,
 		"tree_levels": tree_levels,
+		"biomes_cleared": biomes_cleared,
 	}
 	var file := FileAccess.open(TMP_PATH, FileAccess.WRITE)
 	if file == null:
@@ -78,3 +90,8 @@ func load_game() -> void:
 	if typeof(raw_levels) == TYPE_DICTIONARY:
 		for key in raw_levels:
 			tree_levels[String(key)] = int(raw_levels[key])
+	biomes_cleared = []
+	var raw_biomes: Variant = parsed.get("biomes_cleared", [])
+	if typeof(raw_biomes) == TYPE_ARRAY:
+		for b in raw_biomes:
+			biomes_cleared.push_back(String(b))

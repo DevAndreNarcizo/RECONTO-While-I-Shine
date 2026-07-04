@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemy_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "Onça Corrompida"
+behavior = 0
+max_hp = 1200.0
+contact_damage = 14.0
+move_speed = 90.0
+radius = 22.0
+color = Color(0.75, 0.5, 0.15, 1)
+xp_value = 50
+knockback_scale = 0.0
+seed_burst = 20
+shard_burst = 10

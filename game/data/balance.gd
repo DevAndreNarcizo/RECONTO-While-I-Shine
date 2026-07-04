@@ -28,6 +28,9 @@ const MATA_SPAWN_TABLE := [
 const WAVE_INTERVAL_FRAC := 0.12
 const WAVE_COUNT := 14
 
+# Bosses: mini-boss na fração da run (0.35 ≈ min 10.5 de 30); boss no fim.
+const MINIBOSS_FRAC := 0.35
+
 ## Upgrades permanentes da Árvore Sagrada. Os valores aplicados por nível
 ## estão em SaveManager.apply_tree_bonuses() — manter os textos em sincronia.
 const TREE_UPGRADES := {

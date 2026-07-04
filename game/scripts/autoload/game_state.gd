@@ -8,6 +8,9 @@ var kills := 0
 var run_time := 0.0
 var run_active := false
 var run_luar := 0  # Cristais de Luar coletados nesta run (vira permanente no fim)
+var boss_phase := false  # tempo esgotou: o boss do bioma está em campo
+
+var _miniboss_fired := false
 
 # Escolhas da tela de seleção (null/padrão = Curupira na Mata Atlântica)
 var selected_legend: LegendData = null
@@ -16,14 +19,21 @@ var selected_biome_id := &"mata_atlantica"
 func _ready() -> void:
 	EventBus.enemy_killed.connect(_on_enemy_killed)
 	EventBus.player_died.connect(_on_player_died)
+	EventBus.boss_defeated.connect(_on_boss_defeated)
 
 func _process(delta: float) -> void:
 	# Pausa do jogo congela este _process — o timer para junto, como deve.
 	if not run_active:
 		return
 	run_time += delta
-	if run_time >= Balance.run_duration():
-		end_run(true)  # sobreviveu à noite: Alvorada (boss vem na fase 3)
+	var duration := Balance.run_duration()
+	if not _miniboss_fired and run_time >= duration * Balance.MINIBOSS_FRAC:
+		_miniboss_fired = true
+		EventBus.miniboss_time.emit()
+	if not boss_phase and run_time >= duration:
+		# A Alvorada chegou — mas a vitória agora exige derrotar o boss do bioma.
+		boss_phase = true
+		EventBus.boss_time.emit()
 
 func reset_run() -> void:
 	level = 1
@@ -32,6 +42,8 @@ func reset_run() -> void:
 	kills = 0
 	run_time = 0.0
 	run_luar = 0
+	boss_phase = false
+	_miniboss_fired = false
 	run_active = true
 	EventBus.xp_changed.emit(xp, xp_to_next, level)
 
@@ -47,7 +59,12 @@ func end_run(victory: bool) -> void:
 	var luar_mult := 1.0 + 0.10 * SaveManager.tree_level(&"luar")
 	last_luar_gained = Balance.luar_for_run(run_luar, kills, level, luar_mult)
 	SaveManager.add_luar(last_luar_gained)
+	if victory:
+		SaveManager.mark_biome_cleared(selected_biome_id)
 	EventBus.run_ended.emit(victory)
+
+func _on_boss_defeated() -> void:
+	end_run(true)
 
 func add_xp(amount: float) -> void:
 	xp += amount

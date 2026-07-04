@@ -15,6 +15,7 @@ var hp: float
 var facing: Vector2 = Vector2.RIGHT  # última direção de movimento (armas frontais usam)
 var legend: LegendData
 var ability_cd_left := 0.0
+var external_push := Vector2.ZERO  # forças externas (puxão de boss); zera a cada frame
 
 var _invuln := 0.0
 var _bonus_move_speed := 0.0  # bônus de cartas na run (placeholder até a fase 2.3)
@@ -66,7 +67,8 @@ func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var target := input_dir * stats.move_speed
 	var rate := accel if input_dir != Vector2.ZERO else decel
-	velocity = velocity.move_toward(target, rate * delta)
+	velocity = velocity.move_toward(target, rate * delta) + external_push
+	external_push = Vector2.ZERO
 	move_and_slide()
 
 	if input_dir != Vector2.ZERO and not facing.is_equal_approx(input_dir.normalized()):

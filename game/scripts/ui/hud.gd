@@ -12,9 +12,20 @@ var player: Player
 @onready var build_label: Label = $BuildLabel
 @onready var ability_label: Label = $AbilityLabel
 @onready var debug_label: Label = $DebugLabel
+@onready var boss_bar: ProgressBar = $BossBar
+@onready var boss_name: Label = $BossName
+
+var _boss: Enemy
 
 func _ready() -> void:
 	EventBus.xp_changed.connect(_on_xp_changed)
+	EventBus.boss_spawned.connect(_on_boss_spawned)
+
+func _on_boss_spawned(boss: Node2D) -> void:
+	_boss = boss as Enemy
+	boss_bar.visible = true
+	boss_name.visible = true
+	boss_name.text = _boss.data.display_name
 
 func _on_xp_changed(xp: float, xp_to_next: float, level: int) -> void:
 	xp_bar.max_value = xp_to_next
@@ -29,6 +40,14 @@ func _process(_delta: float) -> void:
 		EnemySpawner.active_count(), Engine.get_frames_per_second()
 	]
 	luar_label.text = "❖ Luar: %d" % GameState.run_luar
+	if _boss != null:
+		if is_instance_valid(_boss) and _boss.hp > 0.0:
+			boss_bar.max_value = _boss.data.max_hp
+			boss_bar.value = _boss.hp
+		else:
+			_boss = null
+			boss_bar.visible = false
+			boss_name.visible = false
 	if player:
 		hp_bar.max_value = player.stats.max_hp
 		hp_bar.value = player.hp
