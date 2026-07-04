@@ -128,6 +128,8 @@ func _move_enemies(delta: float) -> void:
 		var dir: Vector2
 		if e.confusion_t > 0.0:
 			e.confusion_t -= delta
+			if e.confusion_t <= 0.0:
+				e.queue_redraw()  # tira o visual de confusão
 			dir = e.confusion_dir
 		else:
 			match e.data.behavior:

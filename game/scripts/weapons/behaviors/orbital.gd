@@ -10,6 +10,9 @@ const ROT_SPEED := 2.6  # rad/s
 var _angle := 0.0
 var _orbs: Array[Area2D] = []
 
+func _is_passive() -> bool:
+	return true  # os vaga-lumes protegem sozinhos (aura permanente)
+
 func _on_setup() -> void:
 	_rebuild_orbs()
 

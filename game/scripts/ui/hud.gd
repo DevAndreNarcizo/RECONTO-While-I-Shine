@@ -55,11 +55,12 @@ func _process(_delta: float) -> void:
 		ability_label.text = _ability_text()
 
 func _ability_text() -> String:
+	var lines := "Clique direito (segurar) — ATACAR"
 	if player.legend == null or player.legend.active_id == &"":
-		return ""
+		return lines
 	if player.ability_cd_left <= 0.0:
-		return "ESPAÇO / clique direito — %s: PRONTO" % player.legend.active_name
-	return "%s: %.1fs" % [player.legend.active_name, player.ability_cd_left]
+		return lines + "\nESPAÇO — %s: PRONTO" % player.legend.active_name
+	return lines + "\n%s: %.1fs" % [player.legend.active_name, player.ability_cd_left]
 
 ## Ícones da build em texto (placeholder até termos ícones de verdade na fase 5).
 func _build_summary() -> String:

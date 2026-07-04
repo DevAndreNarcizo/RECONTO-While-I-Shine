@@ -45,9 +45,18 @@ func _physics_process(delta: float) -> void:
 	if player == null or data == null:
 		return
 	_cd -= delta
-	if _cd <= 0.0:
+	if _cd > 0.0:
+		return
+	# Ataque MANUAL (decisão de playtest, jul/2026): encantos disparam segurando
+	# o clique direito/RT, no ritmo do próprio cooldown. Encantos passivos
+	# (orbitais/auras) continuam automáticos.
+	if _is_passive() or Input.is_action_pressed("attack"):
 		_cd = cooldown()
 		_attack()
+
+## Virtual: encantos passivos ignoram o gatilho manual (ex: orbital).
+func _is_passive() -> bool:
+	return false
 
 ## Virtual: executa um ataque.
 func _attack() -> void:

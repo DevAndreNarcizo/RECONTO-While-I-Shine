@@ -9,6 +9,7 @@ signal damage_dealt(position: Vector2, amount: float)
 # --- Juice / feedback ---
 signal seed_collected(position: Vector2)
 signal screen_shake(strength: float)
+signal ability_cast(position: Vector2, radius: float)
 
 # --- Player ---
 signal player_damaged(hp: float, max_hp: float)

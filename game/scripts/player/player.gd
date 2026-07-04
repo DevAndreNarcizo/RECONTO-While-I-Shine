@@ -104,6 +104,7 @@ func _use_ability() -> void:
 			for e in EnemySpawner.active_enemies():
 				if global_position.distance_squared_to(e.global_position) < RADIUS * RADIUS:
 					e.confuse(3.0)
+			EventBus.ability_cast.emit(global_position, RADIUS)
 			EventBus.screen_shake.emit(3.0)
 
 func _on_magnet_area_entered(area: Area2D) -> void:

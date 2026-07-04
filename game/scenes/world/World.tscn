@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=10 format=3]
 
 [ext_resource type="Script" path="res://scripts/world/world.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/world/juice_layer.gd" id="8"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/pickups/pickup_pool.gd" id="5"]
 [ext_resource type="PackedScene" path="res://scenes/ui/LevelUpScreen.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://scenes/ui/EndScreen.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://scenes/ui/PauseMenu.tscn" id="9"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1")
@@ -32,3 +33,5 @@ script = ExtResource("8")
 [node name="HUD" parent="." instance=ExtResource("4")]
 
 [node name="EndScreen" parent="." instance=ExtResource("7")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("9")]

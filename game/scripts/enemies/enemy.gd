@@ -62,7 +62,12 @@ func _end_flash() -> void:
 func _draw() -> void:
 	var radius := data.radius if data else 9.0
 	var color := Color.WHITE if _flash else (data.color if data else Color(0.8, 0.2, 0.2))
+	if confusion_t > 0.0 and not _flash:
+		color = color.lerp(Color(1.0, 0.9, 0.3), 0.55)  # confuso = amarelado
 	draw_circle(Vector2.ZERO, radius, color)
+	if confusion_t > 0.0:
+		# redemoinho sobre a cabeça — feedback dos Pés Invertidos
+		draw_arc(Vector2(0, -radius - 8.0), 5.0, 0, TAU * 0.75, 10, Color(1.0, 0.95, 0.4), 2.0)
 	if data and data.behavior == EnemyData.Behavior.ELITE:
 		draw_arc(Vector2.ZERO, radius + 4.0, 0, TAU, 20, Color(0.75, 0.3, 1.0, 0.8), 2.0)
 	elif data and data.behavior == EnemyData.Behavior.SHOOTER:

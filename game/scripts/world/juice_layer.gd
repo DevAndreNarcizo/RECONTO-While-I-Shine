@@ -18,6 +18,11 @@ func _ready() -> void:
 	EventBus.damage_dealt.connect(_on_damage_dealt)
 	EventBus.enemy_killed.connect(_on_enemy_killed)
 	EventBus.seed_collected.connect(_on_seed_collected)
+	EventBus.ability_cast.connect(_on_ability_cast)
+
+func _on_ability_cast(pos: Vector2, radius: float) -> void:
+	# anel expandindo até o alcance real da habilidade
+	_puffs.push_back({"pos": pos, "t": 0.5, "life": 0.5, "color": Color(0.4, 1.0, 0.5), "size": radius})
 
 func _on_damage_dealt(pos: Vector2, amount: float) -> void:
 	if _numbers.size() >= MAX_NUMBERS:
@@ -31,10 +36,11 @@ func _on_damage_dealt(pos: Vector2, amount: float) -> void:
 func _on_enemy_killed(enemy: Node2D) -> void:
 	var e := enemy as Enemy
 	var color := e.data.color if (e and e.data) else Color.WHITE
-	_puffs.push_back({"pos": enemy.global_position, "t": PUFF_LIFE, "color": color, "size": 16.0})
+	_puffs.push_back({"pos": enemy.global_position, "t": PUFF_LIFE, "life": PUFF_LIFE, "color": color, "size": 16.0})
 
 func _on_seed_collected(pos: Vector2) -> void:
-	_puffs.push_back({"pos": pos, "t": PUFF_LIFE * 0.7, "color": Color("ffd25e"), "size": 9.0})
+	var life := PUFF_LIFE * 0.7
+	_puffs.push_back({"pos": pos, "t": life, "life": life, "color": Color("ffd25e"), "size": 9.0})
 
 func _process(delta: float) -> void:
 	if _numbers.is_empty() and _puffs.is_empty():
@@ -60,7 +66,7 @@ func _draw() -> void:
 			Color(1, 1, 1, life)
 		)
 	for p in _puffs:
-		var progress: float = 1.0 - float(p["t"]) / PUFF_LIFE
+		var progress: float = 1.0 - float(p["t"]) / float(p["life"])
 		var color: Color = p["color"]
 		color.a = 1.0 - progress
-		draw_arc(to_local(p["pos"]), 4.0 + progress * float(p["size"]), 0, TAU, 14, color, 2.0)
+		draw_arc(to_local(p["pos"]), 4.0 + progress * float(p["size"]), 0, TAU, 20, color, 2.5)
