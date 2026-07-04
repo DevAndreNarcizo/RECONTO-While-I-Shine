@@ -16,3 +16,4 @@ knockback_scale = 0.6
 seed_burst = 8
 shard_burst = 3
 drops_chest = true
+sprite_dir = "res://assets/sprites/elite_corrupted_forest_beast_deep/elite_corrupted_forest_beast_deep/rotations"

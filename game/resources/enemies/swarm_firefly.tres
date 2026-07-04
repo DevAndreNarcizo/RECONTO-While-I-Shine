@@ -11,3 +11,4 @@ move_speed = 45.0
 radius = 8.0
 color = Color(0.62, 0.31, 0.85, 1)
 xp_value = 1
+sprite_dir = "res://assets/sprites/corrupted_firefly_small_dark_insect/corrupted_firefly_small_dark_insect/rotations"

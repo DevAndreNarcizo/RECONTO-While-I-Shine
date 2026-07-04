@@ -66,6 +66,7 @@ func _physics_process(delta: float) -> void:
 			if _t <= 0.0:
 				_state = State.POUNCE
 		State.POUNCE:
+			set_move_dir(_mark - global_position)
 			global_position = global_position.move_toward(_mark, POUNCE_SPEED * delta)
 			if global_position.distance_squared_to(_mark) < 100.0:
 				_land()
@@ -85,7 +86,9 @@ func _orbit(delta: float) -> void:
 	var to_player := player.global_position - global_position
 	var tangent := to_player.orthogonal().normalized() * _orbit_sign
 	var radial := to_player.normalized() * clampf((to_player.length() - CIRCLE_DIST) * 0.02, -1.0, 1.0)
-	global_position += (tangent + radial).normalized() * CIRCLE_SPEED * delta
+	var dir := (tangent + radial).normalized()
+	set_move_dir(dir)
+	global_position += dir * CIRCLE_SPEED * delta
 
 func _begin_telegraph(time: float) -> void:
 	_mark = player.global_position  # a sombra marca onde o bote vai cair
@@ -113,8 +116,8 @@ func _enter(state: State, time: float) -> void:
 
 func _draw() -> void:
 	super()
-	# manchas da onça (placeholder com personalidade)
-	if data:
+	# manchas da onça (placeholder com personalidade — só sem sprite)
+	if data and _textures.is_empty():
 		draw_circle(Vector2(-7, -5), 3.0, Color(0.3, 0.2, 0.05))
 		draw_circle(Vector2(6, 3), 3.0, Color(0.3, 0.2, 0.05))
 		draw_circle(Vector2(-2, 9), 2.5, Color(0.3, 0.2, 0.05))

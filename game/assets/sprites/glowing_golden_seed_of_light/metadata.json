@@ -1,0 +1,36 @@
+{
+  "group_id": null,
+  "states": [
+    {
+      "character": {
+        "id": "9df7e5f2-51d5-49f1-8353-4bc3bd3750fd",
+        "name": "glowing golden seed of light,",
+        "prompt": "glowing golden seed of light, diamond shape, warm radiant sparkle.\ntop-down game sprite, vibrant Brazilian rainforest folklore theme, dark fantasy\nbut colorful, clean readable silhouette, Resurrect-64 palette, transparent background",
+        "size": {
+          "width": 32,
+          "height": 32
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "high top-down",
+        "created_at": "2026-07-04T12:27:42.792404+00:00"
+      },
+      "folder": "glowing_golden_seed_of_light",
+      "frames": {
+        "rotations": {
+          "south": "glowing_golden_seed_of_light/rotations/south.png",
+          "south-east": "glowing_golden_seed_of_light/rotations/south-east.png",
+          "east": "glowing_golden_seed_of_light/rotations/east.png",
+          "north-east": "glowing_golden_seed_of_light/rotations/north-east.png",
+          "north": "glowing_golden_seed_of_light/rotations/north.png",
+          "north-west": "glowing_golden_seed_of_light/rotations/north-west.png",
+          "west": "glowing_golden_seed_of_light/rotations/west.png",
+          "south-west": "glowing_golden_seed_of_light/rotations/south-west.png"
+        },
+        "animations": {}
+      }
+    }
+  ],
+  "export_version": "3.0",
+  "export_date": "2026-07-04T12:32:46.894063"
+}

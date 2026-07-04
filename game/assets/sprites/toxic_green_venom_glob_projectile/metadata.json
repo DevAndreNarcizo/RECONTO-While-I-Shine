@@ -1,0 +1,36 @@
+{
+  "group_id": null,
+  "states": [
+    {
+      "character": {
+        "id": "e21b1688-0dbb-449e-aa3a-d3809f4bb0d4",
+        "name": "toxic green venom glob projectile,",
+        "prompt": "toxic green venom glob projectile, dripping, small purple bubbles. 16x16, sem dire\u00e7\u00f5es\n\ntop-down game sprite, vibrant Brazilian rainforest folklore theme, dark fantasy\nbut colorful, clean readable silhouette, Resurrect-64 palette, transparent background",
+        "size": {
+          "width": 24,
+          "height": 24
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "high top-down",
+        "created_at": "2026-07-04T12:38:19.240706+00:00"
+      },
+      "folder": "toxic_green_venom_glob_projectile",
+      "frames": {
+        "rotations": {
+          "south": "toxic_green_venom_glob_projectile/rotations/south.png",
+          "south-east": "toxic_green_venom_glob_projectile/rotations/south-east.png",
+          "east": "toxic_green_venom_glob_projectile/rotations/east.png",
+          "north-east": "toxic_green_venom_glob_projectile/rotations/north-east.png",
+          "north": "toxic_green_venom_glob_projectile/rotations/north.png",
+          "north-west": "toxic_green_venom_glob_projectile/rotations/north-west.png",
+          "west": "toxic_green_venom_glob_projectile/rotations/west.png",
+          "south-west": "toxic_green_venom_glob_projectile/rotations/south-west.png"
+        },
+        "animations": {}
+      }
+    }
+  ],
+  "export_version": "3.0",
+  "export_date": "2026-07-04T12:58:47.233261"
+}

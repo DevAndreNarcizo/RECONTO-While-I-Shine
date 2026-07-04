@@ -21,6 +21,4 @@ func launch(pos: Vector2, p_dir: Vector2, p_damage: float) -> void:
 func expire() -> void:
 	EnemySpawner.despawn_projectile(self)
 
-func _draw() -> void:
-	draw_circle(Vector2.ZERO, 5.0, Color(0.45, 0.65, 0.2))
-	draw_circle(Vector2.ZERO, 2.0, Color(0.8, 0.9, 0.4))
+# Visual: Sprite2D na cena (cusparada venenosa do PixelLab).

@@ -1,0 +1,48 @@
+{
+  "group_id": null,
+  "states": [
+    {
+      "character": {
+        "id": "9f209385-d689-49fb-b5f1-eb60168bad80",
+        "name": "small forest guardian boy, wild",
+        "prompt": "small forest guardian boy, wild flame-like orange-red hair, green skin, feet turned backwards, amber glowing eyes, leaf loincloth, mischievous brave expression.\n\ntop-down game sprite, vibrant Brazilian rainforest folklore theme, dark fantasy but colorful, clean readable silhouette, Resurrect-64 palette, transparent background",
+        "size": {
+          "width": 64,
+          "height": 64
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "high top-down",
+        "created_at": "2026-07-04T11:14:01.394271+00:00"
+      },
+      "folder": "small_forest_guardian_boy_wild",
+      "frames": {
+        "rotations": {
+          "south": "small_forest_guardian_boy_wild/rotations/south.png",
+          "south-east": "small_forest_guardian_boy_wild/rotations/south-east.png",
+          "east": "small_forest_guardian_boy_wild/rotations/east.png",
+          "north-east": "small_forest_guardian_boy_wild/rotations/north-east.png",
+          "north": "small_forest_guardian_boy_wild/rotations/north.png",
+          "north-west": "small_forest_guardian_boy_wild/rotations/north-west.png",
+          "west": "small_forest_guardian_boy_wild/rotations/west.png",
+          "south-west": "small_forest_guardian_boy_wild/rotations/south-west.png"
+        },
+        "animations": {
+          "whip_slash_effect_of_a_living_green_vine_with_smal": {
+            "south": [
+              "small_forest_guardian_boy_wild/animations/whip_slash_effect_of_a_living_green_vine_with_smal/south/frame_000.png",
+              "small_forest_guardian_boy_wild/animations/whip_slash_effect_of_a_living_green_vine_with_smal/south/frame_001.png",
+              "small_forest_guardian_boy_wild/animations/whip_slash_effect_of_a_living_green_vine_with_smal/south/frame_002.png",
+              "small_forest_guardian_boy_wild/animations/whip_slash_effect_of_a_living_green_vine_with_smal/south/frame_003.png",
+              "small_forest_guardian_boy_wild/animations/whip_slash_effect_of_a_living_green_vine_with_smal/south/frame_004.png",
+              "small_forest_guardian_boy_wild/animations/whip_slash_effect_of_a_living_green_vine_with_smal/south/frame_005.png",
+              "small_forest_guardian_boy_wild/animations/whip_slash_effect_of_a_living_green_vine_with_smal/south/frame_006.png"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "export_version": "3.0",
+  "export_date": "2026-07-04T12:01:40.662071"
+}

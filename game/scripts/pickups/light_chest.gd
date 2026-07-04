@@ -22,7 +22,4 @@ func _on_body_entered(body: Node2D) -> void:
 	EventBus.screen_shake.emit(3.0)
 	queue_free()
 
-func _draw() -> void:
-	draw_rect(Rect2(-10, -8, 20, 16), Color(0.85, 0.65, 0.2))
-	draw_rect(Rect2(-10, -8, 20, 6), Color(1.0, 0.85, 0.4))
-	draw_arc(Vector2.ZERO, 16.0, 0, TAU, 20, Color(1.0, 0.9, 0.5, 0.5), 2.0)
+# Visual: Sprite2D na cena (baú transbordando Luz, do PixelLab).

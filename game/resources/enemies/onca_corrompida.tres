@@ -15,3 +15,4 @@ xp_value = 50
 knockback_scale = 0.0
 seed_burst = 20
 shard_burst = 10
+sprite_dir = "res://assets/sprites/large_corrupted_jaguar_orange_fur_with_black_roset/large_corrupted_jaguar_orange_fur_with_black_roset/rotations"

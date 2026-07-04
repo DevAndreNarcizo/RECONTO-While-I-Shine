@@ -20,12 +20,26 @@ var external_push := Vector2.ZERO  # forças externas (puxão de boss); zera a c
 var _invuln := 0.0
 var _bonus_move_speed := 0.0  # bônus de cartas na run (placeholder até a fase 2.3)
 
+# Sprite direcional (PixelLab, 8 rotações). TODO(fase 6): vem da LegendData.
+const SPRITE_DIR := "res://assets/sprites/small_forest_guardian_boy_wild/small_forest_guardian_boy_wild/rotations"
+const SPRITE_SIZE_FACTOR := 2.4
+
+var _textures: Array = []
+var _octant := SpriteSet.SOUTH
+
+@onready var _sprite: Sprite2D = $Sprite
 @onready var _hurtbox: Area2D = $Hurtbox
 @onready var _magnet: Area2D = $MagnetArea
 @onready var amulets: AmuletoManager = $AmuletoManager
 @onready var encantos: EncantoManager = $EncantoManager
 
 func _ready() -> void:
+	_textures = SpriteSet.load_set(SPRITE_DIR)
+	if _textures.is_empty():
+		_sprite.visible = false
+	else:
+		_sprite.texture = _textures[_octant]
+		_sprite.scale = Vector2.ONE * (14.0 * SPRITE_SIZE_FACTOR / _sprite.texture.get_width())
 	amulets.changed.connect(rebuild_stats)
 	rebuild_stats()
 	hp = stats.max_hp
@@ -82,6 +96,11 @@ func _physics_process(delta: float) -> void:
 
 	if input_dir != Vector2.ZERO and not facing.is_equal_approx(input_dir.normalized()):
 		facing = input_dir.normalized()
+		if not _textures.is_empty():
+			var o := SpriteSet.octant(facing)
+			if o != _octant:
+				_octant = o
+				_sprite.texture = _textures[o]
 		queue_redraw()
 
 	if stats.recovery > 0.0 and hp < stats.max_hp:
@@ -142,6 +161,8 @@ func _flash_damage() -> void:
 	tween.tween_property(self, "modulate", Color.WHITE, 0.25)
 
 func _draw() -> void:
+	if not _textures.is_empty():
+		return  # o sprite do Curupira assume o visual
 	var body_color := legend.color if legend else Color("3fa34d")
 	draw_circle(Vector2.ZERO, 14.0, body_color)
 	var tip := facing * 22.0

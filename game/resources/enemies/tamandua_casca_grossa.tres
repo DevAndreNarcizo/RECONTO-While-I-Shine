@@ -14,3 +14,4 @@ color = Color(0.4, 0.38, 0.3, 1)
 xp_value = 4
 knockback_scale = 0.25
 seed_burst = 3
+sprite_dir = "res://assets/sprites/giant_anteater_with_armor_of/giant_anteater_with_armor_of/rotations"

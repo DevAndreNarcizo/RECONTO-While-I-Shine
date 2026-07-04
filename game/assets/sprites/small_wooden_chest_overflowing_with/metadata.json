@@ -1,0 +1,36 @@
+{
+  "group_id": null,
+  "states": [
+    {
+      "character": {
+        "id": "a5b77728-eb62-4cb5-91e6-73caa78f4a7c",
+        "name": "small wooden chest overflowing with",
+        "prompt": "small wooden chest overflowing with golden light rays, ornate leaf carvings.\n\ntop-down game sprite, vibrant Brazilian rainforest folklore theme, dark fantasy\nbut colorful, clean readable silhouette, Resurrect-64 palette, transparent background",
+        "size": {
+          "width": 28,
+          "height": 28
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "high top-down",
+        "created_at": "2026-07-04T12:32:56.493034+00:00"
+      },
+      "folder": "small_wooden_chest_overflowing_with",
+      "frames": {
+        "rotations": {
+          "south": "small_wooden_chest_overflowing_with/rotations/south.png",
+          "south-east": "small_wooden_chest_overflowing_with/rotations/south-east.png",
+          "east": "small_wooden_chest_overflowing_with/rotations/east.png",
+          "north-east": "small_wooden_chest_overflowing_with/rotations/north-east.png",
+          "north": "small_wooden_chest_overflowing_with/rotations/north.png",
+          "north-west": "small_wooden_chest_overflowing_with/rotations/north-west.png",
+          "west": "small_wooden_chest_overflowing_with/rotations/west.png",
+          "south-west": "small_wooden_chest_overflowing_with/rotations/south-west.png"
+        },
+        "animations": {}
+      }
+    }
+  ],
+  "export_version": "3.0",
+  "export_date": "2026-07-04T12:36:14.272198"
+}

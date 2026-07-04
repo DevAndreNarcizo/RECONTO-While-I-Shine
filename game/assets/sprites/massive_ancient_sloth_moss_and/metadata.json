@@ -1,0 +1,36 @@
+{
+  "group_id": null,
+  "states": [
+    {
+      "character": {
+        "id": "585e2284-4332-4713-90c3-7e5049d1fdf5",
+        "name": "massive ancient sloth, moss and",
+        "prompt": "massive ancient sloth, moss and vines growing on fur, long hooked claws, sleepy but menacing face, vines extending from arms like whips, earthy green-brown tones.\ntop-down game sprite, vibrant Brazilian rainforest folklore theme, dark fantasy\nbut colorful, clean readable silhouette, Resurrect-64 palette, transparent background",
+        "size": {
+          "width": 124,
+          "height": 124
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "high top-down",
+        "created_at": "2026-07-04T12:23:51.658599+00:00"
+      },
+      "folder": "massive_ancient_sloth_moss_and",
+      "frames": {
+        "rotations": {
+          "south": "massive_ancient_sloth_moss_and/rotations/south.png",
+          "south-east": "massive_ancient_sloth_moss_and/rotations/south-east.png",
+          "east": "massive_ancient_sloth_moss_and/rotations/east.png",
+          "north-east": "massive_ancient_sloth_moss_and/rotations/north-east.png",
+          "north": "massive_ancient_sloth_moss_and/rotations/north.png",
+          "north-west": "massive_ancient_sloth_moss_and/rotations/north-west.png",
+          "west": "massive_ancient_sloth_moss_and/rotations/west.png",
+          "south-west": "massive_ancient_sloth_moss_and/rotations/south-west.png"
+        },
+        "animations": {}
+      }
+    }
+  ],
+  "export_version": "3.0",
+  "export_date": "2026-07-04T12:27:08.608664"
+}

@@ -36,9 +36,4 @@ func _physics_process(delta: float) -> void:
 		EventBus.seed_collected.emit(global_position)
 		_pool.collect(self)
 
-func _draw() -> void:
-	draw_colored_polygon(
-		PackedVector2Array([Vector2(0, -7), Vector2(5, 0), Vector2(0, 7), Vector2(-5, 0)]),
-		Color("ffd25e")
-	)
-	draw_circle(Vector2.ZERO, 2.5, Color(1, 1, 0.9))
+# Visual: Sprite2D na cena (semente dourada do PixelLab).

@@ -1,0 +1,36 @@
+{
+  "group_id": null,
+  "states": [
+    {
+      "character": {
+        "id": "537a4c03-8fae-469f-a448-d4bb0ac863f1",
+        "name": "corrupted capuchin monkey, purple-tinted matted",
+        "prompt": "corrupted capuchin monkey, purple-tinted matted fur, long limbs, aggressive hunched pose, glowing violet eyes.\n\ntop-down game sprite, vibrant Brazilian rainforest folklore theme, dark fantasy\nbut colorful, clean readable silhouette, Resurrect-64 palette, transparent background",
+        "size": {
+          "width": 44,
+          "height": 44
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "high top-down",
+        "created_at": "2026-07-04T12:03:05.553566+00:00"
+      },
+      "folder": "corrupted_capuchin_monkey_purple-tinted_matted",
+      "frames": {
+        "rotations": {
+          "south": "corrupted_capuchin_monkey_purple-tinted_matted/rotations/south.png",
+          "south-east": "corrupted_capuchin_monkey_purple-tinted_matted/rotations/south-east.png",
+          "east": "corrupted_capuchin_monkey_purple-tinted_matted/rotations/east.png",
+          "north-east": "corrupted_capuchin_monkey_purple-tinted_matted/rotations/north-east.png",
+          "north": "corrupted_capuchin_monkey_purple-tinted_matted/rotations/north.png",
+          "north-west": "corrupted_capuchin_monkey_purple-tinted_matted/rotations/north-west.png",
+          "west": "corrupted_capuchin_monkey_purple-tinted_matted/rotations/west.png",
+          "south-west": "corrupted_capuchin_monkey_purple-tinted_matted/rotations/south-west.png"
+        },
+        "animations": {}
+      }
+    }
+  ],
+  "export_version": "3.0",
+  "export_date": "2026-07-04T12:11:50.925457"
+}

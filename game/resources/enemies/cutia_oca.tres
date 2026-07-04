@@ -12,3 +12,4 @@ move_speed = 58.0
 radius = 8.0
 color = Color(0.65, 0.45, 0.25, 1)
 xp_value = 1
+sprite_dir = "res://assets/sprites/hollow_corrupted_agouti_rodent_brown/hollow_corrupted_agouti_rodent_brown/rotations"

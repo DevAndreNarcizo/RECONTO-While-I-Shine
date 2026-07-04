@@ -1,0 +1,36 @@
+{
+  "group_id": null,
+  "states": [
+    {
+      "character": {
+        "id": "713cf1a6-0d68-4b76-9fd6-bdf0696c62be",
+        "name": "giant anteater with armor of",
+        "prompt": "giant anteater with armor of thick tree bark plates, slow heavy stance, long snout, purple corruption veins between bark.\n\ntop-down game sprite, vibrant Brazilian rainforest folklore theme, dark fantasy\nbut colorful, clean readable silhouette, Resurrect-64 palette, transparent background",
+        "size": {
+          "width": 60,
+          "height": 60
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "high top-down",
+        "created_at": "2026-07-04T12:16:14.292058+00:00"
+      },
+      "folder": "giant_anteater_with_armor_of",
+      "frames": {
+        "rotations": {
+          "south": "giant_anteater_with_armor_of/rotations/south.png",
+          "south-east": "giant_anteater_with_armor_of/rotations/south-east.png",
+          "east": "giant_anteater_with_armor_of/rotations/east.png",
+          "north-east": "giant_anteater_with_armor_of/rotations/north-east.png",
+          "north": "giant_anteater_with_armor_of/rotations/north.png",
+          "north-west": "giant_anteater_with_armor_of/rotations/north-west.png",
+          "west": "giant_anteater_with_armor_of/rotations/west.png",
+          "south-west": "giant_anteater_with_armor_of/rotations/south-west.png"
+        },
+        "animations": {}
+      }
+    }
+  ],
+  "export_version": "3.0",
+  "export_date": "2026-07-04T12:19:33.545679"
+}

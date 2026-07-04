@@ -1,0 +1,36 @@
+{
+  "group_id": null,
+  "states": [
+    {
+      "character": {
+        "id": "c9d7a943-221f-48f3-b3bf-86a978529296",
+        "name": "one-legged trickster boy, bright red",
+        "prompt": "one-legged trickster boy, bright red magic cap, dark skin, small smoke pipe, standing on a mini whirlwind of wind and leaves, playful grin\n\ntop-down game sprite, vibrant Brazilian rainforest folklore theme, dark fantasy but colorful, clean readable silhouette, Resurrect-64 palette, transparent background",
+        "size": {
+          "width": 56,
+          "height": 56
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "high top-down",
+        "created_at": "2026-07-04T11:18:59.481942+00:00"
+      },
+      "folder": "one-legged_trickster_boy_bright_red",
+      "frames": {
+        "rotations": {
+          "south": "one-legged_trickster_boy_bright_red/rotations/south.png",
+          "south-east": "one-legged_trickster_boy_bright_red/rotations/south-east.png",
+          "east": "one-legged_trickster_boy_bright_red/rotations/east.png",
+          "north-east": "one-legged_trickster_boy_bright_red/rotations/north-east.png",
+          "north": "one-legged_trickster_boy_bright_red/rotations/north.png",
+          "north-west": "one-legged_trickster_boy_bright_red/rotations/north-west.png",
+          "west": "one-legged_trickster_boy_bright_red/rotations/west.png",
+          "south-west": "one-legged_trickster_boy_bright_red/rotations/south-west.png"
+        },
+        "animations": {}
+      }
+    }
+  ],
+  "export_version": "3.0",
+  "export_date": "2026-07-04T11:23:50.561786"
+}

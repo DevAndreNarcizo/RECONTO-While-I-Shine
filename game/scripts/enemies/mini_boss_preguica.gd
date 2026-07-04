@@ -25,6 +25,7 @@ func _physics_process(delta: float) -> void:
 	if player == null:
 		return
 	var to_player := player.global_position - global_position
+	set_move_dir(to_player)  # a preguiça sempre encara o player
 	_t -= delta
 	match _state:
 		State.CHASE:

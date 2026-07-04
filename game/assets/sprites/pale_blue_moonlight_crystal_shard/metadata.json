@@ -1,0 +1,36 @@
+{
+  "group_id": null,
+  "states": [
+    {
+      "character": {
+        "id": "2c73024c-4b8e-49b8-b6a7-1a02c29272dd",
+        "name": "pale blue moonlight crystal shard,",
+        "prompt": "pale blue moonlight crystal shard, cold silver glow, faceted.\n\ntop-down game sprite, vibrant Brazilian rainforest folklore theme, dark fantasy\nbut colorful, clean readable silhouette, Resurrect-64 palette, transparent background",
+        "size": {
+          "width": 28,
+          "height": 28
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "high top-down",
+        "created_at": "2026-07-04T12:30:11.104843+00:00"
+      },
+      "folder": "pale_blue_moonlight_crystal_shard",
+      "frames": {
+        "rotations": {
+          "south": "pale_blue_moonlight_crystal_shard/rotations/south.png",
+          "south-east": "pale_blue_moonlight_crystal_shard/rotations/south-east.png",
+          "east": "pale_blue_moonlight_crystal_shard/rotations/east.png",
+          "north-east": "pale_blue_moonlight_crystal_shard/rotations/north-east.png",
+          "north": "pale_blue_moonlight_crystal_shard/rotations/north.png",
+          "north-west": "pale_blue_moonlight_crystal_shard/rotations/north-west.png",
+          "west": "pale_blue_moonlight_crystal_shard/rotations/west.png",
+          "south-west": "pale_blue_moonlight_crystal_shard/rotations/south-west.png"
+        },
+        "animations": {}
+      }
+    }
+  ],
+  "export_version": "3.0",
+  "export_date": "2026-07-04T12:33:10.035832"
+}

@@ -1,0 +1,36 @@
+{
+  "group_id": null,
+  "states": [
+    {
+      "character": {
+        "id": "a7ce08ba-73b0-499e-9ccb-dc3910cba4fd",
+        "name": "bloated corrupted cane toad, sickly",
+        "prompt": "bloated corrupted cane toad, sickly green skin with purple pustules, wide toxic mouth, ready to spit.\n\ntop-down game sprite, vibrant Brazilian rainforest folklore theme, dark fantasy\nbut colorful, clean readable silhouette, Resurrect-64 palette, transparent background",
+        "size": {
+          "width": 60,
+          "height": 60
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "high top-down",
+        "created_at": "2026-07-04T12:15:54.127767+00:00"
+      },
+      "folder": "bloated_corrupted_cane_toad_sickly",
+      "frames": {
+        "rotations": {
+          "south": "bloated_corrupted_cane_toad_sickly/rotations/south.png",
+          "south-east": "bloated_corrupted_cane_toad_sickly/rotations/south-east.png",
+          "east": "bloated_corrupted_cane_toad_sickly/rotations/east.png",
+          "north-east": "bloated_corrupted_cane_toad_sickly/rotations/north-east.png",
+          "north": "bloated_corrupted_cane_toad_sickly/rotations/north.png",
+          "north-west": "bloated_corrupted_cane_toad_sickly/rotations/north-west.png",
+          "west": "bloated_corrupted_cane_toad_sickly/rotations/west.png",
+          "south-west": "bloated_corrupted_cane_toad_sickly/rotations/south-west.png"
+        },
+        "animations": {}
+      }
+    }
+  ],
+  "export_version": "3.0",
+  "export_date": "2026-07-04T12:20:59.240417"
+}

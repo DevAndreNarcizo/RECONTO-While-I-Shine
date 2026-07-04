@@ -1,0 +1,36 @@
+{
+  "group_id": null,
+  "states": [
+    {
+      "character": {
+        "id": "eede6591-ce86-4d55-9344-53ff33baf3e1",
+        "name": "large corrupted jaguar, orange fur with black rosette spots, glowing purple corruption veins across body, bright violet eyes, powerful crouched predator stance.\n\ntop-down game sprite, vibrant Brazilian rainforest folklore theme, dark fantasy\nbut colorful, clean readable silhouette, Resurrect-64 palette, transparent background",
+        "prompt": "large corrupted jaguar, orange fur with black rosette spots, glowing purple corruption veins across body, bright violet eyes, powerful crouched predator stance.\n\ntop-down game sprite, vibrant Brazilian rainforest folklore theme, dark fantasy\nbut colorful, clean readable silhouette, Resurrect-64 palette, transparent background",
+        "size": {
+          "width": 92,
+          "height": 92
+        },
+        "template_id": "lion",
+        "directions": 8,
+        "view": "high top-down",
+        "created_at": "2026-07-04T12:34:06.223099+00:00"
+      },
+      "folder": "large_corrupted_jaguar_orange_fur_with_black_roset",
+      "frames": {
+        "rotations": {
+          "south": "large_corrupted_jaguar_orange_fur_with_black_roset/rotations/south.png",
+          "south-east": "large_corrupted_jaguar_orange_fur_with_black_roset/rotations/south-east.png",
+          "east": "large_corrupted_jaguar_orange_fur_with_black_roset/rotations/east.png",
+          "north-east": "large_corrupted_jaguar_orange_fur_with_black_roset/rotations/north-east.png",
+          "north": "large_corrupted_jaguar_orange_fur_with_black_roset/rotations/north.png",
+          "north-west": "large_corrupted_jaguar_orange_fur_with_black_roset/rotations/north-west.png",
+          "west": "large_corrupted_jaguar_orange_fur_with_black_roset/rotations/west.png",
+          "south-west": "large_corrupted_jaguar_orange_fur_with_black_roset/rotations/south-west.png"
+        },
+        "animations": {}
+      }
+    }
+  ],
+  "export_version": "3.0",
+  "export_date": "2026-07-04T12:36:15.971712"
+}

@@ -15,3 +15,4 @@ xp_value = 2
 shoot_interval = 2.8
 projectile_damage = 7.0
 keep_distance = 210.0
+sprite_dir = "res://assets/sprites/bloated_corrupted_cane_toad_sickly/bloated_corrupted_cane_toad_sickly/rotations"

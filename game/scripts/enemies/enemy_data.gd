@@ -18,6 +18,8 @@ enum Behavior {
 @export var move_speed: float = 45.0
 @export var radius: float = 9.0
 @export var color: Color = Color(0.8, 0.2, 0.2)
+## Pasta das 8 rotações do PixelLab (vazio = placeholder geométrico).
+@export var sprite_dir := ""
 @export var xp_value: int = 1
 @export var knockback_scale := 1.0  # tanques resistem (< 1)
 

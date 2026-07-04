@@ -16,3 +16,4 @@ knockback_scale = 0.0
 seed_burst = 15
 shard_burst = 5
 drops_chest = true
+sprite_dir = "res://assets/sprites/massive_ancient_sloth_moss_and/massive_ancient_sloth_moss_and/rotations"

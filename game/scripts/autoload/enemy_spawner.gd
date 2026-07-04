@@ -160,7 +160,7 @@ func _move_enemies(delta: float) -> void:
 		elif e.confusion_t > 0.0:
 			e.confusion_t -= delta
 			if e.confusion_t <= 0.0:
-				e.queue_redraw()  # tira o visual de confusão
+				e.refresh_visual()  # tira o visual de confusão
 			dir = e.confusion_dir
 		else:
 			match e.data.behavior:
@@ -182,6 +182,7 @@ func _move_enemies(delta: float) -> void:
 						_shoot(e.global_position, to_player.normalized(), e.data.projectile_damage)
 				_:
 					dir = to_player.normalized()
+		e.set_move_dir(dir)  # vira o sprite para a direção do movimento
 		e.global_position += (dir * e.speed + e.knockback) * delta
 		if e.knockback != Vector2.ZERO:
 			e.knockback = e.knockback.move_toward(Vector2.ZERO, 420.0 * delta)
