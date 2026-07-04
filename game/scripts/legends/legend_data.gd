@@ -15,7 +15,10 @@ extends Resource
 @export var damage_mult_bonus := 0.0   # 0.1 = +10%
 @export var luck_bonus := 0.0          # 0.1 = +10%
 @export var regen_bonus := 0.0         # HP/s (passiva do Curupira)
+@export var dodge_chance := 0.0        # 0.1 = 10% de esquivar dano (Saci)
 @export var fire_immune := false       # Boitatá ignora queimadas (bioma reativo)
+## Pasta das 8 rotações do PixelLab (vazio = usa o placeholder/sprite padrão).
+@export var sprite_dir := ""
 
 @export_group("Habilidade ativa")
 @export var active_id: StringName      # vazio = sem ativa

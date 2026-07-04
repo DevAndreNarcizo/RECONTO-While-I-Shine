@@ -17,7 +17,11 @@ var legend: LegendData
 var ability_cd_left := 0.0
 var external_push := Vector2.ZERO  # forças externas (puxão de boss); zera a cada frame
 
+const DASH_TIME := 0.22
+const DASH_SPEED := 430.0
+
 var _invuln := 0.0
+var _dash_t := 0.0  # Dash de Vento do Saci
 var _bonus_move_speed := 0.0  # bônus de cartas na run (placeholder até a fase 2.3)
 
 # Sprite direcional (PixelLab, 8 rotações). TODO(fase 6): vem da LegendData.
@@ -34,12 +38,7 @@ var _octant := SpriteSet.SOUTH
 @onready var encantos: EncantoManager = $EncantoManager
 
 func _ready() -> void:
-	_textures = SpriteSet.load_set(SPRITE_DIR)
-	if _textures.is_empty():
-		_sprite.visible = false
-	else:
-		_sprite.texture = _textures[_octant]
-		_sprite.scale = Vector2.ONE * (14.0 * SPRITE_SIZE_FACTOR / _sprite.texture.get_width())
+	_setup_sprite()
 	amulets.changed.connect(rebuild_stats)
 	rebuild_stats()
 	hp = stats.max_hp
@@ -48,9 +47,23 @@ func _ready() -> void:
 ## Define a lenda jogável (chamar ANTES do primeiro frame da run).
 func set_legend(p_legend: LegendData) -> void:
 	legend = p_legend
+	_setup_sprite()
 	rebuild_stats()
 	hp = stats.max_hp
 	queue_redraw()
+
+func _setup_sprite() -> void:
+	var dir := SPRITE_DIR
+	if legend and not legend.sprite_dir.is_empty():
+		dir = legend.sprite_dir
+	_textures = SpriteSet.load_set(dir)
+	if _textures.is_empty():
+		_sprite.visible = false
+		return
+	_octant = SpriteSet.SOUTH
+	_sprite.texture = _textures[_octant]
+	_sprite.scale = Vector2.ONE * (14.0 * SPRITE_SIZE_FACTOR / _sprite.texture.get_width())
+	_sprite.visible = true
 
 ## Recalcula TODOS os stats do zero (nunca acumular por cima).
 func rebuild_stats() -> void:
@@ -88,9 +101,13 @@ func _physics_process(delta: float) -> void:
 		var to_mouse := get_global_mouse_position() - global_position
 		if to_mouse.length() > MOUSE_DEADZONE:
 			input_dir = to_mouse.normalized()
-	var target := input_dir * stats.move_speed
-	var rate := accel if input_dir != Vector2.ZERO else decel
-	velocity = velocity.move_toward(target, rate * delta) + external_push
+	if _dash_t > 0.0:
+		_dash_t -= delta
+		velocity = facing * DASH_SPEED  # dash ignora aceleração e puxões
+	else:
+		var target := input_dir * stats.move_speed
+		var rate := accel if input_dir != Vector2.ZERO else decel
+		velocity = velocity.move_toward(target, rate * delta) + external_push
 	external_push = Vector2.ZERO
 	move_and_slide()
 
@@ -126,6 +143,11 @@ func _use_ability() -> void:
 					e.confuse(3.0)
 			EventBus.ability_cast.emit(global_position, RADIUS)
 			EventBus.screen_shake.emit(3.0)
+		&"dash_vento":
+			# Saci: dash curto com invencibilidade — o redemoinho o carrega
+			_dash_t = DASH_TIME
+			_invuln = maxf(_invuln, DASH_TIME + 0.15)
+			EventBus.ability_cast.emit(global_position, 44.0)
 
 func _on_magnet_area_entered(area: Area2D) -> void:
 	# Sementes de Luz e Fragmentos de Luar implementam magnetize()
@@ -147,6 +169,9 @@ func _check_contact_damage() -> void:
 		take_damage(strongest * MoonCycleManager.enemy_damage_mult())
 
 func take_damage(amount: float) -> void:
+	if legend and legend.dodge_chance > 0.0 and randf() < legend.dodge_chance:
+		EventBus.ability_cast.emit(global_position, 22.0)  # anel: esquivou!
+		return
 	amount = maxf(1.0, amount - stats.armor)  # armadura reduz, nunca zera
 	hp = maxf(0.0, hp - amount)
 	_invuln = contact_iframes
