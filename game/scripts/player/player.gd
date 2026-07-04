@@ -13,6 +13,8 @@ extends CharacterBody2D
 var stats := PlayerStats.new()
 var hp: float
 var facing: Vector2 = Vector2.RIGHT  # última direção de movimento (armas frontais usam)
+var legend: LegendData
+var ability_cd_left := 0.0
 
 var _invuln := 0.0
 var _bonus_move_speed := 0.0  # bônus de cartas na run (placeholder até a fase 2.3)
@@ -28,10 +30,23 @@ func _ready() -> void:
 	hp = stats.max_hp
 	_magnet.area_entered.connect(_on_magnet_area_entered)
 
+## Define a lenda jogável (chamar ANTES do primeiro frame da run).
+func set_legend(p_legend: LegendData) -> void:
+	legend = p_legend
+	rebuild_stats()
+	hp = stats.max_hp
+	queue_redraw()
+
 ## Recalcula TODOS os stats do zero (nunca acumular por cima).
 func rebuild_stats() -> void:
 	var old_max := stats.max_hp
 	stats.reset()
+	if legend:
+		stats.max_hp += legend.max_hp_bonus
+		stats.move_speed += legend.move_speed_bonus
+		stats.damage_mult += legend.damage_mult_bonus
+		stats.luck += legend.luck_bonus
+		stats.recovery += legend.regen_bonus
 	stats.move_speed += _bonus_move_speed
 	amulets.apply_to(stats)
 	SaveManager.apply_tree_bonuses(stats)  # bônus permanentes da Árvore Sagrada
@@ -65,6 +80,22 @@ func _physics_process(delta: float) -> void:
 	if _invuln <= 0.0:
 		_check_contact_damage()
 
+	ability_cd_left = maxf(0.0, ability_cd_left - delta)
+	if legend and legend.active_id != &"" and ability_cd_left <= 0.0 \
+			and Input.is_action_just_pressed("ability"):
+		_use_ability()
+
+func _use_ability() -> void:
+	ability_cd_left = legend.active_cooldown
+	match legend.active_id:
+		&"pes_invertidos":
+			# Curupira: pegadas ao contrário — inimigos próximos andam errado
+			const RADIUS := 260.0
+			for e in EnemySpawner.active_enemies():
+				if global_position.distance_squared_to(e.global_position) < RADIUS * RADIUS:
+					e.confuse(3.0)
+			EventBus.screen_shake.emit(3.0)
+
 func _on_magnet_area_entered(area: Area2D) -> void:
 	# Sementes de Luz e Fragmentos de Luar implementam magnetize()
 	if area.has_method("magnetize"):
@@ -94,7 +125,8 @@ func _flash_damage() -> void:
 	tween.tween_property(self, "modulate", Color.WHITE, 0.25)
 
 func _draw() -> void:
-	draw_circle(Vector2.ZERO, 14.0, Color("3fa34d"))
+	var body_color := legend.color if legend else Color("3fa34d")
+	draw_circle(Vector2.ZERO, 14.0, body_color)
 	var tip := facing * 22.0
 	var side := facing.orthogonal() * 6.0
 	draw_colored_polygon(

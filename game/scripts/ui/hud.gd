@@ -10,6 +10,7 @@ var player: Player
 @onready var kills_label: Label = $KillsLabel
 @onready var luar_label: Label = $LuarLabel
 @onready var build_label: Label = $BuildLabel
+@onready var ability_label: Label = $AbilityLabel
 @onready var debug_label: Label = $DebugLabel
 
 func _ready() -> void:
@@ -32,6 +33,14 @@ func _process(_delta: float) -> void:
 		hp_bar.max_value = player.stats.max_hp
 		hp_bar.value = player.hp
 		build_label.text = _build_summary()
+		ability_label.text = _ability_text()
+
+func _ability_text() -> String:
+	if player.legend == null or player.legend.active_id == &"":
+		return ""
+	if player.ability_cd_left <= 0.0:
+		return "ESPAÇO — %s: PRONTO" % player.legend.active_name
+	return "%s: %.1fs" % [player.legend.active_name, player.ability_cd_left]
 
 ## Ícones da build em texto (placeholder até termos ícones de verdade na fase 5).
 func _build_summary() -> String:

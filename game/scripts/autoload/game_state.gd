@@ -9,6 +9,10 @@ var run_time := 0.0
 var run_active := false
 var run_luar := 0  # Cristais de Luar coletados nesta run (vira permanente no fim)
 
+# Escolhas da tela de seleção (null/padrão = Curupira na Mata Atlântica)
+var selected_legend: LegendData = null
+var selected_biome_id := &"mata_atlantica"
+
 func _ready() -> void:
 	EventBus.enemy_killed.connect(_on_enemy_killed)
 	EventBus.player_died.connect(_on_player_died)

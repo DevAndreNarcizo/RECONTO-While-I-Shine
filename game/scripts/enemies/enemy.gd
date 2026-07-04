@@ -10,6 +10,8 @@ var data: EnemyData
 var hp: float = 0.0
 var speed: float = 0.0
 var knockback := Vector2.ZERO  # decaído em lote pelo EnemySpawner
+var confusion_t := 0.0         # >0 = anda na direção errada (Pés Invertidos)
+var confusion_dir := Vector2.ZERO
 
 var _flash := false
 
@@ -19,10 +21,15 @@ func setup(p_data: EnemyData, pos: Vector2) -> void:
 	speed = data.move_speed
 	global_position = pos
 	knockback = Vector2.ZERO
+	confusion_t = 0.0
 	_flash = false
 	show()
 	set_deferred("monitorable", true)
 	queue_redraw()
+
+func confuse(duration: float) -> void:
+	confusion_t = duration
+	confusion_dir = Vector2.from_angle(randf() * TAU)
 
 ## `from` = origem do golpe (para knockback); omitir = sem empurrão.
 func take_damage(amount: float, from := Vector2.INF) -> void:

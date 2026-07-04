@@ -1,15 +1,16 @@
 extends Node2D
-## World — orquestra a run: reseta estado, inicia o spawner, dá a arma inicial.
-## Fim de run (morte/tempo) é tratado por GameState + EndScreen via EventBus.
+## World — orquestra a run: aplica a lenda escolhida, reseta estado e inicia
+## o spawner. Fim de run é tratado por GameState + EndScreen via EventBus.
 
-# TODO(fase 3): a arma inicial virá da lenda selecionada (Curupira → Cipó).
-const STARTING_ENCANTO := preload("res://resources/encantos/cipo_chicoteante.tres")
+const DEFAULT_LEGEND := preload("res://resources/legends/curupira.tres")
 
 @onready var player: Player = $Player
 
 func _ready() -> void:
 	GameState.reset_run()
+	var legend: LegendData = GameState.selected_legend if GameState.selected_legend else DEFAULT_LEGEND
+	player.set_legend(legend)
+	player.encantos.add_encanto(legend.starting_encanto)
 	EnemySpawner.start(player, $Enemies)
-	$Player/EncantoManager.add_encanto(STARTING_ENCANTO)
 	$HUD.player = player
 	$LevelUpScreen.player = player
