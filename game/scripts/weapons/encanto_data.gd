@@ -24,6 +24,10 @@ const MAX_LEVEL := 8
 @export var behavior: Behavior = Behavior.MELEE_FRONTAL
 @export var icon: Texture2D
 
+## Extras de comportamento (usados por behaviors específicos)
+@export var pierce := 1        # PROJETIL_MIRA: inimigos atravessados por projétil
+@export var ignites := false   # AREA_PLAYER: incendeia o chão (Fogaréu)
+
 ## Tabelas por nível — índice 0 = nível 1. Preencher as 8 posições no .tres.
 @export var damage_by_level: Array[float] = []
 @export var cooldown_by_level: Array[float] = []

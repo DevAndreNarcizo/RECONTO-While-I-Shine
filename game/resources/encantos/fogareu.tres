@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EncantoData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/weapons/encanto_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"fogareu"
+display_name = "Fogaréu"
+description = "Forma ancestral: a roda vira incêndio vivo — o chão queima por onde você passa."
+behavior = 3
+ignites = true
+damage_by_level = Array[float]([20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0])
+cooldown_by_level = Array[float]([0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4])
+area_by_level = Array[float]([1.6, 1.6, 1.6, 1.6, 1.6, 1.6, 1.6, 1.6])
+amount_by_level = Array[int]([1, 1, 1, 1, 1, 1, 1, 1])

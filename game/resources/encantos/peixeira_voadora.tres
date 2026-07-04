@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EncantoData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/weapons/encanto_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"peixeira_voadora"
+display_name = "Peixeira Voadora"
+description = "Lâmina fiel que voa no inimigo mais próximo, atravessando a Corrupção."
+behavior = 1
+pierce = 2
+damage_by_level = Array[float]([7.0, 9.0, 11.0, 13.0, 15.0, 18.0, 21.0, 24.0])
+cooldown_by_level = Array[float]([1.4, 1.3, 1.25, 1.15, 1.1, 1.0, 0.9, 0.8])
+area_by_level = Array[float]([1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
+amount_by_level = Array[int]([1, 2, 2, 3, 3, 4, 4, 5])

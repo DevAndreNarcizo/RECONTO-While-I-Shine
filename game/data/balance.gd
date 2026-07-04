@@ -21,6 +21,10 @@ const EVOLUTIONS := [
 		"result": "res://resources/encantos/cipo_sagrado.tres"},
 	{"base": &"cipo_chicoteante", "amulet": &"figa", "condition": &"",
 		"result": "res://resources/encantos/cipo_mae_da_mata.tres"},
+	{"base": &"peixeira_voadora", "amulet": &"pena_de_tucano", "condition": &"",
+		"result": "res://resources/encantos/revoada_de_peixeiras.tres"},
+	{"base": &"roda_do_boitata", "amulet": &"galho_de_arruda", "condition": &"",
+		"result": "res://resources/encantos/fogareu.tres"},
 ]
 
 # --- Curva de spawn da Mata Atlântica (docs/03 §4) ---

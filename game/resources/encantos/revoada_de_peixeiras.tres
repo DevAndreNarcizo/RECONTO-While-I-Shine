@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EncantoData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/weapons/encanto_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"revoada_de_peixeiras"
+display_name = "Revoada de Peixeiras"
+description = "Forma ancestral: um leque de sete lâminas que atravessa tudo no caminho."
+behavior = 1
+pierce = 99
+damage_by_level = Array[float]([26.0, 26.0, 26.0, 26.0, 26.0, 26.0, 26.0, 26.0])
+cooldown_by_level = Array[float]([0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75])
+area_by_level = Array[float]([1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
+amount_by_level = Array[int]([7, 7, 7, 7, 7, 7, 7, 7])

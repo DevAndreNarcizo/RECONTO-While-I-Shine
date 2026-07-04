@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EncantoData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/weapons/encanto_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"roda_do_boitata"
+display_name = "Roda do Boitatá"
+description = "Um anel do fogo que protege: queima continuamente tudo ao seu redor."
+behavior = 3
+damage_by_level = Array[float]([5.0, 6.0, 7.0, 8.0, 10.0, 12.0, 14.0, 16.0])
+cooldown_by_level = Array[float]([0.65, 0.6, 0.6, 0.55, 0.5, 0.5, 0.45, 0.4])
+area_by_level = Array[float]([1.0, 1.05, 1.1, 1.2, 1.25, 1.3, 1.4, 1.5])
+amount_by_level = Array[int]([1, 1, 1, 1, 1, 1, 1, 1])

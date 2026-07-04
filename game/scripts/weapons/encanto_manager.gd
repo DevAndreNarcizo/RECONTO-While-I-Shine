@@ -12,6 +12,8 @@ const BEHAVIOR_SCRIPTS := {
 	EncantoData.Behavior.RAIZES: preload("res://scripts/weapons/behaviors/raizes.gd"),
 	EncantoData.Behavior.MELEE_SAGRADO: preload("res://scripts/weapons/behaviors/melee_sagrado.gd"),
 	EncantoData.Behavior.CONVERSAO: preload("res://scripts/weapons/behaviors/conversao.gd"),
+	EncantoData.Behavior.PROJETIL_MIRA: preload("res://scripts/weapons/behaviors/projetil_mira.gd"),
+	EncantoData.Behavior.AREA_PLAYER: preload("res://scripts/weapons/behaviors/area_player.gd"),
 }
 
 var evolved_bases: Array[StringName] = []  # encantos que já viraram forma ancestral
