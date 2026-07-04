@@ -98,6 +98,45 @@ but colorful, clean readable silhouette, Resurrect-64 palette, transparent backg
 | Cuca | Feitiço do Sono | `expanding circle of drowsy magic, floating purple Z symbols and sparkling dust` | 96x96 · 6 |
 | Caipora | Matilha | `charging wild peccary boar with dust cloud trail, determined eyes, motion lines` | 32x24 · 4 loop |
 
+## Inimigos — Amazônia (mesmo formato dos da Mata: 8 rotações)
+
+| Inimigo (tamanho) | Prompt |
+|---|---|
+| Formigão de Correição (16) | `giant corrupted army ant, dark red-brown carapace, oversized mandibles, marching pose, purple glowing joints` |
+| Mosquito da Praga (16) | `corrupted swamp mosquito, translucent tattered wings, long crooked proboscis, sickly gray-purple body` |
+| Jacaré-Açu Oco (32) | `hollow corrupted black caiman, dark green cracked scales, glowing purple eyes, low predator crawl` |
+| Tatu-Canastra Blindado (32) | `giant armadillo with thick segmented armor plates, stone-like shell, purple corruption veins in the cracks` |
+| Sucuri de Lama (mini-boss, 64) | `massive anaconda covered in dripping mud, muddy brown coils, glowing violet eyes, striking pose` |
+| **Mapinguari (boss, 96)** | `towering one-eyed sloth-beast of Brazilian legend, shaggy dark fur, gaping fanged mouth on its belly, huge claws, single glowing red eye, moss and vines on shoulders` |
+
+## Ícones de encantos e amuletos (cartas + HUD)
+
+> Formato: **item icon**, 32x32, frame único, sem direções. Estilo:
+> `pixel art game item icon, centered, clean silhouette on transparent background,
+> subtle glow, Resurrect-64 palette`
+
+| Item | Prompt |
+|---|---|
+| Cipó Chicoteante | `coiled green living vine whip with small leaves` |
+| Cipó da Mãe-da-Mata | `ancient thorned root coil with golden sap glow` |
+| Cipó Sagrado | `golden-green vine coil with holy light sparkles` |
+| Vaga-lumes Guardiões | `three golden fireflies in triangle formation, warm glow` |
+| Pedra do Saci | `round gray stone wrapped in a small wind swirl` |
+| Relâmpago do Trovão | `blue-white lightning bolt inside a storm cloud` |
+| Canto da Iara | `water-blue musical note with ripple rings` |
+| Peixeira Voadora | `silver fish-gutting knife with worn wooden handle` |
+| Revoada de Peixeiras | `fan of seven silver blades spread like feathers` |
+| Roda do Boitatá | `ring of orange serpent-shaped fire` |
+| Fogaréu | `blazing fire ring with blue-hot core` |
+| Figa | `carved dark wood figa hand charm on a cord` |
+| Fita do Bonfim | `ribbon tied in three knots, warm yellow` |
+| Galho de Arruda | `small green rue herb branch` |
+| Sal Grosso | `small burlap pouch spilling coarse salt crystals` |
+| Pena de Tucano | `vibrant toucan feather, orange and black` |
+| Chocalho | `indigenous gourd rattle with carved patterns` |
+| Semente/XP (HUD) | `tiny glowing golden seed` |
+| Cristal de Luar (HUD) | `tiny pale blue moon crystal` |
+
 ## Ordem de produção recomendada
 
 1. Curupira + 6 inimigos da Mata + 3 pickups (~10 sprites) → integrar e validar o visual
