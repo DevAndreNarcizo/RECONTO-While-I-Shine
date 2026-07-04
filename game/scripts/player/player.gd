@@ -51,6 +51,7 @@ func rebuild_stats() -> void:
 	stats.move_speed += _bonus_move_speed
 	amulets.apply_to(stats)
 	SaveManager.apply_tree_bonuses(stats)  # bônus permanentes da Árvore Sagrada
+	stats.recovery += MoonCycleManager.regen_bonus()  # a Alvorada cura os Encantados
 	if stats.max_hp > old_max:
 		hp += stats.max_hp - old_max  # ganhar vida máx concede a diferença
 	hp = minf(hp, stats.max_hp)
@@ -124,7 +125,7 @@ func _check_contact_damage() -> void:
 			strongest = maxf(strongest, proj.damage)
 			proj.expire()  # projétil é consumido no impacto
 	if strongest > 0.0:
-		take_damage(strongest)
+		take_damage(strongest * MoonCycleManager.enemy_damage_mult())
 
 func take_damage(amount: float) -> void:
 	amount = maxf(1.0, amount - stats.armor)  # armadura reduz, nunca zera

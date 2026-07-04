@@ -18,6 +18,13 @@ func _ready() -> void:
 	$LevelUpScreen.player = player
 	EventBus.miniboss_time.connect(_spawn_boss_scene.bind(MINIBOSS_SCENE))
 	EventBus.boss_time.connect(_spawn_boss_scene.bind(BOSS_SCENE))
+	EventBus.moon_phase_changed.connect(_on_moon_phase_changed)
+
+func _on_moon_phase_changed(_index: int) -> void:
+	# transição suave de iluminação (o HUD fica fora — é CanvasLayer)
+	var tint: Color = MoonCycleManager.phase()["tint"]
+	create_tween().tween_property($DayNight, "color", tint, 2.0)
+	player.rebuild_stats()  # fases podem alterar stats (ex: regen da Alvorada)
 
 func _spawn_boss_scene(scene: PackedScene) -> void:
 	var boss := scene.instantiate()

@@ -75,7 +75,7 @@ func _physics_process(delta: float) -> void:
 		return
 
 	var phase := _current_phase()
-	_accum += delta * float(phase["rate"])
+	_accum += delta * float(phase["rate"]) * MoonCycleManager.spawn_mult()
 	while _accum >= 1.0 and _active.size() < MAX_ACTIVE:
 		_accum -= 1.0
 		_spawn_one(_pick_type(phase["weights"]))

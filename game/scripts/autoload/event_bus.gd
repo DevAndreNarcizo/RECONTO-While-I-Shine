@@ -19,6 +19,9 @@ signal player_died
 signal xp_changed(xp: float, xp_to_next: float, level: int)
 signal level_up_ready(level: int)
 
+# --- Ciclo da Lua (inovação #1) ---
+signal moon_phase_changed(phase_index: int)
+
 # --- Bosses ---
 signal miniboss_time
 signal boss_time

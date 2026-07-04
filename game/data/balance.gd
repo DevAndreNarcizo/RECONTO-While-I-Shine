@@ -31,6 +31,27 @@ const WAVE_COUNT := 14
 # Bosses: mini-boss na fração da run (0.35 ≈ min 10.5 de 30); boss no fim.
 const MINIBOSS_FRAC := 0.35
 
+# --- Ciclo da Lua (Inovação #1 — docs/01 §3.3 e docs/03 §1) ---
+# "from" em FRAÇÃO da run (janelas do GDD: 0-6, 6-14, 14-20, 20-26, 26-30 min).
+# Multiplicadores globais por fase; o tint vai num CanvasModulate (não afeta o HUD).
+const MOON_PHASES := [
+	{"id": &"crepusculo", "name": "Crepúsculo", "icon": "🌆", "from": 0.0,
+		"tint": Color(1.0, 0.87, 0.78), "spawn_mult": 0.8, "enemy_hp_mult": 1.0,
+		"enemy_damage_mult": 1.0, "regen_bonus": 0.0},
+	{"id": &"noite", "name": "Noite", "icon": "🌙", "from": 0.2,
+		"tint": Color(0.72, 0.78, 1.0), "spawn_mult": 1.0, "enemy_hp_mult": 1.0,
+		"enemy_damage_mult": 1.0, "regen_bonus": 0.0},
+	{"id": &"lua_cheia", "name": "Lua Cheia", "icon": "🌕", "from": 0.4667,
+		"tint": Color(0.92, 0.95, 1.0), "spawn_mult": 1.3, "enemy_hp_mult": 1.25,
+		"enemy_damage_mult": 1.25, "regen_bonus": 0.0},
+	{"id": &"madrugada", "name": "Madrugada", "icon": "🌌", "from": 0.6667,
+		"tint": Color(0.55, 0.6, 0.85), "spawn_mult": 1.1, "enemy_hp_mult": 1.1,
+		"enemy_damage_mult": 1.1, "regen_bonus": 0.0},
+	{"id": &"alvorada", "name": "Alvorada", "icon": "🌅", "from": 0.8667,
+		"tint": Color(1.0, 0.88, 0.72), "spawn_mult": 0.9, "enemy_hp_mult": 0.75,
+		"enemy_damage_mult": 0.75, "regen_bonus": 0.5},
+]
+
 ## Upgrades permanentes da Árvore Sagrada. Os valores aplicados por nível
 ## estão em SaveManager.apply_tree_bonuses() — manter os textos em sincronia.
 const TREE_UPGRADES := {

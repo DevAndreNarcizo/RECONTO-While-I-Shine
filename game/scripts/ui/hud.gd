@@ -14,6 +14,7 @@ var player: Player
 @onready var debug_label: Label = $DebugLabel
 @onready var boss_bar: ProgressBar = $BossBar
 @onready var boss_name: Label = $BossName
+@onready var moon_label: Label = $MoonLabel
 
 var _boss: Enemy
 
@@ -40,6 +41,10 @@ func _process(_delta: float) -> void:
 		EnemySpawner.active_count(), Engine.get_frames_per_second()
 	]
 	luar_label.text = "❖ Luar: %d" % GameState.run_luar
+	var next := int(MoonCycleManager.time_to_next())
+	moon_label.text = "%s %s · %d:%02d" % [
+		MoonCycleManager.phase()["icon"], MoonCycleManager.phase()["name"], next / 60, next % 60
+	]
 	if _boss != null:
 		if is_instance_valid(_boss) and _boss.hp > 0.0:
 			boss_bar.max_value = _boss.data.max_hp
