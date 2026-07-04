@@ -69,8 +69,24 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Árvore Sagrada"
 
+[node name="Options" type="Button" parent="Center/VBox"]
+custom_minimum_size = Vector2(360, 68)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Opções"
+
+[node name="Credits" type="Button" parent="Center/VBox"]
+custom_minimum_size = Vector2(360, 68)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Créditos"
+
 [node name="Quit" type="Button" parent="Center/VBox"]
 custom_minimum_size = Vector2(360, 68)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Sair"
+
+[node name="CreditsDialog" type="AcceptDialog" parent="."]
+title = "Créditos"
+size = Vector2i(560, 300)

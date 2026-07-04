@@ -7,11 +7,39 @@ const TMP_PATH := "user://save.json.tmp"
 const SCHEMA_VERSION := 1
 
 var luar := 0
-var tree_levels: Dictionary = {}  # String (id do upgrade) → int (nível)
-var biomes_cleared: Array = []    # Strings (ids de bioma vencidos)
+var tree_levels: Dictionary = {}   # String (id do upgrade) → int (nível)
+var biomes_cleared: Array = []     # Strings (ids de bioma vencidos)
+var legends_unlocked: Array = []   # Strings (além das unlocked_by_default)
+var settings: Dictionary = {"volume": 1.0, "fullscreen": false}
 
 func _ready() -> void:
 	load_game()
+	apply_settings()
+
+# --- Opções ---
+
+func set_setting(key: String, value: Variant) -> void:
+	settings[key] = value
+	apply_settings()
+	save_game()
+
+func apply_settings() -> void:
+	AudioServer.set_bus_volume_db(0, linear_to_db(clampf(float(settings.get("volume", 1.0)), 0.0001, 1.0)))
+	var mode := DisplayServer.WINDOW_MODE_FULLSCREEN if settings.get("fullscreen", false) else DisplayServer.WINDOW_MODE_WINDOWED
+	DisplayServer.window_set_mode(mode)
+
+# --- Lendas ---
+
+func is_legend_unlocked(legend: LegendData) -> bool:
+	return legend.unlocked_by_default or legends_unlocked.has(String(legend.id))
+
+func unlock_legend(legend: LegendData) -> bool:
+	if is_legend_unlocked(legend) or legend.unlock_luar_cost <= 0 or luar < legend.unlock_luar_cost:
+		return false
+	luar -= legend.unlock_luar_cost
+	legends_unlocked.push_back(String(legend.id))
+	save_game()
+	return true
 
 # --- Cristais de Luar ---
 
@@ -68,6 +96,8 @@ func save_game() -> void:
 		"luar": luar,
 		"tree_levels": tree_levels,
 		"biomes_cleared": biomes_cleared,
+		"legends_unlocked": legends_unlocked,
+		"settings": settings,
 	}
 	var file := FileAccess.open(TMP_PATH, FileAccess.WRITE)
 	if file == null:
@@ -95,3 +125,12 @@ func load_game() -> void:
 	if typeof(raw_biomes) == TYPE_ARRAY:
 		for b in raw_biomes:
 			biomes_cleared.push_back(String(b))
+	legends_unlocked = []
+	var raw_legends: Variant = parsed.get("legends_unlocked", [])
+	if typeof(raw_legends) == TYPE_ARRAY:
+		for l in raw_legends:
+			legends_unlocked.push_back(String(l))
+	var raw_settings: Variant = parsed.get("settings", {})
+	if typeof(raw_settings) == TYPE_DICTIONARY:
+		for key in raw_settings:
+			settings[String(key)] = raw_settings[key]

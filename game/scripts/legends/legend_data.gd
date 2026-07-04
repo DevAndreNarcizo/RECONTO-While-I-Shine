@@ -25,3 +25,4 @@ extends Resource
 @export_group("Desbloqueio")
 @export var unlocked_by_default := false
 @export var unlock_desc := ""  # ex: "1.000 Luar", "Vença o Cerrado"
+@export var unlock_luar_cost := 0  # > 0 = comprável com Cristais de Luar

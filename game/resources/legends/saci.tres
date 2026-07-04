@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="LegendData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/legends/legend_data.gd" id="1"]
+[ext_resource type="Resource" path="res://resources/encantos/pedra_do_saci.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+id = &"saci"
+display_name = "Saci"
+description = "O menino do redemoinho apostou a perna numa corrida contra o vento — e ganhou o vento em troca. É o único que acha a guerra divertida."
+color = Color(0.85, 0.2, 0.2, 1)
+starting_encanto = ExtResource("2")
+max_hp_bonus = -20.0
+move_speed_bonus = 14.0
+luck_bonus = 0.1
+unlock_desc = "1.000 Cristais de Luar"
+unlock_luar_cost = 1000
