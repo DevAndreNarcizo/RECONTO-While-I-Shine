@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemy_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "Sapo-Cururu Pustulento"
+behavior = 2
+max_hp = 5.0
+contact_damage = 6.0
+move_speed = 42.0
+radius = 10.0
+color = Color(0.35, 0.5, 0.2, 1)
+xp_value = 2
+shoot_interval = 2.8
+projectile_damage = 7.0
+keep_distance = 210.0

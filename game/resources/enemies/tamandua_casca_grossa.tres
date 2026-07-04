@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemy_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "Tamanduá Casca-Grossa"
+behavior = 3
+max_hp = 35.0
+contact_damage = 14.0
+move_speed = 24.0
+radius = 15.0
+color = Color(0.4, 0.38, 0.3, 1)
+xp_value = 4
+knockback_scale = 0.25
+seed_burst = 3

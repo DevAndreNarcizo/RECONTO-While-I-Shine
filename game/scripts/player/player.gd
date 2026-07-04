@@ -107,6 +107,11 @@ func _check_contact_damage() -> void:
 		var enemy := area as Enemy
 		if enemy and enemy.hp > 0.0:
 			strongest = maxf(strongest, enemy.data.contact_damage)
+			continue
+		var proj := area as EnemyProjectile
+		if proj:
+			strongest = maxf(strongest, proj.damage)
+			proj.expire()  # projétil é consumido no impacto
 	if strongest > 0.0:
 		take_damage(strongest)
 

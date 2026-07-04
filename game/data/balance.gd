@@ -13,6 +13,21 @@ const DEV_RUN_DURATION := 5.0 * 60.0
 # --- Cristais de Luar (meta) ---
 const LUAR_DROP_CHANCE := 0.05  # chance de inimigo dropar 1 fragmento
 
+# --- Curva de spawn da Mata Atlântica (docs/03 §4) ---
+# "from" é FRAÇÃO da run (0..1) — funciona igual em run de 5 min (dev) e 30 min.
+# "rate" = inimigos/segundo. "weights" = sorteio ponderado dos tipos ativos.
+const MATA_SPAWN_TABLE := [
+	{"from": 0.00, "rate": 1.5, "weights": {&"firefly": 6.0, &"cutia": 3.0}},
+	{"from": 0.20, "rate": 3.5, "weights": {&"firefly": 5.0, &"cutia": 3.0, &"macaco": 2.5, &"sapo": 1.0}},
+	{"from": 0.45, "rate": 6.0, "weights": {&"firefly": 4.0, &"cutia": 3.0, &"macaco": 3.0, &"sapo": 2.0, &"tamandua": 1.0, &"elite": 0.2}},
+	{"from": 0.65, "rate": 9.0, "weights": {&"firefly": 3.0, &"cutia": 3.0, &"macaco": 3.5, &"sapo": 2.5, &"tamandua": 1.5, &"elite": 0.4}},
+	{"from": 0.85, "rate": 13.0, "weights": {&"firefly": 3.0, &"cutia": 3.0, &"macaco": 4.0, &"sapo": 3.0, &"tamandua": 2.0, &"elite": 0.6}},
+]
+
+# Ondas temáticas: a cada fração da run, um grupo do mesmo tipo cerca o player.
+const WAVE_INTERVAL_FRAC := 0.12
+const WAVE_COUNT := 14
+
 ## Upgrades permanentes da Árvore Sagrada. Os valores aplicados por nível
 ## estão em SaveManager.apply_tree_bonuses() — manter os textos em sincronia.
 const TREE_UPGRADES := {

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemy_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "Corrompido Especial"
+behavior = 4
+max_hp = 70.0
+contact_damage = 10.0
+move_speed = 48.0
+radius = 12.0
+color = Color(0.45, 0.2, 0.6, 1)
+xp_value = 3
+knockback_scale = 0.6
+seed_burst = 8
+shard_burst = 3

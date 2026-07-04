@@ -1,25 +1,42 @@
 extends Node
-## EnemySpawner — object pooling de inimigos, spawn em anel fora da tela
-## e movimento em LOTE (um único loop, sem _process por inimigo).
+## EnemySpawner — object pooling, curva de spawn por fase da run (Balance),
+## ondas temáticas, movimento em LOTE por comportamento e projéteis inimigos.
 
 const ENEMY_SCENE := preload("res://scenes/enemies/Enemy.tscn")
+const PROJECTILE_SCENE := preload("res://scenes/enemies/EnemyProjectile.tscn")
 # Meia diagonal visível (zoom 2x): ~551 px. Spawna um pouco além, fora da visão.
 const SPAWN_RADIUS := 640.0
 const MAX_ACTIVE := 600
+const SHOOT_RANGE := 360.0
+const ZIGZAG_FREQ := 3.0
+const ZIGZAG_AMP := 0.6
 
-var spawn_rate := 2.0  # inimigos por segundo (curva de dificuldade mexe aqui)
-var default_data: EnemyData = preload("res://resources/enemies/swarm_firefly.tres")
+const TYPES := {
+	&"firefly": preload("res://resources/enemies/swarm_firefly.tres"),
+	&"cutia": preload("res://resources/enemies/cutia_oca.tres"),
+	&"macaco": preload("res://resources/enemies/macaco_prego.tres"),
+	&"sapo": preload("res://resources/enemies/sapo_cururu.tres"),
+	&"tamandua": preload("res://resources/enemies/tamandua_casca_grossa.tres"),
+	&"elite": preload("res://resources/enemies/elite_corrompido.tres"),
+}
+
+var spawn_table: Array = Balance.MATA_SPAWN_TABLE
 
 var _pool: Array[Enemy] = []
 var _active: Array[Enemy] = []
+var _proj_pool: Array[EnemyProjectile] = []
+var _proj_active: Array[EnemyProjectile] = []
 var _accum := 0.0
+var _wave_accum := 0.0
 var _player: Node2D
 var _container: Node
 var _running := false
 
-func start(player: Node2D, container: Node = null) -> void:
+func start(player: Node2D, container: Node = null, table: Array = Balance.MATA_SPAWN_TABLE) -> void:
 	_player = player
 	_container = container if container else self
+	spawn_table = table
+	_wave_accum = 0.0
 	_running = true
 
 func stop() -> void:
@@ -27,15 +44,18 @@ func stop() -> void:
 	for e in _active.duplicate():
 		despawn(e)
 
-## Esquece pool e referências SEM liberar nós — usar antes de recarregar a cena
-## (os inimigos vivem dentro dela e são liberados junto).
+## Esquece pool e referências SEM liberar nós — usar antes de recarregar/trocar
+## a cena (os inimigos vivem dentro dela e são liberados junto).
 func reset() -> void:
 	_running = false
 	_active.clear()
 	_pool.clear()
+	_proj_active.clear()
+	_proj_pool.clear()
 	_player = null
 	_container = null
 	_accum = 0.0
+	_wave_accum = 0.0
 
 func active_count() -> int:
 	return _active.size()
@@ -43,33 +63,95 @@ func active_count() -> int:
 func active_enemies() -> Array[Enemy]:
 	return _active
 
+## Spawn direto (bosses usam para invocar reforços).
+func spawn_burst(type_key: StringName, count: int) -> void:
+	if not _running:
+		return
+	for i in count:
+		_spawn_one(TYPES[type_key], TAU * i / count)
+
 func _physics_process(delta: float) -> void:
 	if not _running or _player == null:
 		return
 
-	_accum += delta * spawn_rate
+	var phase := _current_phase()
+	_accum += delta * float(phase["rate"])
 	while _accum >= 1.0 and _active.size() < MAX_ACTIVE:
 		_accum -= 1.0
-		_spawn_one()
+		_spawn_one(_pick_type(phase["weights"]))
 
-	# Movimento em lote: perseguição simples + knockback decaindo + confusão
+	_wave_accum += delta
+	if _wave_accum >= Balance.WAVE_INTERVAL_FRAC * Balance.run_duration():
+		_wave_accum = 0.0
+		_spawn_wave(_pick_type(phase["weights"]))
+
+	_move_enemies(delta)
+	_move_projectiles(delta)
+
+func _run_frac() -> float:
+	return clampf(GameState.run_time / Balance.run_duration(), 0.0, 1.0)
+
+func _current_phase() -> Dictionary:
+	var frac := _run_frac()
+	var current: Dictionary = spawn_table[0]
+	for phase in spawn_table:
+		if frac >= float(phase["from"]):
+			current = phase
+	return current
+
+func _pick_type(weights: Dictionary) -> EnemyData:
+	var total := 0.0
+	for w in weights.values():
+		total += float(w)
+	var pick := randf() * total
+	for key in weights:
+		pick -= float(weights[key])
+		if pick <= 0.0:
+			return TYPES[key]
+	return TYPES[&"firefly"]
+
+func _spawn_one(data: EnemyData, angle := -1.0) -> void:
+	var e := _get_from_pool()
+	var a := angle if angle >= 0.0 else randf() * TAU
+	e.setup(data, _player.global_position + Vector2.from_angle(a) * SPAWN_RADIUS)
+	_active.push_back(e)
+
+## Onda temática: um anel do mesmo tipo cerca o player.
+func _spawn_wave(data: EnemyData) -> void:
+	for i in Balance.WAVE_COUNT:
+		_spawn_one(data, TAU * i / Balance.WAVE_COUNT)
+
+func _move_enemies(delta: float) -> void:
 	var target := _player.global_position
 	for e in _active:
+		var to_player := target - e.global_position
 		var dir: Vector2
 		if e.confusion_t > 0.0:
 			e.confusion_t -= delta
 			dir = e.confusion_dir
 		else:
-			dir = (target - e.global_position).normalized()
+			match e.data.behavior:
+				EnemyData.Behavior.ZIGZAG:
+					var base := to_player.normalized()
+					var wave := sin(GameState.run_time * ZIGZAG_FREQ + e.zig_phase)
+					dir = (base + base.orthogonal() * wave * ZIGZAG_AMP).normalized()
+				EnemyData.Behavior.SHOOTER:
+					var dist := to_player.length()
+					if dist > e.data.keep_distance + 40.0:
+						dir = to_player.normalized()
+					elif dist < e.data.keep_distance - 40.0:
+						dir = -to_player.normalized()
+					else:
+						dir = to_player.orthogonal().normalized() * 0.4  # deriva lateral
+					e.shoot_cd -= delta
+					if e.shoot_cd <= 0.0 and dist <= SHOOT_RANGE:
+						e.shoot_cd = e.data.shoot_interval
+						_shoot(e.global_position, to_player.normalized(), e.data.projectile_damage)
+				_:
+					dir = to_player.normalized()
 		e.global_position += (dir * e.speed + e.knockback) * delta
 		if e.knockback != Vector2.ZERO:
 			e.knockback = e.knockback.move_toward(Vector2.ZERO, 420.0 * delta)
-
-func _spawn_one() -> void:
-	var e := _get_from_pool()
-	var pos := _player.global_position + Vector2.from_angle(randf() * TAU) * SPAWN_RADIUS
-	e.setup(default_data, pos)
-	_active.push_back(e)
 
 func despawn(e: Enemy) -> void:
 	var i := _active.find(e)
@@ -88,3 +170,36 @@ func _get_from_pool() -> Enemy:
 		_container.add_child(e)
 		return e
 	return _pool.pop_back()
+
+# --- Projéteis inimigos (pooled, movidos em lote) ---
+
+func _shoot(pos: Vector2, dir: Vector2, damage: float) -> void:
+	var p: EnemyProjectile
+	if _proj_pool.is_empty():
+		p = PROJECTILE_SCENE.instantiate()
+		_container.add_child(p)
+	else:
+		p = _proj_pool.pop_back()
+	p.launch(pos, dir, damage)
+	_proj_active.push_back(p)
+
+func _move_projectiles(delta: float) -> void:
+	var i := 0
+	while i < _proj_active.size():
+		var p := _proj_active[i]
+		p.global_position += p.dir * EnemyProjectile.SPEED * delta
+		p.ttl -= delta
+		if p.ttl <= 0.0:
+			despawn_projectile(p)  # swap-remove: não incrementa o índice
+		else:
+			i += 1
+
+func despawn_projectile(p: EnemyProjectile) -> void:
+	var i := _proj_active.find(p)
+	if i == -1:
+		return
+	_proj_active[i] = _proj_active[_proj_active.size() - 1]
+	_proj_active.pop_back()
+	p.hide()
+	p.set_deferred("monitorable", false)
+	_proj_pool.push_back(p)

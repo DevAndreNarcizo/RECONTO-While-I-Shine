@@ -13,10 +13,20 @@ func _ready() -> void:
 
 func _on_enemy_killed(enemy: Node2D) -> void:
 	var e := enemy as Enemy
-	if e and e.data:
-		spawn_seed(e.global_position, e.data.xp_value)
-		if randf() < Balance.LUAR_DROP_CHANCE:
-			spawn_shard(e.global_position + Vector2(10, 0))
+	if e == null or e.data == null:
+		return
+	# "Baú" de elite/boss = rajada de sementes + fragmentos garantidos
+	for i in e.data.seed_burst:
+		spawn_seed(e.global_position + _spread(i), e.data.xp_value)
+	for i in e.data.shard_burst:
+		spawn_shard(e.global_position + _spread(i + 3))
+	if e.data.shard_burst == 0 and randf() < Balance.LUAR_DROP_CHANCE:
+		spawn_shard(e.global_position + Vector2(10, 0))
+
+func _spread(i: int) -> Vector2:
+	if i == 0:
+		return Vector2.ZERO
+	return Vector2.from_angle(randf() * TAU) * randf_range(12.0, 34.0)
 
 func spawn_seed(pos: Vector2, xp: int) -> void:
 	var seed_node: LightSeed
