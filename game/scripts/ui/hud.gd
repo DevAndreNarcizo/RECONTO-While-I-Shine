@@ -58,7 +58,7 @@ func _ability_text() -> String:
 	if player.legend == null or player.legend.active_id == &"":
 		return ""
 	if player.ability_cd_left <= 0.0:
-		return "ESPAÇO — %s: PRONTO" % player.legend.active_name
+		return "ESPAÇO / clique direito — %s: PRONTO" % player.legend.active_name
 	return "%s: %.1fs" % [player.legend.active_name, player.ability_cd_left]
 
 ## Ícones da build em texto (placeholder até termos ícones de verdade na fase 5).

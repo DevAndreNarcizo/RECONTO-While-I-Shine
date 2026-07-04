@@ -63,8 +63,16 @@ func add_move_speed_bonus(amount: float) -> void:
 func heal(amount: float) -> void:
 	hp = minf(stats.max_hp, hp + amount)
 
+# Movimento por mouse: segurar o botão esquerdo anda em direção ao cursor.
+# Deadzone evita tremedeira quando o cursor está em cima do personagem.
+const MOUSE_DEADZONE := 10.0
+
 func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	if input_dir == Vector2.ZERO and Input.is_action_pressed("move_click"):
+		var to_mouse := get_global_mouse_position() - global_position
+		if to_mouse.length() > MOUSE_DEADZONE:
+			input_dir = to_mouse.normalized()
 	var target := input_dir * stats.move_speed
 	var rate := accel if input_dir != Vector2.ZERO else decel
 	velocity = velocity.move_toward(target, rate * delta) + external_push
