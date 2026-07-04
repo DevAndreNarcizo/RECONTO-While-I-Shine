@@ -7,6 +7,7 @@ const ENCANTOS: Array = [
 	preload("res://resources/encantos/vagalumes_guardioes.tres"),
 	preload("res://resources/encantos/pedra_do_saci.tres"),
 	preload("res://resources/encantos/relampago_do_trovao.tres"),
+	preload("res://resources/encantos/canto_da_iara.tres"),
 ]
 
 const AMULETOS: Array = [

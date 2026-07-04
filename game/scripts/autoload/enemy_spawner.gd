@@ -121,12 +121,43 @@ func _spawn_wave(data: EnemyData) -> void:
 	for i in Balance.WAVE_COUNT:
 		_spawn_one(data, TAU * i / Balance.WAVE_COUNT)
 
+## Encanta um inimigo (inovação #2), respeitando o limite de aliados.
+func charm_enemy(e: Enemy, duration: float) -> bool:
+	if e.charmed_t > 0.0 or e.hp <= 0.0:
+		return false
+	var count := 0
+	for a in _active:
+		if a.charmed_t > 0.0:
+			count += 1
+	if count >= Balance.CHARM_LIMIT:
+		return false
+	e.charm(duration)
+	return true
+
+func _nearest_hostile(pos: Vector2, max_range: float) -> Enemy:
+	var best: Enemy = null
+	var best_d := max_range * max_range
+	for e in _active:
+		if e.charmed_t > 0.0 or e.hp <= 0.0:
+			continue
+		var d := pos.distance_squared_to(e.global_position)
+		if d < best_d:
+			best_d = d
+			best = e
+	return best
+
 func _move_enemies(delta: float) -> void:
 	var target := _player.global_position
 	for e in _active:
 		var to_player := target - e.global_position
 		var dir: Vector2
-		if e.confusion_t > 0.0:
+		if e.charmed_t > 0.0:
+			e.charmed_t -= delta
+			if e.charmed_t <= 0.0:
+				e.uncharm()  # a Luz se esgotou: volta a ser hostil
+				continue
+			dir = _charmed_behavior(e, to_player, delta)
+		elif e.confusion_t > 0.0:
 			e.confusion_t -= delta
 			if e.confusion_t <= 0.0:
 				e.queue_redraw()  # tira o visual de confusão
@@ -154,6 +185,22 @@ func _move_enemies(delta: float) -> void:
 		e.global_position += (dir * e.speed + e.knockback) * delta
 		if e.knockback != Vector2.ZERO:
 			e.knockback = e.knockback.move_toward(Vector2.ZERO, 420.0 * delta)
+
+## Aliado encantado: caça o hostil mais próximo; sem alvo, escolta o player.
+func _charmed_behavior(e: Enemy, to_player: Vector2, delta: float) -> Vector2:
+	e.charm_hit_cd = maxf(0.0, e.charm_hit_cd - delta)
+	var foe := _nearest_hostile(e.global_position, 420.0)
+	if foe:
+		var to_foe := foe.global_position - e.global_position
+		var reach := e.data.radius + foe.data.radius + 4.0
+		if to_foe.length() <= reach and e.charm_hit_cd <= 0.0:
+			e.charm_hit_cd = 0.5
+			foe.take_damage(e.data.contact_damage * 1.5, e.global_position)
+		return to_foe.normalized()
+	# escolta: mantém ~70 px do player
+	if to_player.length() > 70.0:
+		return to_player.normalized()
+	return Vector2.ZERO
 
 func despawn(e: Enemy) -> void:
 	var i := _active.find(e)

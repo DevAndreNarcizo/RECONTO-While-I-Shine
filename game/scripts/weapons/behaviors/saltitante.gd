@@ -54,7 +54,8 @@ func _step_projectile(p: Dictionary, delta: float) -> bool:
 	return true
 
 func _is_valid_target(e: Enemy) -> bool:
-	return e != null and is_instance_valid(e) and e.visible and e.hp > 0.0
+	return e != null and is_instance_valid(e) and e.visible and e.hp > 0.0 \
+		and e.charmed_t <= 0.0  # nunca quica em aliados encantados
 
 func _retarget(p: Dictionary) -> Enemy:
 	var pos: Vector2 = p["pos"]

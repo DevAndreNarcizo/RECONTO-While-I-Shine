@@ -41,6 +41,9 @@ const WAVE_COUNT := 14
 # Bosses: mini-boss na fração da run (0.35 ≈ min 10.5 de 30); boss no fim.
 const MINIBOSS_FRAC := 0.35
 
+# Encantar a horda (Inovação #2): máximo de aliados encantados simultâneos.
+const CHARM_LIMIT := 10
+
 # --- Ciclo da Lua (Inovação #1 — docs/01 §3.3 e docs/03 §1) ---
 # "from" em FRAÇÃO da run (janelas do GDD: 0-6, 6-14, 14-20, 20-26, 26-30 min).
 # Multiplicadores globais por fase; o tint vai num CanvasModulate (não afeta o HUD).

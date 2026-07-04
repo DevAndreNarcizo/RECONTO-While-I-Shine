@@ -9,12 +9,15 @@ const VISUAL_TIME := 0.22
 var _strikes: Array[Dictionary] = []  # {pos: Vector2 global, t: float}
 
 func _attack() -> void:
-	var enemies := EnemySpawner.active_enemies()
-	if enemies.is_empty():
+	var hostiles: Array[Enemy] = []
+	for e in EnemySpawner.active_enemies():
+		if e.charmed_t <= 0.0 and e.hp > 0.0 and e.visible:
+			hostiles.push_back(e)
+	if hostiles.is_empty():
 		return
 	for i in amount():
-		var target: Enemy = enemies.pick_random()
-		if target == null or not target.visible:
+		var target: Enemy = hostiles.pick_random()
+		if target == null:
 			continue
 		var pos := target.global_position
 		damage_circle(pos, STRIKE_RADIUS * area(), damage())
