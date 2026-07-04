@@ -40,7 +40,7 @@ func _physics_process(delta: float) -> void:
 	super(delta)
 	if _projectiles.is_empty():
 		return
-	var speed := BASE_SPEED * player.stats.projectile_speed_mult
+	var speed := BASE_SPEED * player.stats.projectile_speed_mult * GameState.projectile_env_mult
 	var space := get_world_2d().direct_space_state
 	var alive: Array[Dictionary] = []
 	for p in _projectiles:

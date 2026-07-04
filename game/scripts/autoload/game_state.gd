@@ -16,6 +16,7 @@ var _miniboss_fired := false
 var selected_legend: LegendData = null
 var selected_biome_id := &"mata_atlantica"
 var active_simpatias: Array[StringName] = []  # cartas que mudam as regras da run
+var projectile_env_mult := 1.0  # chuva da Amazônia desacelera projéteis (World define)
 
 func has_simpatia(id: StringName) -> bool:
 	return active_simpatias.has(id)

@@ -48,6 +48,36 @@ const MINIBOSS_FRAC := 0.35
 # Encantar a horda (Inovação #2): máximo de aliados encantados simultâneos.
 const CHARM_LIMIT := 10
 
+# --- Curva de spawn da Amazônia (docs/06 §5 — ato 2, mais denso que a Mata) ---
+const AMAZONIA_SPAWN_TABLE := [
+	{"from": 0.0, "rate": 2.5, "weights": {&"mosquito": 3.0, &"formigao": 2.0}},
+	{"from": 0.2, "rate": 4.0, "weights": {&"mosquito": 3.0, &"formigao": 3.0, &"jacare": 1.5}},
+	{"from": 0.4667, "rate": 6.5, "weights": {&"formigao": 3.0, &"jacare": 2.0, &"sapo": 1.5, &"tatu": 1.0}},
+	{"from": 0.6667, "rate": 8.5, "weights": {&"formigao": 2.5, &"jacare": 2.5, &"sapo": 2.0, &"tatu": 1.5, &"elite": 0.4}},
+	{"from": 0.8667, "rate": 11.0, "weights": {&"mosquito": 2.0, &"jacare": 3.0, &"sapo": 2.0, &"tatu": 2.0, &"elite": 0.6}},
+]
+
+# --- Biomas (docs/04 §2): visual, spawn, bosses e hazard por bioma ---
+const BIOMES := {
+	&"mata_atlantica": {
+		"name": "Mata Atlântica",
+		"ground_a": Color(0.09, 0.23, 0.14), "ground_b": Color(0.11, 0.26, 0.16),
+		"spawn_table": MATA_SPAWN_TABLE,
+		"miniboss": "res://scenes/enemies/MiniBossPreguica.tscn",
+		"boss": "res://scenes/enemies/BossOnca.tscn",
+		"rain": false,
+	},
+	&"amazonia": {
+		"name": "Amazônia",
+		"ground_a": Color(0.05, 0.17, 0.10), "ground_b": Color(0.07, 0.20, 0.12),
+		"spawn_table": AMAZONIA_SPAWN_TABLE,
+		"miniboss": "res://scenes/enemies/MiniBossSucuri.tscn",
+		"boss": "res://scenes/enemies/BossMapinguari.tscn",
+		"rain": true,  # chuva constante: projéteis 15% mais lentos
+	},
+}
+const RAIN_PROJECTILE_MULT := 0.85
+
 # --- Simpatias (Arcanas — docs/04 §5): mudam as regras da run inteira ---
 # Desbloqueáveis com Luar; escolhe-se até 3 antes da run.
 const SIMPATIA_MAX_ACTIVE := 3

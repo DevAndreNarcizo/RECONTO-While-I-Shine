@@ -10,7 +10,8 @@ const LEGENDS: Array = [
 
 const BIOMES := [
 	{"id": &"mata_atlantica", "name": "Mata Atlântica", "playable": true, "requires": &""},
-	{"id": &"amazonia", "name": "Amazônia (em breve)", "playable": false, "requires": &"mata_atlantica"},
+	{"id": &"amazonia", "name": "Amazônia", "playable": true, "requires": &"mata_atlantica"},
+	{"id": &"pantanal", "name": "Pantanal (em breve)", "playable": false, "requires": &"amazonia"},
 ]
 
 var _sel_legend: LegendData

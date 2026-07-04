@@ -7,6 +7,8 @@ const COLS := 24  # cobre 1920/2 (zoom 2x) / 64 = 15 células + margem
 const ROWS := 16
 
 @export var target: Node2D
+@export var color_a := Color(0.09, 0.23, 0.14)  # definidas pelo bioma (World)
+@export var color_b := Color(0.11, 0.26, 0.16)
 
 var _last_cell := Vector2i(2147483647, 2147483647)
 
@@ -21,8 +23,8 @@ func _process(_delta: float) -> void:
 func _draw() -> void:
 	if target == null:
 		return
-	var base := Color(0.09, 0.23, 0.14)
-	var alt := Color(0.11, 0.26, 0.16)
+	var base := color_a
+	var alt := color_b
 	var center := Vector2i((target.global_position / CELL).floor())
 	var half := Vector2i(COLS / 2, ROWS / 2)
 	for y in range(-half.y, half.y + 1):

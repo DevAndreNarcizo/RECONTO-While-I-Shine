@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemy_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "Mapinguari"
+max_hp = 1600.0
+contact_damage = 18.0
+move_speed = 42.0
+radius = 30.0
+color = Color(0.35, 0.25, 0.15, 1)
+xp_value = 0
+knockback_scale = 0.0
+seed_burst = 20
+shard_burst = 12

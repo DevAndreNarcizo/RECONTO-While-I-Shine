@@ -18,6 +18,11 @@ const TYPES := {
 	&"sapo": preload("res://resources/enemies/sapo_cururu.tres"),
 	&"tamandua": preload("res://resources/enemies/tamandua_casca_grossa.tres"),
 	&"elite": preload("res://resources/enemies/elite_corrompido.tres"),
+	# Amazônia
+	&"formigao": preload("res://resources/enemies/formigao_correicao.tres"),
+	&"mosquito": preload("res://resources/enemies/mosquito_praga.tres"),
+	&"jacare": preload("res://resources/enemies/jacare_acu.tres"),
+	&"tatu": preload("res://resources/enemies/tatu_canastra.tres"),
 }
 
 var spawn_table: Array = Balance.MATA_SPAWN_TABLE
@@ -222,6 +227,10 @@ func _get_from_pool() -> Enemy:
 	return _pool.pop_back()
 
 # --- Projéteis inimigos (pooled, movidos em lote) ---
+
+## Disparo público (bosses usam para cones/padrões próprios).
+func shoot(pos: Vector2, dir: Vector2, damage: float) -> void:
+	_shoot(pos, dir, damage)
 
 func _shoot(pos: Vector2, dir: Vector2, damage: float) -> void:
 	var p: EnemyProjectile
