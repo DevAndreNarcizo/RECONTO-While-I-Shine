@@ -34,10 +34,15 @@ func reset_run() -> void:
 func add_luar(amount: int) -> void:
 	run_luar += amount
 
+var last_luar_gained := 0
+
 func end_run(victory: bool) -> void:
 	if not run_active:
 		return
 	run_active = false
+	var luar_mult := 1.0 + 0.10 * SaveManager.tree_level(&"luar")
+	last_luar_gained = Balance.luar_for_run(run_luar, kills, level, luar_mult)
+	SaveManager.add_luar(last_luar_gained)
 	EventBus.run_ended.emit(victory)
 
 func add_xp(amount: float) -> void:

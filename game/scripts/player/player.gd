@@ -34,7 +34,7 @@ func rebuild_stats() -> void:
 	stats.reset()
 	stats.move_speed += _bonus_move_speed
 	amulets.apply_to(stats)
-	# TODO(fase 2.5): aplicar bônus permanentes da Árvore Sagrada aqui.
+	SaveManager.apply_tree_bonuses(stats)  # bônus permanentes da Árvore Sagrada
 	if stats.max_hp > old_max:
 		hp += stats.max_hp - old_max  # ganhar vida máx concede a diferença
 	hp = minf(hp, stats.max_hp)
@@ -66,9 +66,9 @@ func _physics_process(delta: float) -> void:
 		_check_contact_damage()
 
 func _on_magnet_area_entered(area: Area2D) -> void:
-	var seed_node := area as LightSeed
-	if seed_node:
-		seed_node.magnetize(self)
+	# Sementes de Luz e Fragmentos de Luar implementam magnetize()
+	if area.has_method("magnetize"):
+		area.magnetize(self)
 
 func _check_contact_damage() -> void:
 	var strongest := 0.0

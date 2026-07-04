@@ -43,7 +43,13 @@ text = "..."
 horizontal_alignment = 1
 
 [node name="Restart" type="Button" parent="Dim/Center/Panel/VBox"]
-custom_minimum_size = Vector2(280, 64)
+custom_minimum_size = Vector2(320, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
-text = "Voltar ao início"
+text = "Jogar de novo"
+
+[node name="TreeButton" type="Button" parent="Dim/Center/Panel/VBox"]
+custom_minimum_size = Vector2(320, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Árvore Sagrada"
