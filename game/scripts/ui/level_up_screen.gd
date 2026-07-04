@@ -53,3 +53,4 @@ func _choose(index: int) -> void:
 		return
 	visible = false
 	get_tree().paused = false
+	EventBus.screen_shake.emit(4.0)  # pontua a dádiva recebida

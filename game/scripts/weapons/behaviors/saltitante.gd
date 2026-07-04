@@ -42,7 +42,7 @@ func _step_projectile(p: Dictionary, delta: float) -> bool:
 		p["target"] = target
 	p["pos"] = (p["pos"] as Vector2).move_toward(target.global_position, PROJ_SPEED * delta)
 	if (p["pos"] as Vector2).distance_to(target.global_position) <= HIT_DISTANCE:
-		target.take_damage(damage())
+		target.take_damage(damage(), p["pos"])
 		(p["hit"] as Array).push_back(target.get_instance_id())
 		p["bounces"] = int(p["bounces"]) - 1
 		if int(p["bounces"]) <= 0:

@@ -46,7 +46,7 @@ func _attack() -> void:
 		for a in orb.get_overlapping_areas():
 			var enemy := a as Enemy
 			if enemy:
-				enemy.take_damage(damage())
+				enemy.take_damage(damage(), orb.global_position)
 
 func _draw() -> void:
 	for orb in _orbs:

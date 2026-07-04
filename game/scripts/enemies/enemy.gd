@@ -3,9 +3,13 @@ extends Area2D
 ## Inimigo genérico dirigido por EnemyData. Sem _process próprio:
 ## o movimento é feito em LOTE pelo EnemySpawner (performance para centenas).
 
+const KNOCKBACK_FORCE := 55.0
+const KNOCKBACK_MAX := 140.0
+
 var data: EnemyData
 var hp: float = 0.0
 var speed: float = 0.0
+var knockback := Vector2.ZERO  # decaído em lote pelo EnemySpawner
 
 var _flash := false
 
@@ -14,15 +18,20 @@ func setup(p_data: EnemyData, pos: Vector2) -> void:
 	hp = data.max_hp
 	speed = data.move_speed
 	global_position = pos
+	knockback = Vector2.ZERO
 	_flash = false
 	show()
 	set_deferred("monitorable", true)
 	queue_redraw()
 
-func take_damage(amount: float) -> void:
+## `from` = origem do golpe (para knockback); omitir = sem empurrão.
+func take_damage(amount: float, from := Vector2.INF) -> void:
 	if hp <= 0.0:
 		return
 	hp -= amount
+	EventBus.damage_dealt.emit(global_position, amount)
+	if from.x != INF:
+		knockback = (knockback + (global_position - from).normalized() * KNOCKBACK_FORCE).limit_length(KNOCKBACK_MAX)
 	_flash = true
 	queue_redraw()
 	# false = timer respeita pausa do jogo

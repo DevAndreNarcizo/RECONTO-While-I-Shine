@@ -7,6 +7,7 @@ var xp_to_next := 5.0
 var kills := 0
 var run_time := 0.0
 var run_active := false
+var run_luar := 0  # Cristais de Luar coletados nesta run (vira permanente no fim)
 
 func _ready() -> void:
 	EventBus.enemy_killed.connect(_on_enemy_killed)
@@ -26,8 +27,12 @@ func reset_run() -> void:
 	xp_to_next = Balance.xp_for_level(1)
 	kills = 0
 	run_time = 0.0
+	run_luar = 0
 	run_active = true
 	EventBus.xp_changed.emit(xp, xp_to_next, level)
+
+func add_luar(amount: int) -> void:
+	run_luar += amount
 
 func end_run(victory: bool) -> void:
 	if not run_active:

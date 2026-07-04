@@ -33,6 +33,7 @@ func _physics_process(delta: float) -> void:
 		var pl := _target as Player
 		var mult := pl.stats.xp_mult if pl else 1.0
 		GameState.add_xp(xp_value * mult)
+		EventBus.seed_collected.emit(global_position)
 		_pool.collect(self)
 
 func _draw() -> void:

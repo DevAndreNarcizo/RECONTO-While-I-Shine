@@ -52,10 +52,13 @@ func _physics_process(delta: float) -> void:
 		_accum -= 1.0
 		_spawn_one()
 
-	# Movimento em lote: perseguição simples (steering virá depois se precisar)
+	# Movimento em lote: perseguição simples + knockback decaindo
 	var target := _player.global_position
 	for e in _active:
-		e.global_position += (target - e.global_position).normalized() * e.speed * delta
+		var motion := (target - e.global_position).normalized() * e.speed + e.knockback
+		e.global_position += motion * delta
+		if e.knockback != Vector2.ZERO:
+			e.knockback = e.knockback.move_toward(Vector2.ZERO, 420.0 * delta)
 
 func _spawn_one() -> void:
 	var e := _get_from_pool()

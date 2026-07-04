@@ -8,6 +8,8 @@ var player: Player
 @onready var time_label: Label = $TimeLabel
 @onready var hp_bar: ProgressBar = $HpBar
 @onready var kills_label: Label = $KillsLabel
+@onready var luar_label: Label = $LuarLabel
+@onready var build_label: Label = $BuildLabel
 @onready var debug_label: Label = $DebugLabel
 
 func _ready() -> void:
@@ -25,6 +27,18 @@ func _process(_delta: float) -> void:
 	debug_label.text = "inimigos %d · fps %d" % [
 		EnemySpawner.active_count(), Engine.get_frames_per_second()
 	]
+	luar_label.text = "❖ Luar: %d" % GameState.run_luar
 	if player:
 		hp_bar.max_value = player.stats.max_hp
 		hp_bar.value = player.hp
+		build_label.text = _build_summary()
+
+## Ícones da build em texto (placeholder até termos ícones de verdade na fase 5).
+func _build_summary() -> String:
+	var parts: PackedStringArray = []
+	for w in player.encantos.owned():
+		var weapon := w as EncantoBase
+		parts.push_back("%s %d" % [weapon.data.display_name, weapon.level])
+	for entry in player.amulets.owned():
+		parts.push_back("◈%s %d" % [(entry["data"] as AmuletoData).display_name, entry["level"]])
+	return " · ".join(parts)

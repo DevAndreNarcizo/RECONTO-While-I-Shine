@@ -36,7 +36,7 @@ func _attack() -> void:
 	for result in space.intersect_shape(_query, 128):
 		var enemy := result.collider as Enemy
 		if enemy:
-			enemy.take_damage(damage())
+			enemy.take_damage(damage(), player.global_position)
 
 func _process(delta: float) -> void:
 	if _visual_t > 0.0:

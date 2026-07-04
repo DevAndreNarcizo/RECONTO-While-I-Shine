@@ -68,6 +68,32 @@ theme_override_font_sizes/font_size = 24
 text = "Derrotados: 0"
 horizontal_alignment = 2
 
+[node name="LuarLabel" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -300.0
+offset_top = 112.0
+offset_right = -16.0
+offset_bottom = 144.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.75, 0.85, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "❖ Luar: 0"
+horizontal_alignment = 2
+
+[node name="BuildLabel" type="Label" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -84.0
+offset_right = 900.0
+offset_bottom = -56.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 0.75)
+theme_override_font_sizes/font_size = 18
+
 [node name="HpBar" type="ProgressBar" parent="."]
 anchors_preset = 2
 anchor_top = 1.0

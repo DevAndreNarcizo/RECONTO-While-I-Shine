@@ -4,6 +4,11 @@ extends Node
 
 # --- Inimigos / combate ---
 signal enemy_killed(enemy: Node2D)
+signal damage_dealt(position: Vector2, amount: float)
+
+# --- Juice / feedback ---
+signal seed_collected(position: Vector2)
+signal screen_shake(strength: float)
 
 # --- Player ---
 signal player_damaged(hp: float, max_hp: float)

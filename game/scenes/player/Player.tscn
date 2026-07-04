@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/weapons/encanto_manager.gd" id="2"]
 [ext_resource type="Script" path="res://scripts/amulets/amuleto_manager.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/player/camera_shake.gd" id="4"]
 
 [sub_resource type="CircleShape2D" id="1"]
 radius = 14.0
@@ -46,3 +47,4 @@ script = ExtResource("3")
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
+script = ExtResource("4")

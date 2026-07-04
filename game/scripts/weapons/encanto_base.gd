@@ -75,4 +75,4 @@ func damage_circle(center: Vector2, radius: float, dmg: float) -> void:
 	for result in space.intersect_shape(query, 128):
 		var enemy := result.collider as Enemy
 		if enemy:
-			enemy.take_damage(dmg)
+			enemy.take_damage(dmg, center)
