@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EncantoData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/weapons/encanto_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"cipo_mae_da_mata"
+display_name = "Cipó da Mãe-da-Mata"
+description = "Forma ancestral: raízes da mata inteira brotam para te defender."
+behavior = 8
+damage_by_level = Array[float]([30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0])
+cooldown_by_level = Array[float]([1.8, 1.8, 1.8, 1.8, 1.8, 1.8, 1.8, 1.8])
+area_by_level = Array[float]([1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
+amount_by_level = Array[int]([5, 5, 5, 5, 5, 5, 5, 5])

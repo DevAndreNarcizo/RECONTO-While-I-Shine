@@ -24,6 +24,7 @@ enum Behavior {
 @export_group("Recompensa ao morrer")
 @export var seed_burst := 1   # quantas Sementes de Luz dropa
 @export var shard_burst := 0  # Fragmentos de Luar garantidos (elite/boss)
+@export var drops_chest := false  # Baú de Luz (evolução/XP grande) — elites e mini-boss
 
 @export_group("Atirador")
 @export var shoot_interval := 2.8

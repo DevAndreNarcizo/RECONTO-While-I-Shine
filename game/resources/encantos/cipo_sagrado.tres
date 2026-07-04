@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EncantoData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/weapons/encanto_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"cipo_sagrado"
+display_name = "Cipó Sagrado"
+description = "Forma ancestral: o golpe que protege — cura a cada inimigo atingido."
+behavior = 9
+damage_by_level = Array[float]([50.0, 50.0, 50.0, 50.0, 50.0, 50.0, 50.0, 50.0])
+cooldown_by_level = Array[float]([0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7])
+area_by_level = Array[float]([1.6, 1.6, 1.6, 1.6, 1.6, 1.6, 1.6, 1.6])
+amount_by_level = Array[int]([1, 1, 1, 1, 1, 1, 1, 1])

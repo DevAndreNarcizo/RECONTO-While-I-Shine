@@ -15,3 +15,4 @@ xp_value = 10
 knockback_scale = 0.0
 seed_burst = 15
 shard_burst = 5
+drops_chest = true

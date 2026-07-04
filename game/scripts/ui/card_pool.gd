@@ -15,6 +15,7 @@ const AMULETOS: Array = [
 	preload("res://resources/amuletos/galho_de_arruda.tres"),
 	preload("res://resources/amuletos/sal_grosso.tres"),
 	preload("res://resources/amuletos/chocalho.tres"),
+	preload("res://resources/amuletos/fita_do_bonfim.tres"),
 ]
 
 # Pesos do sorteio (balancear aqui)
@@ -51,6 +52,8 @@ static func build_options(player: Player) -> Array[Dictionary]:
 
 	for data in ENCANTOS:
 		var e := data as EncantoData
+		if player.encantos.was_evolved(e.id):
+			continue  # já virou forma ancestral — não oferecer de novo
 		if player.encantos.has_encanto(e.id):
 			var weapon := player.encantos.get_weapon(e.id)
 			if not weapon.is_max_level():

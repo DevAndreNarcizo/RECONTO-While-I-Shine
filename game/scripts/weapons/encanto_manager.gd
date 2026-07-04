@@ -9,7 +9,11 @@ const BEHAVIOR_SCRIPTS := {
 	EncantoData.Behavior.ORBITAL: preload("res://scripts/weapons/behaviors/orbital.gd"),
 	EncantoData.Behavior.SALTITANTE: preload("res://scripts/weapons/behaviors/saltitante.gd"),
 	EncantoData.Behavior.RAIO: preload("res://scripts/weapons/behaviors/raio.gd"),
+	EncantoData.Behavior.RAIZES: preload("res://scripts/weapons/behaviors/raizes.gd"),
+	EncantoData.Behavior.MELEE_SAGRADO: preload("res://scripts/weapons/behaviors/melee_sagrado.gd"),
 }
+
+var evolved_bases: Array[StringName] = []  # encantos que já viraram forma ancestral
 
 var _weapons: Dictionary = {}  # id (StringName) → EncantoBase
 
@@ -43,3 +47,19 @@ func has_encanto(id: StringName) -> bool:
 
 func has_free_slot() -> bool:
 	return _weapons.size() < MAX_SLOTS
+
+func was_evolved(id: StringName) -> bool:
+	return evolved_bases.has(id)
+
+## Ritual de Sincretismo: troca o encanto base pela FORMA ANCESTRAL (mesmo slot).
+func evolve(base_id: StringName, new_data: EncantoData) -> void:
+	if not _weapons.has(base_id):
+		return
+	(_weapons[base_id] as EncantoBase).queue_free()
+	_weapons.erase(base_id)
+	evolved_bases.push_back(base_id)
+	var weapon: EncantoBase = (BEHAVIOR_SCRIPTS[new_data.behavior] as GDScript).new()
+	weapon.name = String(new_data.id)
+	add_child(weapon)
+	weapon.setup(new_data, player)
+	_weapons[new_data.id] = weapon

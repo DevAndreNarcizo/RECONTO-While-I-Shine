@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AmuletoData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/amulets/amuleto_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"fita_do_bonfim"
+display_name = "Fita do Bonfim"
+description = "Três nós, três desejos. +Duração e leve regeneração."
+duration_pct_per_level = 10.0
+recovery_per_level = 0.2

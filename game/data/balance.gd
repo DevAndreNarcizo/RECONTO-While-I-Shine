@@ -13,6 +13,16 @@ const DEV_RUN_DURATION := 5.0 * 60.0
 # --- Cristais de Luar (meta) ---
 const LUAR_DROP_CHANCE := 0.05  # chance de inimigo dropar 1 fragmento
 
+# --- Ritual de Sincretismo (Inovação #3 — docs/03 §1) ---
+# Receitas: encanto no nível MÁX + amuleto (qualquer nível) + condição opcional.
+# Receitas com condição vêm PRIMEIRO (têm prioridade quando várias são elegíveis).
+const EVOLUTIONS := [
+	{"base": &"cipo_chicoteante", "amulet": &"fita_do_bonfim", "condition": &"lua_cheia",
+		"result": "res://resources/encantos/cipo_sagrado.tres"},
+	{"base": &"cipo_chicoteante", "amulet": &"figa", "condition": &"",
+		"result": "res://resources/encantos/cipo_mae_da_mata.tres"},
+]
+
 # --- Curva de spawn da Mata Atlântica (docs/03 §4) ---
 # "from" é FRAÇÃO da run (0..1) — funciona igual em run de 5 min (dev) e 30 min.
 # "rate" = inimigos/segundo. "weights" = sorteio ponderado dos tipos ativos.

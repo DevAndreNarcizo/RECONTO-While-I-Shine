@@ -10,6 +10,7 @@ const VISUAL_TIME := 0.15
 
 var _visual_t := 0.0
 var _hit_dir := Vector2.RIGHT
+var _last_hits := 0  # inimigos atingidos no último golpe (formas ancestrais usam)
 var _shape := RectangleShape2D.new()
 var _query := PhysicsShapeQueryParameters2D.new()
 
@@ -32,11 +33,13 @@ func _attack() -> void:
 		_hit_dir.angle(),
 		player.global_position + _hit_dir * HIT_DISTANCE * area()
 	)
+	_last_hits = 0
 	var space := get_world_2d().direct_space_state
 	for result in space.intersect_shape(_query, 128):
 		var enemy := result.collider as Enemy
 		if enemy:
 			enemy.take_damage(damage(), player.global_position)
+			_last_hits += 1
 
 func _process(delta: float) -> void:
 	if _visual_t > 0.0:
@@ -49,4 +52,8 @@ func _draw() -> void:
 		return
 	draw_set_transform(_hit_dir * HIT_DISTANCE * area(), _hit_dir.angle(), Vector2.ONE)
 	var size := Vector2(HIT_WIDTH, HIT_HEIGHT) * area()
-	draw_rect(Rect2(-size / 2.0, size), Color(0.35, 0.8, 0.35, 0.7))
+	draw_rect(Rect2(-size / 2.0, size), _hit_color())
+
+## Virtual: cor do golpe (formas ancestrais mudam).
+func _hit_color() -> Color:
+	return Color(0.35, 0.8, 0.35, 0.7)

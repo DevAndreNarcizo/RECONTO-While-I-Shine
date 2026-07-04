@@ -10,8 +10,10 @@ enum Behavior {
 	AREA_PLAYER,     # Roda do Boitatá (futuro)
 	SALTITANTE,      # Pedra do Saci
 	RAIO,            # Relâmpago do Trovão
-	CONVERSAO,       # Canto da Iara (futuro — inovação #2)
+	CONVERSAO,       # Canto da Iara (inovação #2)
 	INVOCACAO,       # Vela do Pastoreio (futuro)
+	RAIZES,          # Cipó da Mãe-da-Mata (forma ancestral)
+	MELEE_SAGRADO,   # Cipó Sagrado (forma ancestral que cura)
 }
 
 const MAX_LEVEL := 8

@@ -4,6 +4,7 @@ extends Node2D
 
 const SEED_SCENE := preload("res://scenes/pickups/LightSeed.tscn")
 const SHARD_SCENE := preload("res://scenes/pickups/LuarShard.tscn")
+const CHEST_SCENE := preload("res://scenes/pickups/LightChest.tscn")
 
 var _pool: Array[LightSeed] = []
 var _shard_pool: Array[LuarShard] = []
@@ -22,6 +23,10 @@ func _on_enemy_killed(enemy: Node2D) -> void:
 		spawn_shard(e.global_position + _spread(i + 3))
 	if e.data.shard_burst == 0 and randf() < Balance.LUAR_DROP_CHANCE:
 		spawn_shard(e.global_position + Vector2(10, 0))
+	if e.data.drops_chest:
+		var chest: LightChest = CHEST_SCENE.instantiate()
+		add_child(chest)
+		chest.global_position = e.global_position
 
 func _spread(i: int) -> Vector2:
 	if i == 0:
