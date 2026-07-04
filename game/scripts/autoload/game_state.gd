@@ -15,6 +15,10 @@ var _miniboss_fired := false
 # Escolhas da tela de seleção (null/padrão = Curupira na Mata Atlântica)
 var selected_legend: LegendData = null
 var selected_biome_id := &"mata_atlantica"
+var active_simpatias: Array[StringName] = []  # cartas que mudam as regras da run
+
+func has_simpatia(id: StringName) -> bool:
+	return active_simpatias.has(id)
 
 func _ready() -> void:
 	EventBus.enemy_killed.connect(_on_enemy_killed)

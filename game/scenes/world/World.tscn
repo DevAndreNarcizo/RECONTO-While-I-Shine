@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene load_steps=12 format=3]
 
 [ext_resource type="Script" path="res://scripts/world/world.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/world/juice_layer.gd" id="8"]
+[ext_resource type="Script" path="res://scripts/world/biome_hazard_manager.gd" id="11"]
 [ext_resource type="Script" path="res://scripts/world/ground_grid.gd" id="2"]
 [ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="3"]
 [ext_resource type="PackedScene" path="res://scenes/ui/HUD.tscn" id="4"]
@@ -21,6 +22,9 @@ color = Color(1, 0.87, 0.78, 1)
 z_index = -10
 script = ExtResource("2")
 target = NodePath("../Player")
+
+[node name="BiomeHazard" type="Node2D" parent="."]
+script = ExtResource("11")
 
 [node name="Enemies" type="Node2D" parent="."]
 

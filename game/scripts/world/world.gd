@@ -16,6 +16,7 @@ func _ready() -> void:
 	EnemySpawner.start(player, $Enemies)
 	$HUD.player = player
 	$LevelUpScreen.player = player
+	$BiomeHazard.player = player
 	EventBus.miniboss_time.connect(_spawn_boss_scene.bind(MINIBOSS_SCENE))
 	EventBus.boss_time.connect(_spawn_boss_scene.bind(BOSS_SCENE))
 	EventBus.moon_phase_changed.connect(_on_moon_phase_changed)

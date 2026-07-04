@@ -15,6 +15,7 @@ extends Resource
 @export var damage_mult_bonus := 0.0   # 0.1 = +10%
 @export var luck_bonus := 0.0          # 0.1 = +10%
 @export var regen_bonus := 0.0         # HP/s (passiva do Curupira)
+@export var fire_immune := false       # Boitatá ignora queimadas (bioma reativo)
 
 @export_group("Habilidade ativa")
 @export var active_id: StringName      # vazio = sem ativa

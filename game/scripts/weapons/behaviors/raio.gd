@@ -21,6 +21,7 @@ func _attack() -> void:
 			continue
 		var pos := target.global_position
 		damage_circle(pos, STRIKE_RADIUS * area(), damage())
+		EventBus.fire_started.emit(pos)  # raio incendeia a vegetação (bioma reativo)
 		_strikes.push_back({"pos": pos, "t": VISUAL_TIME})
 	queue_redraw()
 
