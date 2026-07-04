@@ -10,6 +10,7 @@ var luar := 0
 var tree_levels: Dictionary = {}   # String (id do upgrade) → int (nível)
 var biomes_cleared: Array = []     # Strings (ids de bioma vencidos)
 var legends_unlocked: Array = []   # Strings (além das unlocked_by_default)
+var simpatias_unlocked: Array = [] # Strings (ids de Simpatias compradas)
 var settings: Dictionary = {"volume": 1.0, "fullscreen": false}
 
 func _ready() -> void:
@@ -46,6 +47,22 @@ func unlock_legend(legend: LegendData) -> bool:
 func add_luar(amount: int) -> void:
 	luar += amount
 	save_game()
+
+# --- Simpatias ---
+
+func is_simpatia_unlocked(id: StringName) -> bool:
+	return simpatias_unlocked.has(String(id))
+
+func unlock_simpatia(id: StringName) -> bool:
+	if is_simpatia_unlocked(id):
+		return false
+	var cost := int(Balance.SIMPATIAS[id]["cost"])
+	if luar < cost:
+		return false
+	luar -= cost
+	simpatias_unlocked.push_back(String(id))
+	save_game()
+	return true
 
 # --- Progressão de mundo ---
 
@@ -97,6 +114,7 @@ func save_game() -> void:
 		"tree_levels": tree_levels,
 		"biomes_cleared": biomes_cleared,
 		"legends_unlocked": legends_unlocked,
+		"simpatias_unlocked": simpatias_unlocked,
 		"settings": settings,
 	}
 	var file := FileAccess.open(TMP_PATH, FileAccess.WRITE)
@@ -130,6 +148,11 @@ func load_game() -> void:
 	if typeof(raw_legends) == TYPE_ARRAY:
 		for l in raw_legends:
 			legends_unlocked.push_back(String(l))
+	simpatias_unlocked = []
+	var raw_simpatias: Variant = parsed.get("simpatias_unlocked", [])
+	if typeof(raw_simpatias) == TYPE_ARRAY:
+		for s in raw_simpatias:
+			simpatias_unlocked.push_back(String(s))
 	var raw_settings: Variant = parsed.get("settings", {})
 	if typeof(raw_settings) == TYPE_DICTIONARY:
 		for key in raw_settings:

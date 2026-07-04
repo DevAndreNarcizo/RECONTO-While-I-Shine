@@ -17,7 +17,10 @@ func _on_enemy_killed(enemy: Node2D) -> void:
 	if e == null or e.data == null:
 		return
 	# "Baú" de elite/boss = rajada de sementes + fragmentos garantidos
-	for i in e.data.seed_burst:
+	var seeds := e.data.seed_burst
+	if e.charmed_t > 0.0 and GameState.has_simpatia(&"encanto_coletivo"):
+		seeds += 5  # aliado encantado explode em Luz
+	for i in seeds:
 		spawn_seed(e.global_position + _spread(i), e.data.xp_value)
 	for i in e.data.shard_burst:
 		spawn_shard(e.global_position + _spread(i + 3))

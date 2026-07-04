@@ -8,7 +8,8 @@ func _process(_delta: float) -> void:
 	if not GameState.run_active:
 		return
 	var frac := clampf(GameState.run_time / Balance.run_duration(), 0.0, 1.0)
-	var idx := _index_for_frac(frac)
+	# Simpatia Lua Eterna: a noite congela na Lua Cheia (índice 2)
+	var idx := 2 if GameState.has_simpatia(&"lua_eterna") else _index_for_frac(frac)
 	if idx != current_index:
 		current_index = idx
 		EventBus.moon_phase_changed.emit(idx)

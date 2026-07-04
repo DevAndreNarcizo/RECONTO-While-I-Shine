@@ -22,6 +22,8 @@ var _flash := false
 func setup(p_data: EnemyData, pos: Vector2) -> void:
 	data = p_data
 	hp = data.max_hp * MoonCycleManager.enemy_hp_mult()  # a lua fortalece a Corrupção
+	if GameState.has_simpatia(&"mata_generosa"):
+		hp *= 1.25  # o preço da fartura
 	speed = data.move_speed
 	global_position = pos
 	knockback = Vector2.ZERO

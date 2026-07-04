@@ -15,12 +15,15 @@ const BIOMES := [
 
 var _sel_legend: LegendData
 var _sel_biome: StringName = &"mata_atlantica"
+var _sel_simpatias: Array[StringName] = []
 var _legend_buttons: Dictionary = {}
 var _biome_buttons: Dictionary = {}
+var _simpatia_buttons: Dictionary = {}
 
 @onready var luar_label: Label = $Center/Panel/VBox/LuarLabel
 @onready var legends_box: HBoxContainer = $Center/Panel/VBox/Legends
 @onready var biomes_box: HBoxContainer = $Center/Panel/VBox/Biomes
+@onready var simpatias_box: HBoxContainer = $Center/Panel/VBox/Simpatias
 @onready var info_label: Label = $Center/Panel/VBox/Info
 @onready var start: Button = $Center/Panel/VBox/Start
 @onready var back: Button = $Center/Panel/VBox/Back
@@ -42,11 +45,31 @@ func _ready() -> void:
 		b.pressed.connect(_on_biome_pressed.bind(biome))
 		biomes_box.add_child(b)
 		_biome_buttons[biome["id"]] = b
+	for id in Balance.SIMPATIAS:
+		var b := Button.new()
+		b.custom_minimum_size = Vector2(220, 84)
+		b.toggle_mode = true
+		b.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		b.add_theme_font_size_override("font_size", 18)
+		b.tooltip_text = Balance.SIMPATIAS[id]["desc"]
+		b.pressed.connect(_on_simpatia_pressed.bind(id))
+		simpatias_box.add_child(b)
+		_simpatia_buttons[id] = b
 	start.pressed.connect(_on_start)
 	back.pressed.connect(func(): get_tree().change_scene_to_file("res://scenes/Main.tscn"))
 	_sel_legend = LEGENDS[0]
+	_sel_simpatias = GameState.active_simpatias.duplicate()  # lembra a última escolha
 	_refresh()
 	start.grab_focus()
+
+func _on_simpatia_pressed(id: StringName) -> void:
+	if not SaveManager.is_simpatia_unlocked(id):
+		SaveManager.unlock_simpatia(id)  # compra com Luar (se der)
+	elif _sel_simpatias.has(id):
+		_sel_simpatias.erase(id)
+	elif _sel_simpatias.size() < Balance.SIMPATIA_MAX_ACTIVE:
+		_sel_simpatias.push_back(id)
+	_refresh()
 
 func _on_legend_pressed(legend: LegendData) -> void:
 	if SaveManager.is_legend_unlocked(legend):
@@ -69,6 +92,7 @@ func _biome_available(biome: Dictionary) -> bool:
 func _on_start() -> void:
 	GameState.selected_legend = _sel_legend
 	GameState.selected_biome_id = _sel_biome
+	GameState.active_simpatias = _sel_simpatias.duplicate()
 	get_tree().change_scene_to_file("res://scenes/world/World.tscn")
 
 func _refresh() -> void:
@@ -85,4 +109,12 @@ func _refresh() -> void:
 		b.text = biome["name"] if _biome_available(biome) else "🔒 %s" % biome["name"]
 		b.disabled = not _biome_available(biome)
 		b.button_pressed = (biome["id"] == _sel_biome)
+	for id in _simpatia_buttons:
+		var b: Button = _simpatia_buttons[id]
+		var info: Dictionary = Balance.SIMPATIAS[id]
+		if SaveManager.is_simpatia_unlocked(id):
+			b.text = info["name"]
+		else:
+			b.text = "🔒 %s\n%d ❖" % [info["name"], info["cost"]]
+		b.button_pressed = _sel_simpatias.has(id)
 	info_label.text = "%s — %s" % [_sel_legend.display_name, _sel_legend.description]

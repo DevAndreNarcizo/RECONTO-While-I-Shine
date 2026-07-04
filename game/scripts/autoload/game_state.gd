@@ -71,6 +71,8 @@ func _on_boss_defeated() -> void:
 	end_run(true)
 
 func add_xp(amount: float) -> void:
+	if has_simpatia(&"mata_generosa"):
+		amount *= 1.5
 	xp += amount
 	# `while` cobre coleta que rende mais de um nível de uma vez;
 	# a tela de level up enfileira os pendentes.

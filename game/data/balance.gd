@@ -44,6 +44,20 @@ const MINIBOSS_FRAC := 0.35
 # Encantar a horda (Inovação #2): máximo de aliados encantados simultâneos.
 const CHARM_LIMIT := 10
 
+# --- Simpatias (Arcanas — docs/04 §5): mudam as regras da run inteira ---
+# Desbloqueáveis com Luar; escolhe-se até 3 antes da run.
+const SIMPATIA_MAX_ACTIVE := 3
+const SIMPATIAS := {
+	&"lua_eterna": {"name": "Lua Eterna",
+		"desc": "A run inteira sob Lua Cheia: perigo e recompensa no máximo.", "cost": 500},
+	&"mata_generosa": {"name": "Mata Generosa",
+		"desc": "+50% Sementes de Luz, mas inimigos com +25% de vida.", "cost": 300},
+	&"encanto_coletivo": {"name": "Encanto Coletivo",
+		"desc": "Aliados encantados explodem em Luz ao morrer.", "cost": 400},
+	&"fogo_que_lembra": {"name": "Fogo que Lembra",
+		"desc": "Toda queimada CURA você em vez de ferir.", "cost": 400},
+}
+
 # --- Ciclo da Lua (Inovação #1 — docs/01 §3.3 e docs/03 §1) ---
 # "from" em FRAÇÃO da run (janelas do GDD: 0-6, 6-14, 14-20, 20-26, 26-30 min).
 # Multiplicadores globais por fase; o tint vai num CanvasModulate (não afeta o HUD).
