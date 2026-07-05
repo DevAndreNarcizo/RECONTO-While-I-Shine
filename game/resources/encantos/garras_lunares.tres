@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EncantoData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/weapons/encanto_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"garras_lunares"
+display_name = "Garras Lunares"
+description = "Golpe giratório de garras prateadas. Sob a Lua Cheia, o dano cresce 50%."
+behavior = 10
+damage_by_level = Array[float]([12.0, 15.0, 18.0, 22.0, 26.0, 30.0, 35.0, 40.0])
+cooldown_by_level = Array[float]([1.1, 1.05, 1.0, 0.95, 0.9, 0.85, 0.8, 0.7])
+area_by_level = Array[float]([1.0, 1.05, 1.1, 1.2, 1.25, 1.3, 1.4, 1.5])
+amount_by_level = Array[int]([1, 1, 1, 1, 1, 1, 1, 1])

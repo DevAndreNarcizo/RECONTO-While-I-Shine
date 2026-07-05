@@ -17,6 +17,8 @@ extends Resource
 @export var regen_bonus := 0.0         # HP/s (passiva do Curupira)
 @export var dodge_chance := 0.0        # 0.1 = 10% de esquivar dano (Saci)
 @export var fire_immune := false       # Boitatá ignora queimadas (bioma reativo)
+@export var full_moon_power := 0.0     # +dano na Lua Cheia (0.5 = +50%; Lobisomem)
+@export var dawn_penalty := 0.0        # -dano na Alvorada (0.2 = -20%; Lobisomem)
 ## Pasta das 8 rotações do PixelLab (vazio = usa o placeholder/sprite padrão).
 @export var sprite_dir := ""
 

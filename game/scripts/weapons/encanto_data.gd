@@ -14,6 +14,7 @@ enum Behavior {
 	INVOCACAO,       # Vela do Pastoreio (futuro)
 	RAIZES,          # Cipó da Mãe-da-Mata (forma ancestral)
 	MELEE_SAGRADO,   # Cipó Sagrado (forma ancestral que cura)
+	MELEE_GIRO,      # Garras Lunares (giro 360°, escala com a lua)
 }
 
 const MAX_LEVEL := 8

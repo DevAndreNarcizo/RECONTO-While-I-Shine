@@ -6,6 +6,7 @@ extends Control
 const LEGENDS: Array = [
 	preload("res://resources/legends/curupira.tres"),
 	preload("res://resources/legends/saci.tres"),
+	preload("res://resources/legends/lobisomem.tres"),
 ]
 
 const BIOMES := [

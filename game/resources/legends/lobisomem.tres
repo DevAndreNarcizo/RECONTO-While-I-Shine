@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="LegendData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/legends/legend_data.gd" id="1"]
+[ext_resource type="Resource" path="res://resources/encantos/garras_lunares.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+id = &"lobisomem"
+display_name = "Lobisomem"
+description = "Sétimo filho de contadores de histórias — o único que só ouvia. Redimido, a fúria agora tem dono: ele."
+color = Color(0.45, 0.5, 0.65, 1)
+starting_encanto = ExtResource("2")
+max_hp_bonus = 20.0
+move_speed_bonus = 6.0
+regen_bonus = 0.5
+full_moon_power = 0.5
+dawn_penalty = 0.2
+sprite_dir = "res://assets/sprites/A_lupine_werewolf_in_a/A_lupine_werewolf_in_a/rotations"
+active_id = &"furia_lunar"
+active_name = "Fúria Lunar"
+active_desc = "Por 6s, força sua Lua Cheia pessoal: +50% dano e +30% vel. de ataque."
+active_cooldown = 40.0
+unlock_desc = "2.000 Cristais de Luar (até o Cerrado chegar)"
+unlock_luar_cost = 2000

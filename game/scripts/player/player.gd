@@ -22,6 +22,7 @@ const DASH_SPEED := 430.0
 
 var _invuln := 0.0
 var _dash_t := 0.0  # Dash de Vento do Saci
+var _fury_t := 0.0  # Fúria Lunar do Lobisomem
 var _bonus_move_speed := 0.0  # bônus de cartas na run (placeholder até a fase 2.3)
 
 # Sprite direcional (PixelLab, 8 rotações). TODO(fase 6): vem da LegendData.
@@ -75,6 +76,14 @@ func rebuild_stats() -> void:
 		stats.damage_mult += legend.damage_mult_bonus
 		stats.luck += legend.luck_bonus
 		stats.recovery += legend.regen_bonus
+		# passiva lunar (Lobisomem): forte na Cheia, fraco na Alvorada
+		var phase_id: StringName = MoonCycleManager.phase()["id"]
+		if phase_id == &"lua_cheia" or _fury_t > 0.0:
+			stats.damage_mult += legend.full_moon_power
+		elif phase_id == &"alvorada":
+			stats.damage_mult -= legend.dawn_penalty
+		if _fury_t > 0.0:
+			stats.attack_speed_mult += 0.3  # Fúria Lunar
 	stats.move_speed += _bonus_move_speed
 	amulets.apply_to(stats)
 	SaveManager.apply_tree_bonuses(stats)  # bônus permanentes da Árvore Sagrada
@@ -123,6 +132,12 @@ func _physics_process(delta: float) -> void:
 	if stats.recovery > 0.0 and hp < stats.max_hp:
 		hp = minf(stats.max_hp, hp + stats.recovery * delta)
 
+	if _fury_t > 0.0:
+		_fury_t -= delta
+		if _fury_t <= 0.0:
+			modulate = Color.WHITE
+			rebuild_stats()  # a fúria passou
+
 	_invuln = maxf(0.0, _invuln - delta)
 	if _invuln <= 0.0:
 		_check_contact_damage()
@@ -148,6 +163,13 @@ func _use_ability() -> void:
 			_dash_t = DASH_TIME
 			_invuln = maxf(_invuln, DASH_TIME + 0.15)
 			EventBus.ability_cast.emit(global_position, 44.0)
+		&"furia_lunar":
+			# Lobisomem: Lua Cheia pessoal por 6s
+			_fury_t = 6.0
+			rebuild_stats()
+			modulate = Color(1.3, 0.9, 0.9)
+			EventBus.ability_cast.emit(global_position, 60.0)
+			EventBus.screen_shake.emit(4.0)
 
 func _on_magnet_area_entered(area: Area2D) -> void:
 	# Sementes de Luz e Fragmentos de Luar implementam magnetize()
