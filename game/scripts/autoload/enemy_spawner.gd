@@ -28,6 +28,11 @@ const TYPES := {
 	&"carrapato": preload("res://resources/enemies/carrapato_gigante.tres"),
 	&"capivara": preload("res://resources/enemies/capivara_zumbi.tres"),
 	&"tuiuiu": preload("res://resources/enemies/tuiuiu_agourento.tres"),
+	# Caatinga
+	&"escorpiao": preload("res://resources/enemies/escorpiao_brasa.tres"),
+	&"urubu": preload("res://resources/enemies/urubu_tres_olhos.tres"),
+	&"cabra": preload("res://resources/enemies/cabra_demonio.tres"),
+	&"cascavel": preload("res://resources/enemies/cascavel_rachada.tres"),
 }
 
 var spawn_table: Array = Balance.MATA_SPAWN_TABLE

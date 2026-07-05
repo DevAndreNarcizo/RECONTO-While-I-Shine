@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="LegendData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/legends/legend_data.gd" id="1"]
+[ext_resource type="Resource" path="res://resources/encantos/canto_da_iara.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+id = &"iara"
+display_name = "Iara"
+description = "A guerreira das águas, traída e renascida. Seu canto não seduz: lembra a criatura de quem ela era, trazendo-a de volta ao bem."
+color = Color(0.25, 0.6, 0.65, 1)
+starting_encanto = ExtResource("2")
+max_hp_bonus = -10.0
+move_speed_bonus = 4.0
+luck_bonus = 0.05
+active_id = &"canto_hipnotico"
+active_name = "Canto Hipnótico"
+active_desc = "Encanta todos os inimigos não-elite num grande raio, trazendo-os para o seu lado."
+active_cooldown = 26.0
+unlock_desc = "Resgatada ao vencer o Fundo do Rio"
+unlock_luar_cost = 4000

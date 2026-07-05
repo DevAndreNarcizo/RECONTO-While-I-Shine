@@ -30,6 +30,10 @@ func _ready() -> void:
 	$Flood.set_physics_process(flood)
 	$Flood.visible = flood
 	$Flood.player = player
+	var fissures: bool = biome.get("fissures", false)
+	$Fissures.set_physics_process(fissures)
+	$Fissures.visible = fissures
+	$Fissures.player = player
 
 	EnemySpawner.start(player, $Enemies, biome["spawn_table"])
 	$HUD.player = player

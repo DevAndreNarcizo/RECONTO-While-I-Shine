@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3]
+[gd_scene load_steps=15 format=3]
 
 [ext_resource type="Script" path="res://scripts/world/world.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/world/juice_layer.gd" id="8"]
 [ext_resource type="Script" path="res://scripts/world/biome_hazard_manager.gd" id="11"]
 [ext_resource type="Script" path="res://scripts/world/rain_layer.gd" id="12"]
 [ext_resource type="Script" path="res://scripts/world/flood_waves.gd" id="13"]
+[ext_resource type="Script" path="res://scripts/world/fissure_field.gd" id="14"]
 [ext_resource type="Script" path="res://scripts/world/ground_grid.gd" id="2"]
 [ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="3"]
 [ext_resource type="PackedScene" path="res://scenes/ui/HUD.tscn" id="4"]
@@ -57,6 +58,9 @@ script = ExtResource("12")
 
 [node name="Flood" type="Node2D" parent="."]
 script = ExtResource("13")
+
+[node name="Fissures" type="Node2D" parent="."]
+script = ExtResource("14")
 
 [node name="LevelUpScreen" parent="." instance=ExtResource("6")]
 

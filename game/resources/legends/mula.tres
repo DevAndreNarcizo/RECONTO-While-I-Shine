@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="LegendData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/legends/legend_data.gd" id="1"]
+[ext_resource type="Resource" path="res://resources/encantos/coice_flamejante.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+id = &"mula"
+display_name = "Mula-sem-Cabeça"
+description = "Ninguém sabe quem ela foi — nem ela. Redimida do galope eterno, agora carrega o fogo por escolha, não por maldição."
+color = Color(0.35, 0.22, 0.22, 1)
+starting_encanto = ExtResource("2")
+max_hp_bonus = 60.0
+move_speed_bonus = -14.0
+armor_bonus = 3.0
+fire_immune = true
+active_id = &"galope"
+active_name = "Galope"
+active_desc = "Investida imparável e invencível que atropela e incendeia tudo no caminho."
+active_cooldown = 14.0
+unlock_desc = "Redimida ao vencer a Caatinga"
+unlock_luar_cost = 3000

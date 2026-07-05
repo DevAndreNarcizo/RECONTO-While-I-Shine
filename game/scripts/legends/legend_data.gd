@@ -12,6 +12,7 @@ extends Resource
 @export_group("Modificadores de stat base")
 @export var max_hp_bonus := 0.0
 @export var move_speed_bonus := 0.0
+@export var armor_bonus := 0.0         # reduz dano por hit (Mula tanque)
 @export var damage_mult_bonus := 0.0   # 0.1 = +10%
 @export var luck_bonus := 0.0          # 0.1 = +10%
 @export var regen_bonus := 0.0         # HP/s (passiva do Curupira)

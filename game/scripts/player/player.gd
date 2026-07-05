@@ -19,6 +19,8 @@ var external_push := Vector2.ZERO  # forças externas (puxão de boss); zera a c
 
 const DASH_TIME := 0.22
 const DASH_SPEED := 430.0
+const GALOPE_TIME := 0.7   # Mula: investida longa
+const GALOPE_DAMAGE := 40.0
 
 var _invuln := 0.0
 var _dash_t := 0.0  # Dash de Vento do Saci
@@ -73,6 +75,7 @@ func rebuild_stats() -> void:
 	if legend:
 		stats.max_hp += legend.max_hp_bonus
 		stats.move_speed += legend.move_speed_bonus
+		stats.armor += legend.armor_bonus
 		stats.damage_mult += legend.damage_mult_bonus
 		stats.luck += legend.luck_bonus
 		stats.recovery += legend.regen_bonus
@@ -113,6 +116,8 @@ func _physics_process(delta: float) -> void:
 	if _dash_t > 0.0:
 		_dash_t -= delta
 		velocity = facing * DASH_SPEED  # dash ignora aceleração e puxões
+		if legend and legend.active_id == &"galope":
+			_galope_trample()  # a Mula atropela e incendeia o caminho
 	else:
 		var target := input_dir * stats.move_speed
 		var rate := accel if input_dir != Vector2.ZERO else decel
@@ -170,6 +175,25 @@ func _use_ability() -> void:
 			modulate = Color(1.3, 0.9, 0.9)
 			EventBus.ability_cast.emit(global_position, 60.0)
 			EventBus.screen_shake.emit(4.0)
+		&"galope":
+			# Mula: investida imparável e invencível, ferindo e incendiando o caminho
+			_dash_t = GALOPE_TIME
+			_invuln = maxf(_invuln, GALOPE_TIME + 0.1)
+			EventBus.screen_shake.emit(5.0)
+		&"canto_hipnotico":
+			# Iara: encanta todos os inimigos não-elite num raio
+			const RADIUS := 300.0
+			for e in EnemySpawner.active_enemies():
+				if e.data.behavior != EnemyData.Behavior.ELITE \
+						and global_position.distance_squared_to(e.global_position) < RADIUS * RADIUS:
+					EnemySpawner.charm_enemy(e, 8.0)
+			EventBus.ability_cast.emit(global_position, RADIUS)
+
+func _galope_trample() -> void:
+	for e in EnemySpawner.active_enemies():
+		if global_position.distance_squared_to(e.global_position) < 40.0 * 40.0:
+			e.take_damage(GALOPE_DAMAGE * get_physics_process_delta_time() * 6.0, global_position)
+	EventBus.fire_started.emit(global_position)
 
 func _on_magnet_area_entered(area: Area2D) -> void:
 	# Sementes de Luz e Fragmentos de Luar implementam magnetize()

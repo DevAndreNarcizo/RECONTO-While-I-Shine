@@ -68,6 +68,15 @@ const PANTANAL_SPAWN_TABLE := [
 	{"from": 0.8667, "rate": 12.0, "weights": {&"piranha": 2.5, &"jacare": 3.0, &"tuiuiu": 2.0, &"capivara": 2.5, &"elite": 0.6}},
 ]
 
+# --- Curva de spawn da Caatinga (docs/06 §5 — sertão seco, fendas e fogo) ---
+const CAATINGA_SPAWN_TABLE := [
+	{"from": 0.0, "rate": 2.6, "weights": {&"escorpiao": 3.0, &"cascavel": 1.5}},
+	{"from": 0.2, "rate": 4.8, "weights": {&"escorpiao": 3.0, &"cascavel": 2.0, &"urubu": 1.5}},
+	{"from": 0.4667, "rate": 7.5, "weights": {&"escorpiao": 2.5, &"cascavel": 2.5, &"urubu": 2.0, &"cabra": 1.0}},
+	{"from": 0.6667, "rate": 9.5, "weights": {&"cascavel": 2.5, &"urubu": 2.0, &"cabra": 2.0, &"escorpiao": 2.0, &"elite": 0.4}},
+	{"from": 0.8667, "rate": 13.0, "weights": {&"escorpiao": 3.0, &"cascavel": 2.5, &"urubu": 2.0, &"cabra": 2.5, &"elite": 0.6}},
+]
+
 # --- Biomas (docs/04 §2): visual, spawn, bosses e hazard por bioma ---
 const BIOMES := {
 	&"mata_atlantica": {
@@ -97,6 +106,16 @@ const BIOMES := {
 		"boss": "res://scenes/enemies/BossCobraGrande.tscn",
 		"rain": false,
 		"flood": true,  # o rio transborda em ondas que varrem e empurram
+	},
+	&"caatinga": {
+		"name": "Caatinga",
+		"ground_a": Color(0.28, 0.2, 0.12), "ground_b": Color(0.32, 0.23, 0.14),
+		"spawn_table": CAATINGA_SPAWN_TABLE,
+		"background": "res://assets/backgrounds/caatinga.png",
+		"miniboss": "res://scenes/enemies/MiniBossCarcara.tscn",
+		"boss": "res://scenes/enemies/BossMula.tscn",
+		"rain": false,
+		"fissures": true,  # o chão racha: fendas erupem fogo (bioma reativo)
 	},
 }
 const RAIN_PROJECTILE_MULT := 0.85

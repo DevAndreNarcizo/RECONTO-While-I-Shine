@@ -6,14 +6,17 @@ extends Control
 const LEGENDS: Array = [
 	preload("res://resources/legends/curupira.tres"),
 	preload("res://resources/legends/saci.tres"),
+	preload("res://resources/legends/iara.tres"),
 	preload("res://resources/legends/lobisomem.tres"),
+	preload("res://resources/legends/mula.tres"),
 ]
 
 const BIOMES := [
 	{"id": &"mata_atlantica", "name": "Mata Atlântica", "playable": true, "requires": &""},
 	{"id": &"amazonia", "name": "Amazônia", "playable": true, "requires": &"mata_atlantica"},
 	{"id": &"pantanal", "name": "Pantanal", "playable": true, "requires": &"amazonia"},
-	{"id": &"caatinga", "name": "Caatinga (em breve)", "playable": false, "requires": &"pantanal"},
+	{"id": &"caatinga", "name": "Caatinga", "playable": true, "requires": &"pantanal"},
+	{"id": &"cerrado", "name": "Cerrado (em breve)", "playable": false, "requires": &"caatinga"},
 ]
 
 var _sel_legend: LegendData

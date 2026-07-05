@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemy_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "Mula-sem-Cabeça"
+max_hp = 2000.0
+contact_damage = 20.0
+move_speed = 130.0
+radius = 26.0
+color = Color(0.3, 0.2, 0.2, 1)
+xp_value = 0
+knockback_scale = 0.0
+seed_burst = 20
+shard_burst = 16
