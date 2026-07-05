@@ -23,6 +23,14 @@ var _legend_buttons: Dictionary = {}
 var _biome_buttons: Dictionary = {}
 var _simpatia_buttons: Dictionary = {}
 
+const BIOME_BG := {
+	&"mata_atlantica": "res://assets/backgrounds/mata_atlantica.png",
+	&"amazonia": "res://assets/backgrounds/amazonia.png",
+	&"pantanal": "res://assets/backgrounds/pantanal.png",
+	&"caatinga": "res://assets/backgrounds/caatinga.png",
+}
+
+@onready var background: TextureRect = $Background
 @onready var luar_label: Label = $Center/Panel/VBox/LuarLabel
 @onready var legends_box: HBoxContainer = $Center/Panel/VBox/Legends
 @onready var biomes_box: HBoxContainer = $Center/Panel/VBox/Biomes
@@ -112,6 +120,8 @@ func _refresh() -> void:
 		b.text = biome["name"] if _biome_available(biome) else "🔒 %s" % biome["name"]
 		b.disabled = not _biome_available(biome)
 		b.button_pressed = (biome["id"] == _sel_biome)
+	if BIOME_BG.has(_sel_biome):
+		background.texture = load(BIOME_BG[_sel_biome])  # o fundo mostra o bioma escolhido
 	for id in _simpatia_buttons:
 		var b: Button = _simpatia_buttons[id]
 		var info: Dictionary = Balance.SIMPATIAS[id]
