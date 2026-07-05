@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemy_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "Tuiuiú Agourento"
+max_hp = 10.0
+contact_damage = 8.0
+move_speed = 48.0
+radius = 11.0
+color = Color(0.75, 0.75, 0.7, 1)
+xp_value = 2
+behavior = 2
+shoot_interval = 2.4
+projectile_damage = 8.0
+keep_distance = 220.0

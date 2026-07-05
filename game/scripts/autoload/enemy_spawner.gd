@@ -23,6 +23,11 @@ const TYPES := {
 	&"mosquito": preload("res://resources/enemies/mosquito_praga.tres"),
 	&"jacare": preload("res://resources/enemies/jacare_acu.tres"),
 	&"tatu": preload("res://resources/enemies/tatu_canastra.tres"),
+	# Pantanal
+	&"piranha": preload("res://resources/enemies/piranha_voadora.tres"),
+	&"carrapato": preload("res://resources/enemies/carrapato_gigante.tres"),
+	&"capivara": preload("res://resources/enemies/capivara_zumbi.tres"),
+	&"tuiuiu": preload("res://resources/enemies/tuiuiu_agourento.tres"),
 }
 
 var spawn_table: Array = Balance.MATA_SPAWN_TABLE

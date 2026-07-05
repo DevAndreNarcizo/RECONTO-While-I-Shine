@@ -59,6 +59,15 @@ const AMAZONIA_SPAWN_TABLE := [
 	{"from": 0.8667, "rate": 11.0, "weights": {&"mosquito": 2.0, &"jacare": 3.0, &"sapo": 2.0, &"tatu": 2.0, &"elite": 0.6}},
 ]
 
+# --- Curva de spawn do Pantanal (docs/06 §5 — águas e manadas) ---
+const PANTANAL_SPAWN_TABLE := [
+	{"from": 0.0, "rate": 2.5, "weights": {&"piranha": 3.0, &"carrapato": 2.0}},
+	{"from": 0.2, "rate": 4.5, "weights": {&"piranha": 3.0, &"carrapato": 2.5, &"jacare": 1.5}},
+	{"from": 0.4667, "rate": 7.0, "weights": {&"piranha": 2.5, &"jacare": 2.5, &"tuiuiu": 1.5, &"capivara": 1.0}},
+	{"from": 0.6667, "rate": 9.0, "weights": {&"carrapato": 2.0, &"jacare": 2.5, &"tuiuiu": 2.0, &"capivara": 2.0, &"elite": 0.4}},
+	{"from": 0.8667, "rate": 12.0, "weights": {&"piranha": 2.5, &"jacare": 3.0, &"tuiuiu": 2.0, &"capivara": 2.5, &"elite": 0.6}},
+]
+
 # --- Biomas (docs/04 §2): visual, spawn, bosses e hazard por bioma ---
 const BIOMES := {
 	&"mata_atlantica": {
@@ -76,6 +85,15 @@ const BIOMES := {
 		"miniboss": "res://scenes/enemies/MiniBossSucuri.tscn",
 		"boss": "res://scenes/enemies/BossMapinguari.tscn",
 		"rain": true,  # chuva constante: projéteis 15% mais lentos
+	},
+	&"pantanal": {
+		"name": "Pantanal",
+		"ground_a": Color(0.11, 0.15, 0.11), "ground_b": Color(0.09, 0.16, 0.14),
+		"spawn_table": PANTANAL_SPAWN_TABLE,
+		"miniboss": "res://scenes/enemies/MiniBossTouro.tscn",
+		"boss": "res://scenes/enemies/BossCobraGrande.tscn",
+		"rain": false,
+		"flood": true,  # o rio transborda em ondas que varrem e empurram
 	},
 }
 const RAIN_PROJECTILE_MULT := 0.85

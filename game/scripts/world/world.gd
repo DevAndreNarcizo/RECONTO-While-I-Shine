@@ -23,6 +23,10 @@ func _ready() -> void:
 	$Rain.set_process(biome["rain"])
 	$Rain.target = player
 	GameState.projectile_env_mult = Balance.RAIN_PROJECTILE_MULT if biome["rain"] else 1.0
+	var flood: bool = biome.get("flood", false)
+	$Flood.set_physics_process(flood)
+	$Flood.visible = flood
+	$Flood.player = player
 
 	EnemySpawner.start(player, $Enemies, biome["spawn_table"])
 	$HUD.player = player

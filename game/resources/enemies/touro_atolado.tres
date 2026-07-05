@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemy_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "Touro Atolado"
+max_hp = 280.0
+contact_damage = 16.0
+move_speed = 34.0
+radius = 17.0
+color = Color(0.3, 0.22, 0.18, 1)
+xp_value = 12
+knockback_scale = 0.0
+seed_burst = 15
+shard_burst = 5
+drops_chest = true
