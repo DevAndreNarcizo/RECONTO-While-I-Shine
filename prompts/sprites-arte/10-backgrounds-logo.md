@@ -15,7 +15,30 @@
 
 ---
 
-## 1. LOGO com as 5 lendas 🎯 (o pedido principal)
+## 0. LOGO só com o NOME (limpa, para a tela de início) 🎯
+
+> Sem personagens — só o letreiro. Fundo TRANSPARENTE para sobrepor ao fundo do
+> menu. Proporção ~2:1. Salvar em `assets/ui/logo_nome.png`.
+
+```
+Ornate video game logo of the single word "RECONTO" in large decorative
+golden letters with carved wood and green leaf accents woven into the
+letterforms, a small elegant banner ribbon below reading "Enquanto Eu Brilhar",
+Brazilian folklore fantasy style, warm gold and emerald palette, subtle inner
+glow and dark outline for readability, pixel art, centered, transparent
+background, no characters, no scenery --ar 2:1
+```
+
+**Variante mais épica (com lua atrás do texto):** adicione antes de "pixel art":
+`a soft glowing full moon directly behind the letters`.
+
+**Dica:** o texto "RECONTO" precisa sair sem erros de letra — se a IA errar,
+gere 4-6 vezes e escolha a grafia correta, ou peça só as letras e ajuste a
+fita "Enquanto Eu Brilhar" depois num editor.
+
+---
+
+## 1. LOGO com as 5 lendas 🎯 (versão épica — capa/Steam)
 
 **As 5 lendas da logo:** Curupira (centro), Saci, Iara, Boitatá, Lobisomem.
 Proporção **16:9** ou **1:1**. Gere o título e as lendas juntos; se o texto sair
