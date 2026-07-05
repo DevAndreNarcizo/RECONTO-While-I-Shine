@@ -1,0 +1,36 @@
+{
+  "group_id": null,
+  "states": [
+    {
+      "character": {
+        "id": "0d26ae7e-a804-4bc6-a693-64ffa81cdddb",
+        "name": "A lupine werewolf in a",
+        "prompt": "A lupine werewolf in a low crouch, muscular build with dark matted fur, sharp fangs bared in a snarl, glowing silver-blue claw marks raked across the chest, vibrant emerald and deep violet fur highlights, clean readable silhouette, low top-down perspective.\n\nWerewolf:\ntriple claw slash marks glowing pale moonlight silver-blue, fierce diagonal strikes\t\n48x48 \u00b7 4\n\ntop-down game sprite, vibrant Brazilian rainforest folklore theme, dark fantasy\nbut colorful, clean readable silhouette, Resurrect-64 palette, transparent background",
+        "size": {
+          "width": 96,
+          "height": 96
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "high top-down",
+        "created_at": "2026-07-04T21:13:02.812576+00:00"
+      },
+      "folder": "A_lupine_werewolf_in_a",
+      "frames": {
+        "rotations": {
+          "south": "A_lupine_werewolf_in_a/rotations/south.png",
+          "south-east": "A_lupine_werewolf_in_a/rotations/south-east.png",
+          "east": "A_lupine_werewolf_in_a/rotations/east.png",
+          "north-east": "A_lupine_werewolf_in_a/rotations/north-east.png",
+          "north": "A_lupine_werewolf_in_a/rotations/north.png",
+          "north-west": "A_lupine_werewolf_in_a/rotations/north-west.png",
+          "west": "A_lupine_werewolf_in_a/rotations/west.png",
+          "south-west": "A_lupine_werewolf_in_a/rotations/south-west.png"
+        },
+        "animations": {}
+      }
+    }
+  ],
+  "export_version": "3.0",
+  "export_date": "2026-07-04T22:37:52.827858"
+}

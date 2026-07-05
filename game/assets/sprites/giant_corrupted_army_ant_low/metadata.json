@@ -1,0 +1,36 @@
+{
+  "group_id": null,
+  "states": [
+    {
+      "character": {
+        "id": "8763014d-ceba-4316-b0f3-807c0ad85712",
+        "name": "giant corrupted army ant, low",
+        "prompt": "giant corrupted army ant, low segmented insect body with six legs, dark\nred-brown chitin carapace, oversized black serrated mandibles as the main\nfeature, tiny purple glow between body segments, aggressive marching pose,\nhigh top-down game sprite, Brazilian rainforest dark fantasy, Resurrect-64\npalette, transparent background, no shadow, single character.\n\ntop-down game sprite, vibrant Brazilian rainforest folklore theme, dark fantasy\nbut colorful, clean readable silhouette, Resurrect-64 palette, transparent background\n",
+        "size": {
+          "width": 28,
+          "height": 28
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "high top-down",
+        "created_at": "2026-07-04T21:10:58.300854+00:00"
+      },
+      "folder": "giant_corrupted_army_ant_low",
+      "frames": {
+        "rotations": {
+          "south": "giant_corrupted_army_ant_low/rotations/south.png",
+          "south-east": "giant_corrupted_army_ant_low/rotations/south-east.png",
+          "east": "giant_corrupted_army_ant_low/rotations/east.png",
+          "north-east": "giant_corrupted_army_ant_low/rotations/north-east.png",
+          "north": "giant_corrupted_army_ant_low/rotations/north.png",
+          "north-west": "giant_corrupted_army_ant_low/rotations/north-west.png",
+          "west": "giant_corrupted_army_ant_low/rotations/west.png",
+          "south-west": "giant_corrupted_army_ant_low/rotations/south-west.png"
+        },
+        "animations": {}
+      }
+    }
+  ],
+  "export_version": "3.0",
+  "export_date": "2026-07-04T22:37:50.622140"
+}

@@ -16,7 +16,7 @@
 
 ## 🔴 PRIORIDADE 1 — Inimigos da Amazônia (o bioma já está jogável sem eles!)
 
-- [ ] Formigão de Correição (16px, 8 rotações)
+- [x] Formigão de Correição (16px, 8 rotações) — INTEGRADO
 - [ ] Mosquito da Praga (16px, 8 rotações)
 - [ ] Jacaré-Açu Oco (32px, 8 rotações)
 - [ ] Tatu-Canastra Blindado (32px, 8 rotações)
@@ -45,4 +45,5 @@
 - [ ] Tileset do chão Mata Atlântica + Amazônia (melhor no itch.io — ver doc 07)
 - [ ] Logo "RECONTO: Enquanto Eu Brilhar" (prompt no doc 06-sprites-higgsfield)
 - [ ] Capa/capsule Steam (Midjourney/Higgsfield)
-- [ ] Lendas futuras: Iara, Boitatá, Boto, Lobisomem, Negrinho, Mula, Cuca, Caipora
+- [x] Lobisomem (gerado — aguardando a lenda ser implementada na Fase 6)
+- [ ] Lendas futuras: Iara, Boitatá, Boto, Negrinho, Mula, Cuca, Caipora

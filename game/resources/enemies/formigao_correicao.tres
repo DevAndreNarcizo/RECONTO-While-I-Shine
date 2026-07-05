@@ -11,3 +11,4 @@ move_speed = 52.0
 radius = 8.0
 color = Color(0.5, 0.22, 0.12, 1)
 xp_value = 1
+sprite_dir = "res://assets/sprites/giant_corrupted_army_ant_low/giant_corrupted_army_ant_low/rotations"
