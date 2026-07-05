@@ -43,7 +43,10 @@
 - [ ] Animações de WALK das lendas (4-6 frames × 8 direções — PixelLab anima em cima do sprite existente)
 - [ ] Animações de walk dos inimigos (idem, ao menos dos médios/tanques)
 - [ ] Tileset do chão Mata Atlântica + Amazônia (melhor no itch.io — ver doc 07)
-- [ ] Logo "RECONTO: Enquanto Eu Brilhar" (prompt no doc 06-sprites-higgsfield)
+- [ ] Logo com as 5 lendas (prompt no doc 10 §1)
+- [ ] Fundo do menu principal (doc 10 §2)
+- [ ] Fundos de ambientação por bioma (doc 10 §3)
+- [ ] Molduras de UI opcionais (doc 10 §4)
 - [ ] Capa/capsule Steam (Midjourney/Higgsfield)
 - [x] Lobisomem — INTEGRADO (lenda jogável com Garras Lunares e Fúria Lunar)
 - [ ] Lendas futuras: Iara, Boitatá, Boto, Negrinho, Mula, Cuca, Caipora
