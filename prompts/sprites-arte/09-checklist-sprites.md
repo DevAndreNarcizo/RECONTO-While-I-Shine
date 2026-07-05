@@ -45,5 +45,5 @@
 - [ ] Tileset do chão Mata Atlântica + Amazônia (melhor no itch.io — ver doc 07)
 - [ ] Logo "RECONTO: Enquanto Eu Brilhar" (prompt no doc 06-sprites-higgsfield)
 - [ ] Capa/capsule Steam (Midjourney/Higgsfield)
-- [x] Lobisomem (gerado — aguardando a lenda ser implementada na Fase 6)
+- [x] Lobisomem — INTEGRADO (lenda jogável com Garras Lunares e Fúria Lunar)
 - [ ] Lendas futuras: Iara, Boitatá, Boto, Negrinho, Mula, Cuca, Caipora
