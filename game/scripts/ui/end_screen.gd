@@ -16,9 +16,9 @@ func _ready() -> void:
 func _on_run_ended(victory: bool) -> void:
 	get_tree().paused = true
 	visible = true
-	title.text = "A Alvorada chegou — a mata não caiu!" if victory else "A Luz se apagou..."
+	title.text = tr("END_VICTORY") if victory else tr("END_DEFEAT")
 	var t := int(GameState.run_time)
-	stats.text = "Tempo sobrevivido: %02d:%02d\nInimigos derrotados: %d\nNível alcançado: %d\n\n❖ Cristais de Luar: +%d  (total: %d)" % [
+	stats.text = tr("END_STATS") % [
 		t / 60, t % 60, GameState.kills, GameState.level,
 		GameState.last_luar_gained, SaveManager.luar,
 	]

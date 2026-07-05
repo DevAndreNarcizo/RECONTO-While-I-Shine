@@ -85,6 +85,11 @@ move_click={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://locale/ui.pt_BR.translation", "res://locale/ui.en.translation")
+locale/fallback="pt_BR"
+
 [layer_names]
 
 2d_physics/layer_1="player"

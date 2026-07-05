@@ -11,7 +11,17 @@ var tree_levels: Dictionary = {}   # String (id do upgrade) → int (nível)
 var biomes_cleared: Array = []     # Strings (ids de bioma vencidos)
 var legends_unlocked: Array = []   # Strings (além das unlocked_by_default)
 var simpatias_unlocked: Array = [] # Strings (ids de Simpatias compradas)
-var settings: Dictionary = {"volume": 1.0, "fullscreen": false}
+var settings: Dictionary = {
+	"volume": 1.0,
+	"volume_music": 1.0,
+	"volume_sfx": 1.0,
+	"fullscreen": false,
+	"zoom": 2.4,
+	"language": "pt_BR",
+	"auto_attack": false,     # decisão de playtest: manual por padrão
+	"screen_shake": true,
+	"damage_numbers": true,
+}
 
 func _ready() -> void:
 	load_game()
@@ -26,8 +36,19 @@ func set_setting(key: String, value: Variant) -> void:
 
 func apply_settings() -> void:
 	AudioServer.set_bus_volume_db(0, linear_to_db(clampf(float(settings.get("volume", 1.0)), 0.0001, 1.0)))
+	_set_bus_volume("Music", float(settings.get("volume_music", 1.0)))
+	_set_bus_volume("SFX", float(settings.get("volume_sfx", 1.0)))
 	var mode := DisplayServer.WINDOW_MODE_FULLSCREEN if settings.get("fullscreen", false) else DisplayServer.WINDOW_MODE_WINDOWED
 	DisplayServer.window_set_mode(mode)
+	TranslationServer.set_locale(String(settings.get("language", "pt_BR")))
+
+func _set_bus_volume(bus_name: String, linear: float) -> void:
+	var idx := AudioServer.get_bus_index(bus_name)
+	if idx >= 0:
+		AudioServer.set_bus_volume_db(idx, linear_to_db(clampf(linear, 0.0001, 1.0)))
+
+func setting_on(key: String) -> bool:
+	return bool(settings.get(key, true))
 
 # --- Lendas ---
 

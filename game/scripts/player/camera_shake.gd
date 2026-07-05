@@ -39,4 +39,5 @@ func _process(delta: float) -> void:
 		offset = Vector2.ZERO
 
 func _on_shake(strength: float) -> void:
-	_strength = maxf(_strength, strength)
+	if SaveManager.setting_on("screen_shake"):
+		_strength = maxf(_strength, strength)

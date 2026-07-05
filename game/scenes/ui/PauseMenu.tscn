@@ -34,14 +34,14 @@ theme_override_constants/separation = 20
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.82, 0.37, 1)
 theme_override_font_sizes/font_size = 38
-text = "Pausa"
+text = "PAUSE_TITLE"
 horizontal_alignment = 1
 
 [node name="Resume" type="Button" parent="Dim/Center/Panel/VBox"]
 custom_minimum_size = Vector2(340, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
-text = "Continuar"
+text = "PAUSE_RESUME"
 
 [node name="VolumeRow" type="HBoxContainer" parent="Dim/Center/Panel/VBox"]
 layout_mode = 2
@@ -51,7 +51,7 @@ theme_override_constants/separation = 14
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
-text = "Volume"
+text = "PAUSE_VOLUME"
 
 [node name="Slider" type="HSlider" parent="Dim/Center/Panel/VBox/VolumeRow"]
 custom_minimum_size = Vector2(220, 32)
@@ -63,10 +63,10 @@ value = 1.0
 [node name="Fullscreen" type="CheckButton" parent="Dim/Center/Panel/VBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
-text = "Tela cheia"
+text = "PAUSE_FULLSCREEN"
 
 [node name="ToMenu" type="Button" parent="Dim/Center/Panel/VBox"]
 custom_minimum_size = Vector2(340, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
-text = "Sair para o Menu"
+text = "PAUSE_TO_MENU"

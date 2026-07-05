@@ -47,10 +47,10 @@ func _physics_process(delta: float) -> void:
 	_cd -= delta
 	if _cd > 0.0:
 		return
-	# Ataque MANUAL (decisão de playtest, jul/2026): encantos disparam segurando
-	# o clique direito/RT, no ritmo do próprio cooldown. Encantos passivos
-	# (orbitais/auras) continuam automáticos.
-	if _is_passive() or Input.is_action_pressed("attack"):
+	# Ataque MANUAL por padrão (playtest jul/2026): encantos disparam segurando
+	# o clique direito/RT. Passivos (orbitais/auras) e o modo "ataque automático"
+	# das Opções disparam sozinhos no ritmo do cooldown.
+	if _is_passive() or SaveManager.setting_on("auto_attack") or Input.is_action_pressed("attack"):
 		_cd = cooldown()
 		_attack()
 

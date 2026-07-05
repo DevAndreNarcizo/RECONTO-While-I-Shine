@@ -1,0 +1,67 @@
+keys,pt_BR,en
+MENU_SUBTITLE,Enquanto Eu Brilhar,While I Shine
+MENU_PLAY,Jogar,Play
+MENU_TREE,Árvore Sagrada,Sacred Tree
+MENU_OPTIONS,Opções,Options
+MENU_CREDITS,Créditos,Credits
+MENU_QUIT,Sair,Quit
+UI_BACK,Voltar,Back
+UI_LUAR_TOTAL,❖ Cristais de Luar: %d,❖ Moonlight Crystals: %d
+CREDITS_TEXT,"RECONTO: Enquanto Eu Brilhar
+
+Um jogo de folclore brasileiro.
+Enquanto as histórias forem contadas, os Encantados não morrem.
+
+Design e desenvolvimento: André Narcizo
+Feito com Godot Engine e Claude Code.","RECONTO: While I Shine
+
+A game of Brazilian folklore.
+As long as the stories are told, the Encantados never die.
+
+Design and development: André Narcizo
+Made with Godot Engine and Claude Code."
+SELECT_LEGEND,Escolha sua Lenda,Choose your Legend
+SELECT_BIOME,Bioma,Biome
+SELECT_SIMPATIAS,Simpatias (até 3),Simpatias (up to 3)
+SELECT_START,Começar a Noite,Begin the Night
+PAUSE_TITLE,Pausa,Paused
+PAUSE_RESUME,Continuar,Resume
+PAUSE_VOLUME,Volume,Volume
+PAUSE_FULLSCREEN,Tela cheia,Fullscreen
+PAUSE_TO_MENU,Sair para o Menu,Quit to Menu
+OPT_VOLUME_MASTER,Volume geral,Master volume
+OPT_VOLUME_MUSIC,Música,Music
+OPT_VOLUME_SFX,Efeitos sonoros,Sound effects
+OPT_LANGUAGE,Idioma,Language
+OPT_AUTO_ATTACK,Ataque automático,Auto-attack
+OPT_SCREEN_SHAKE,Tremor de tela,Screen shake
+OPT_DAMAGE_NUMBERS,Números de dano,Damage numbers
+LEVELUP_TITLE,A mata te concede uma dádiva,The forest grants you a gift
+EVO_TITLE,✨ RITUAL DE SINCRETISMO ✨,✨ SYNCRETISM RITUAL ✨
+EVO_CONTINUE,Que a mata brilhe,May the forest shine
+END_VICTORY,A Alvorada chegou — a mata não caiu!,Dawn has come — the forest stands!
+END_DEFEAT,A Luz se apagou...,The Light went out...
+END_RESTART,Jogar de novo,Play again
+END_STATS,"Tempo sobrevivido: %02d:%02d
+Inimigos derrotados: %d
+Nível alcançado: %d
+
+❖ Cristais de Luar: +%d  (total: %d)","Time survived: %02d:%02d
+Enemies defeated: %d
+Level reached: %d
+
+❖ Moonlight Crystals: +%d  (total: %d)"
+TREE_TITLE,Árvore Sagrada,Sacred Tree
+TREE_HINT,Ofereça Cristais de Luar à jabuticabeira anciã para despertar poderes adormecidos.,Offer Moonlight Crystals to the elder jabuticaba tree to awaken dormant powers.
+TREE_LEVEL,Nv %d/%d,Lv %d/%d
+TREE_MAX,MÁXIMO,MAX
+HUD_KILLS,Derrotados: %d,Defeated: %d
+HUD_LUAR,❖ Luar: %d,❖ Moonlight: %d
+HUD_LEVEL,Nv %d,Lv %d
+HUD_ATTACK_HINT,Clique direito (segurar) — ATACAR,Hold right click — ATTACK
+HUD_ABILITY_READY,ESPAÇO — %s: PRONTO,SPACE — %s: READY
+MOON_CREPUSCULO,Crepúsculo,Dusk
+MOON_NOITE,Noite,Night
+MOON_LUA_CHEIA,Lua Cheia,Full Moon
+MOON_MADRUGADA,Madrugada,Small Hours
+MOON_ALVORADA,Alvorada,Dawn

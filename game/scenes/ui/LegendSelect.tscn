@@ -39,7 +39,7 @@ theme_override_constants/separation = 18
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.82, 0.37, 1)
 theme_override_font_sizes/font_size = 40
-text = "Escolha sua Lenda"
+text = "SELECT_LEGEND"
 horizontal_alignment = 1
 
 [node name="LuarLabel" type="Label" parent="Center/Panel/VBox"]
@@ -57,7 +57,7 @@ alignment = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.82, 0.37, 1)
 theme_override_font_sizes/font_size = 30
-text = "Bioma"
+text = "SELECT_BIOME"
 horizontal_alignment = 1
 
 [node name="Biomes" type="HBoxContainer" parent="Center/Panel/VBox"]
@@ -69,7 +69,7 @@ alignment = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.82, 0.37, 1)
 theme_override_font_sizes/font_size = 30
-text = "Simpatias (até 3)"
+text = "SELECT_SIMPATIAS"
 horizontal_alignment = 1
 
 [node name="Simpatias" type="HBoxContainer" parent="Center/Panel/VBox"]
@@ -89,10 +89,10 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(320, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
-text = "Começar a Noite"
+text = "SELECT_START"
 
 [node name="Back" type="Button" parent="Center/Panel/VBox"]
 custom_minimum_size = Vector2(320, 52)
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
-text = "Voltar"
+text = "UI_BACK"

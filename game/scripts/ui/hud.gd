@@ -31,19 +31,20 @@ func _on_boss_spawned(boss: Node2D) -> void:
 func _on_xp_changed(xp: float, xp_to_next: float, level: int) -> void:
 	xp_bar.max_value = xp_to_next
 	xp_bar.value = xp
-	level_label.text = "Nv %d" % level
+	level_label.text = tr("HUD_LEVEL") % level
 
 func _process(_delta: float) -> void:
 	var t := int(GameState.run_time)
 	time_label.text = "%02d:%02d" % [t / 60, t % 60]
-	kills_label.text = "Derrotados: %d" % GameState.kills
+	kills_label.text = tr("HUD_KILLS") % GameState.kills
 	debug_label.text = "inimigos %d · fps %d" % [
 		EnemySpawner.active_count(), Engine.get_frames_per_second()
 	]
-	luar_label.text = "❖ Luar: %d" % GameState.run_luar
+	luar_label.text = tr("HUD_LUAR") % GameState.run_luar
 	var next := int(MoonCycleManager.time_to_next())
+	var phase: Dictionary = MoonCycleManager.phase()
 	moon_label.text = "%s %s · %d:%02d" % [
-		MoonCycleManager.phase()["icon"], MoonCycleManager.phase()["name"], next / 60, next % 60
+		phase["icon"], tr("MOON_" + String(phase["id"]).to_upper()), next / 60, next % 60
 	]
 	if _boss != null:
 		if is_instance_valid(_boss) and _boss.hp > 0.0:
@@ -60,12 +61,13 @@ func _process(_delta: float) -> void:
 		ability_label.text = _ability_text()
 
 func _ability_text() -> String:
-	var lines := "Clique direito (segurar) — ATACAR"
+	var lines := "" if SaveManager.setting_on("auto_attack") else tr("HUD_ATTACK_HINT")
 	if player.legend == null or player.legend.active_id == &"":
 		return lines
+	var sep := "\n" if lines != "" else ""
 	if player.ability_cd_left <= 0.0:
-		return lines + "\nESPAÇO — %s: PRONTO" % player.legend.active_name
-	return lines + "\n%s: %.1fs" % [player.legend.active_name, player.ability_cd_left]
+		return lines + sep + tr("HUD_ABILITY_READY") % player.legend.active_name
+	return lines + sep + "%s: %.1fs" % [player.legend.active_name, player.ability_cd_left]
 
 ## Ícones da build em texto (placeholder até termos ícones de verdade na fase 5).
 func _build_summary() -> String:

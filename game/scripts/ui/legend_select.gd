@@ -99,7 +99,7 @@ func _on_start() -> void:
 	get_tree().change_scene_to_file("res://scenes/world/World.tscn")
 
 func _refresh() -> void:
-	luar_label.text = "❖ Cristais de Luar: %d" % SaveManager.luar
+	luar_label.text = tr("UI_LUAR_TOTAL") % SaveManager.luar
 	for legend in LEGENDS:
 		var b: Button = _legend_buttons[legend.id]
 		if SaveManager.is_legend_unlocked(legend):

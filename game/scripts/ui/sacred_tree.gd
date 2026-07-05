@@ -45,14 +45,14 @@ func _buy(id: StringName) -> void:
 		_refresh()
 
 func _refresh() -> void:
-	luar_label.text = "❖ Cristais de Luar: %d" % SaveManager.luar
+	luar_label.text = tr("UI_LUAR_TOTAL") % SaveManager.luar
 	for id in _rows:
 		var info: Dictionary = Balance.TREE_UPGRADES[id]
 		var lv := SaveManager.tree_level(id)
-		(_rows[id]["level"] as Label).text = "Nv %d/%d" % [lv, info["max_level"]]
+		(_rows[id]["level"] as Label).text = tr("TREE_LEVEL") % [lv, info["max_level"]]
 		var buy := _rows[id]["buy"] as Button
 		if lv >= int(info["max_level"]):
-			buy.text = "MÁXIMO"
+			buy.text = tr("TREE_MAX")
 			buy.disabled = true
 		else:
 			buy.text = "%d ❖" % SaveManager.upgrade_cost(id)

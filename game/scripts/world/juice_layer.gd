@@ -25,6 +25,8 @@ func _on_ability_cast(pos: Vector2, radius: float) -> void:
 	_puffs.push_back({"pos": pos, "t": 0.5, "life": 0.5, "color": Color(0.4, 1.0, 0.5), "size": radius})
 
 func _on_damage_dealt(pos: Vector2, amount: float) -> void:
+	if not SaveManager.setting_on("damage_numbers"):
+		return
 	if _numbers.size() >= MAX_NUMBERS:
 		_numbers.pop_front()
 	_numbers.push_back({
