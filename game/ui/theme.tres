@@ -1,6 +1,4 @@
-[gd_resource type="Theme" load_steps=13 format=3]
-
-[ext_resource type="Texture2D" path="res://assets/ui/frame.png" id="1"]
+[gd_resource type="Theme" load_steps=12 format=3]
 
 [sub_resource type="StyleBoxFlat" id="btn_normal"]
 bg_color = Color(0.16, 0.24, 0.18, 1)
@@ -145,17 +143,6 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxTexture" id="frame_panel"]
-texture = ExtResource("1")
-texture_margin_left = 200.0
-texture_margin_top = 200.0
-texture_margin_right = 200.0
-texture_margin_bottom = 200.0
-content_margin_left = 56.0
-content_margin_top = 56.0
-content_margin_right = 56.0
-content_margin_bottom = 56.0
-
 [resource]
 default_font_size = 22
 Button/colors/font_color = Color(0.92, 0.95, 0.88, 1)
@@ -178,7 +165,7 @@ OptionButton/styles/normal = SubResource("opt_normal")
 OptionButton/styles/hover = SubResource("btn_hover")
 OptionButton/styles/pressed = SubResource("btn_pressed")
 OptionButton/styles/focus = SubResource("btn_focus")
-PanelContainer/styles/panel = SubResource("frame_panel")
+PanelContainer/styles/panel = SubResource("panel")
 Panel/styles/panel = SubResource("panel")
 ProgressBar/styles/background = SubResource("bar_bg")
 ProgressBar/styles/fill = SubResource("bar_fill")

@@ -17,8 +17,11 @@ func _ready() -> void:
 	player.encantos.add_encanto(legend.starting_encanto)
 
 	# visual e regras do bioma
+	if biome.has("background"):
+		$Backdrop/Texture.texture = load(biome["background"])  # arte do bioma ao fundo
 	$Ground.color_a = biome["ground_a"]
 	$Ground.color_b = biome["ground_b"]
+	$Ground.modulate.a = 0.25  # chão sutil sobre a arte: mantém a sensação de movimento
 	$Rain.visible = biome["rain"]
 	$Rain.set_process(biome["rain"])
 	$Rain.target = player

@@ -74,6 +74,7 @@ const BIOMES := {
 		"name": "Mata Atlântica",
 		"ground_a": Color(0.09, 0.23, 0.14), "ground_b": Color(0.11, 0.26, 0.16),
 		"spawn_table": MATA_SPAWN_TABLE,
+		"background": "res://assets/backgrounds/mata_atlantica.png",
 		"miniboss": "res://scenes/enemies/MiniBossPreguica.tscn",
 		"boss": "res://scenes/enemies/BossOnca.tscn",
 		"rain": false,
@@ -82,6 +83,7 @@ const BIOMES := {
 		"name": "Amazônia",
 		"ground_a": Color(0.05, 0.17, 0.10), "ground_b": Color(0.07, 0.20, 0.12),
 		"spawn_table": AMAZONIA_SPAWN_TABLE,
+		"background": "res://assets/backgrounds/amazonia.png",
 		"miniboss": "res://scenes/enemies/MiniBossSucuri.tscn",
 		"boss": "res://scenes/enemies/BossMapinguari.tscn",
 		"rain": true,  # chuva constante: projéteis 15% mais lentos
@@ -90,6 +92,7 @@ const BIOMES := {
 		"name": "Pantanal",
 		"ground_a": Color(0.11, 0.15, 0.11), "ground_b": Color(0.09, 0.16, 0.14),
 		"spawn_table": PANTANAL_SPAWN_TABLE,
+		"background": "res://assets/backgrounds/pantanal.png",
 		"miniboss": "res://scenes/enemies/MiniBossTouro.tscn",
 		"boss": "res://scenes/enemies/BossCobraGrande.tscn",
 		"rain": false,
